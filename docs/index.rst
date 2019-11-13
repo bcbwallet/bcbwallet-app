@@ -10,11 +10,6 @@ Welcome to BCB钱包DAPP调用原生交互接口文档说明's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   bcbwallet_JSApi.md
+   jsapi.rst
 
-Indices and tables
-==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
