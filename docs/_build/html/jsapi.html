@@ -1,0 +1,737 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>BCB钱包DAPP调用原生交互接口文档说明 &mdash; BCB钱包DAPP调用原生交互接口文档说明 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="bcbwallet://相关协议说明" href="bcbwallet protocol.html" />
+    <link rel="prev" title="Welcome to BCB钱包DAPP调用原生交互接口文档说明’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> BCB钱包DAPP调用原生交互接口文档说明
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">BCB钱包DAPP调用原生交互接口文档说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">版本&amp;更新记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">功能说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#native">Native</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#native-getversioncode">1.native.getVersionCode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#native-getversionname">2.native.getVersionName</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#native-openurl">3.native.openUrl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#native-goback">4.native.goBack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#native-scanqrcode">5.native.scanQRCode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#native-screenchange">6.native.screenChange</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#bcb">BCB</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bcb-getwalletsinfo">1.bcb.getWalletsInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bcb-transfer">2.bcb.transfer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bcb-commonpayurl">3.bcb.commonPayUrl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bcb-commonpayparams">4.bcb.commonPayParams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bcb-signdata">5.bcb.signData</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bcb-thirdauth">6.bcb.thirdAuth</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#otc">OTC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#otc-openotc">1.otc.openOtc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#otc-openfastexchange">2.otc.openFastExchange</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bcbwallet protocol.html">bcbwallet://相关协议说明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BCB钱包DAPP调用原生交互接口文档说明</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>BCB钱包DAPP调用原生交互接口文档说明</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/jsapi.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="bcbdapp">
+<h1>BCB钱包DAPP调用原生交互接口文档说明<a class="headerlink" href="#bcbdapp" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>版本&amp;更新记录<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 26%" />
+<col style="width: 29%" />
+<col style="width: 24%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>版本号</p></th>
+<th class="head"><p>作者</p></th>
+<th class="head"><p>日期</p></th>
+<th class="head"><p>更新内容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>v.1.0.0</p></td>
+<td><p>bcbwallet</p></td>
+<td><p>2019-07-15</p></td>
+<td><p>初始版本</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="id2">
+<h2>功能说明<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>本文档提供钱包的DAPP访问接口说明。Andriod/IOS通用版本。</p>
+</div>
+<div class="section" id="native">
+<h2>Native<a class="headerlink" href="#native" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="native-getversioncode">
+<h3>1.native.getVersionCode<a class="headerlink" href="#native-getversioncode" title="Permalink to this headline">¶</a></h3>
+<p>获取bcb wallet 钱包的版本号</p>
+<ul class="simple">
+<li><p>调用方式</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>bcbwallet(&#39;native.getVersionCode&#39;, null, callback);
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>callback</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>function(data) {
+　data.versionCode
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>代码示例</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bcbwallet</span><span class="p">(</span><span class="s1">&#39;native.getVersionCode&#39;</span><span class="p">,</span> <span class="n">null</span><span class="p">,</span> <span class="n">function</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">alert</span><span class="p">(</span><span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="native-getversionname">
+<h3>2.native.getVersionName<a class="headerlink" href="#native-getversionname" title="Permalink to this headline">¶</a></h3>
+<p>获取 bcb wallet 钱包的版本名称</p>
+<ul class="simple">
+<li><p>调用方式</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>bcbwallet(&#39;native.getVersionName&#39;, null, callback);
+</pre></div>
+</div>
+<ul>
+<li><p>callback</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>function(data) {
+　data.versionName
+}
+</pre></div>
+</div>
+</li>
+<li><p>代码示例</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bcbwallet</span><span class="p">(</span><span class="s1">&#39;native.getVersionName&#39;</span><span class="p">,</span> <span class="n">null</span><span class="p">,</span> <span class="n">function</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">alert</span><span class="p">(</span><span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="native-openurl">
+<h3>3.native.openUrl<a class="headerlink" href="#native-openurl" title="Permalink to this headline">¶</a></h3>
+<p>通过此方法在 bcb wallet 钱包中打开一个新的 webview页面</p>
+<ul class="simple">
+<li><p>调用方式</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>bcbwallet(&#39;native.openUrl&#39;, params, null);
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>params</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{
+  &quot;url&quot;:&quot;https://www.baidu.com&quot;, //链接地址
+  &quot;title&quot;:&quot;百度&quot;, //页面标题
+  &quot;showTitle&quot;:true  //true为显示app 导航栏并显示title，false则隐藏app 导航栏
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>代码示例</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bcbwallet</span><span class="p">(</span><span class="s1">&#39;native.openUrl&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;https://www.baidu.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;百度&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;showTitle&quot;</span><span class="p">:</span><span class="n">true</span>
+<span class="p">},</span> <span class="n">null</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="native-goback">
+<h3>4.native.goBack<a class="headerlink" href="#native-goback" title="Permalink to this headline">¶</a></h3>
+<p>调用此方法退出当前 webview 界面,回到 app界面</p>
+<ul class="simple">
+<li><p>调用方式</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>bcbwallet(&#39;native.goBack&#39;, null, null);
+</pre></div>
+</div>
+</div>
+<div class="section" id="native-scanqrcode">
+<h3>5.native.scanQRCode<a class="headerlink" href="#native-scanqrcode" title="Permalink to this headline">¶</a></h3>
+<p>调用此方法打开 bcb wallet 钱包的相机扫描二维码功能,并把扫码结果返回</p>
+<ul class="simple">
+<li><p>调用方式</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>bcbwallet(&#39;native.scanQRCode&#39;, null, callback);
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>callback</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>function(data) {
+　data.scanResult //扫描结果字符串
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>代码示例</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bcbwallet</span><span class="p">(</span><span class="s1">&#39;native.openUrl&#39;</span><span class="p">,</span> <span class="n">null</span><span class="p">,</span> <span class="n">function</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">alert</span><span class="p">(</span><span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="native-screenchange">
+<h3>6.native.screenChange<a class="headerlink" href="#native-screenchange" title="Permalink to this headline">¶</a></h3>
+<p>调用此方法,可以设置不同的参数强制bcb wallet 钱包进行横竖屏或全屏操作</p>
+<ul class="simple">
+<li><p>调用方式</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>bcbwallet(&#39;native.screenChange&#39;, params, null);
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>params</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{
+  &quot;landType&quot;:1, //横竖屏 1：横屏，2：竖屏
+  &quot;fullType&quot;:1, //是否全屏显示 1：全屏，2：退出全屏
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>代码示例</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bcbwallet</span><span class="p">(</span><span class="s1">&#39;native.screenChange&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;landType&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;fullType&quot;</span><span class="p">:</span><span class="mi">1</span>
+<span class="p">},</span> <span class="n">null</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="bcb">
+<h2>BCB<a class="headerlink" href="#bcb" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="bcb-getwalletsinfo">
+<h3>1.bcb.getWalletsInfo<a class="headerlink" href="#bcb-getwalletsinfo" title="Permalink to this headline">¶</a></h3>
+<p>调用此方法可以获取当前bcb wallet
+钱包的所有钱包信息列表(钱包名称和钱包地址)</p>
+<ul class="simple">
+<li><p>调用方式</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>bcbwallet(&#39;bcb.getWalletsInfo&#39;, null, callback);
+</pre></div>
+</div>
+<ul>
+<li><p>callback</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>function(data) {
+　data.walletsInfo //所有钱包地址信息
+}
+****返回钱包列表信息****
+walletsInfo:[
+  {
+      &quot;name&quot;:&quot;myWallet&quot;,
+      &quot;walletAddr&quot;:&quot;bcbPDTi68XwoMgGTwxd7ioZeMHHz7p7ewLtQ&quot;
+  },
+  {
+      &quot;name&quot;:&quot;newWallet&quot;,
+        &quot;walletAddr&quot;:&quot;bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU&quot;
+  }
+]
+</pre></div>
+</div>
+</li>
+<li><p>代码示例</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bcbwallet</span><span class="p">(</span><span class="s1">&#39;native.getWalletsInfo&#39;</span><span class="p">,</span> <span class="n">null</span><span class="p">,</span> <span class="n">function</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">alert</span><span class="p">(</span><span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bcb-transfer">
+<h3>2.bcb.transfer<a class="headerlink" href="#bcb-transfer" title="Permalink to this headline">¶</a></h3>
+<p>调用此方法可以根据设置的参数进行转账操作,并把转账结果返回</p>
+<ul class="simple">
+<li><p>调用方式</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>bcbwallet(&#39;bcb.transfer&#39;, params, callback);
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>params</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;from&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">转账钱包地址</span>
+    <span class="s2">&quot;to&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">转账到的目标地址</span>
+    <span class="s2">&quot;contractAddr&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">转账币种的合约地址</span>
+    <span class="s2">&quot;amount&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">转账金额</span>
+    <span class="s2">&quot;note&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span> <span class="o">//</span><span class="n">转账备注</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>callback</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>function(data) {
+  data.code, //0为转账成功
+      data.message
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>代码示例</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bcbwallet</span><span class="p">(</span><span class="s1">&#39;native.getWalletsInfo&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;from&quot;</span><span class="p">:</span><span class="s2">&quot;bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">转账钱包地址</span>
+    <span class="s2">&quot;to&quot;</span><span class="p">:</span><span class="s2">&quot;bcbNg7srN9byDMLGL6tG18WEMFLExpVQqGX5&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">转账到的目标地址</span>
+    <span class="s2">&quot;contractAddr&quot;</span><span class="p">:</span><span class="s2">&quot;bcbLTwDzzZn3Jy8cJGvygWLgpTr9hEdVpWZ9&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">转账币种的合约地址</span>
+    <span class="s2">&quot;amount&quot;</span><span class="p">:</span><span class="s2">&quot;100&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">转账金额</span>
+    <span class="s2">&quot;note&quot;</span><span class="p">:</span><span class="s2">&quot;转账&quot;</span> <span class="o">//</span><span class="n">转账备注</span>
+<span class="p">},</span> <span class="n">function</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">alert</span><span class="p">(</span><span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bcb-commonpayurl">
+<h3>3.bcb.commonPayUrl<a class="headerlink" href="#bcb-commonpayurl" title="Permalink to this headline">¶</a></h3>
+<p>调用此方法可以打开 bcb wallet
+钱包显示当前支付信息,信息校验正确后可以进行支付操作,支付完成后返回支付的状态</p>
+<ul class="simple">
+<li><p>调用方式</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>bcbwallet(&#39;bcb.commonPayUrl&#39;, params, callback);
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>params</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;payUrl&quot;</span><span class="p">:</span><span class="s2">&quot;http://172.18.20.156:8080/bcbtest/test2.txt&quot;</span> <span class="o">//</span><span class="n">支付订单链接</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>callback</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>function(data) {
+  data.code, //0为支付成功
+      data.message
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>代码示例</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bcbwallet</span><span class="p">(</span><span class="s1">&#39;bcb.commonPayUrl&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;payUrl&quot;</span><span class="p">:</span><span class="s2">&quot;http://172.18.20.156:8080/bcbtest/test2.txt&quot;</span>
+<span class="p">},</span> <span class="n">function</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">alert</span><span class="p">(</span><span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bcb-commonpayparams">
+<h3>4.bcb.commonPayParams<a class="headerlink" href="#bcb-commonpayparams" title="Permalink to this headline">¶</a></h3>
+<p>调用此方法可以打开 bcb wallet
+钱包显示当前支付信息,信息校验正确后可以进行支付操作,支付完成后返回支付的状态</p>
+<ul class="simple">
+<li><p>调用方式</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>bcbwallet(&#39;bcb.commonPayParams&#39;, params, callback);
+</pre></div>
+</div>
+<ul>
+<li><p>params</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;ver&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="s2">&quot;appUISeg&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;referInfo&quot;</span><span class="p">:</span> <span class="s2">&quot;使用100BCB购买理财项目&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;conAddr&quot;</span><span class="p">:</span> <span class="s2">&quot;devtest9RcfiWWLH6KpVpbPYYQ55TUncnngSYPES&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;defaultPayAddr&quot;</span><span class="p">:</span> <span class="s2">&quot;devtestLDpP6ggZVgMyq1avLtSvgdYz9NUPmQ2p1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;affCode&quot;</span><span class="p">:</span> <span class="s2">&quot;devtest7389jV8MMKiaC2Ri9TNXb7z2YDrRddqDR&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;购买BCB理财项目&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;100&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;coinParams&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;note&quot;</span><span class="p">:</span> <span class="s2">&quot;BCB理财存入&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;gasLimit&quot;</span><span class="p">:</span> <span class="s2">&quot;25000&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;contractCall&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;contractAddr&quot;</span><span class="p">:</span> <span class="s2">&quot;devtestLL6sMXu8s2hhFRoZH67Q8fig9djogVi3H&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;methodParams&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;_to&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;types.Address&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;devtest4YyjKX5cPA6RkReN3GWcFZ35MVU28PLVy&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;_value&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;bn.Number-decimal&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;100&quot;</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;methodName&quot;</span><span class="p">:</span> <span class="s2">&quot;Transfer&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;methodRet&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;contractAddr&quot;</span><span class="p">:</span> <span class="s2">&quot;devtest9RcfiWWLH6KpVpbPYYQ55TUncnngSYPES&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;methodParams&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;termDays&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int64&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;180&quot;</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;methodName&quot;</span><span class="p">:</span> <span class="s2">&quot;Deposit&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;methodRet&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>callback</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>function(data) {
+  data.code, //0为支付成功
+      data.message
+}
+</pre></div>
+</div>
+<ul>
+<li><p>代码示例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bcbwallet</span><span class="p">(</span><span class="s1">&#39;bcb.commonPayParams&#39;</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">function</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">alert</span><span class="p">(</span><span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="bcb-signdata">
+<h3>5.bcb.signData<a class="headerlink" href="#bcb-signdata" title="Permalink to this headline">¶</a></h3>
+<p>调用此方法利用bcb wallet钱包的底层库进行数据签名,并把签名的数据返回</p>
+<ul class="simple">
+<li><p>调用方式</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>bcbwallet(&#39;bcb.signData&#39;, params, callback);
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>params</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;address&quot;</span><span class="p">:</span><span class="s2">&quot;bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">签名地址</span>
+    <span class="s2">&quot;signContent&quot;</span><span class="p">:</span><span class="s2">&quot;test&quot;</span> <span class="o">//</span><span class="n">待签名内容</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>callback</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>function(data) {
+  data.address, //签名地址
+      data.signContent, //待签名内容
+  date.pubKey, //公钥
+  data.signedData //签名后内容
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>代码示例</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bcbwallet</span><span class="p">(</span><span class="s1">&#39;bcb.signData&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;address&quot;</span><span class="p">:</span><span class="s2">&quot;bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;signContent&quot;</span><span class="p">:</span><span class="s2">&quot;test&quot;</span>
+<span class="p">},</span> <span class="n">function</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">alert</span><span class="p">(</span><span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bcb-thirdauth">
+<h3>6.bcb.thirdAuth<a class="headerlink" href="#bcb-thirdauth" title="Permalink to this headline">¶</a></h3>
+<p>调用此方法进行 bcb wallet 钱包的进行授权,并把授权状态返回</p>
+<ul class="simple">
+<li><p>调用方式</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>bcbwallet(&#39;bcb.thirdAuth&#39;, params, callback);
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>params</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;nonce&quot;</span><span class="p">:</span><span class="s2">&quot;cpNGXLhwjkVMXrrOvJj1UjwV8v2qftvM&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">随机数</span>
+    <span class="s2">&quot;appID&quot;</span><span class="p">:</span><span class="s2">&quot;10&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">业务ID</span>
+    <span class="s2">&quot;sessionInfo&quot;</span><span class="p">:</span><span class="s2">&quot;RFzLhUreEUM9eCAN0UEJXFXYYyvdctsU&quot;</span> <span class="o">//</span><span class="n">用户信息</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>callback</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>function(data) {
+  data.code, //0为授权成功
+      data.message,
+  data.address //授权登录的钱包地址
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>代码示例</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bcbwallet</span><span class="p">(</span><span class="s1">&#39;bcb.thirdAuth&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;nonce&quot;</span><span class="p">:</span><span class="s2">&quot;cpNGXLhwjkVMXrrOvJj1UjwV8v2qftvM&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;appID&quot;</span><span class="p">:</span><span class="s2">&quot;10&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sessionInfo&quot;</span><span class="p">:</span><span class="s2">&quot;RFzLhUreEUM9eCAN0UEJXFXYYyvdctsU&quot;</span>
+<span class="p">},</span> <span class="n">function</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">alert</span><span class="p">(</span><span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="otc">
+<h2>OTC<a class="headerlink" href="#otc" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="otc-openotc">
+<h3>1.otc.openOtc<a class="headerlink" href="#otc-openotc" title="Permalink to this headline">¶</a></h3>
+<p>调用此方法进入bcb wallet 钱包的OTC模块</p>
+<ul class="simple">
+<li><p>调用方式</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>bcbwallet(&#39;otc.openOtc&#39;, null, null);
+</pre></div>
+</div>
+</div>
+<div class="section" id="otc-openfastexchange">
+<h3>2.otc.openFastExchange<a class="headerlink" href="#otc-openfastexchange" title="Permalink to this headline">¶</a></h3>
+<p>调用此方法进入bcb wallet 钱包的闪兑模块</p>
+<ul class="simple">
+<li><p>调用方式</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>bcbwallet(&#39;otc.openFastExchange&#39;, params, null);
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>params</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;inCoin&quot;</span><span class="p">:</span><span class="s2">&quot;DC&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">待兑换币种</span>
+    <span class="s2">&quot;outCoin&quot;</span><span class="p">:</span><span class="s2">&quot;USDX&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">目标兑换币种</span>
+    <span class="s2">&quot;autoFinish&quot;</span><span class="p">:</span><span class="n">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>代码示例</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>bcbwallet(&#39;otc.openFastExchange&#39;, {
+    &quot;inCoin&quot;:&quot;DC&quot;,
+    &quot;outCoin&quot;:&quot;USDX&quot;,
+    &quot;autoFinish&quot;:true
+}, null);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="bcbwallet protocol.html" class="btn btn-neutral float-right" title="bcbwallet://相关协议说明" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to BCB钱包DAPP调用原生交互接口文档说明’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, bcbwallet
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

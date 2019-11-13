@@ -1,5 +1,5 @@
 bcbwallet://相关协议说明
-------------------------
+========================
 
 版本更新
 --------
@@ -10,7 +10,8 @@ bcbwallet://相关协议说明
 v1.0   bcbwallet 2019-11-7 初始版本
 ====== ========= ========= ========
 
-##1.支付协议
+1.支付协议
+----------
 
 ::
 
@@ -37,7 +38,8 @@ v1.0   bcbwallet 2019-11-7 初始版本
 支付完成后, 如果存在txHash, 可根据 txHash
 值查询支付详情,否则视为支付失败.
 
-##2.授权认证协议
+2.授权认证协议
+--------------
 
 ::
 
@@ -52,7 +54,8 @@ v1.0   bcbwallet 2019-11-7 初始版本
     url = "bcbwallet://req_auth=https://clt.cgs.cool/otc/callback/token/nE74Lya9Oa4Z6H1a6hvPL9ntOiv2ot1v"
    jsbridge(url);
 
-##3.获取钱包列表
+3.获取钱包列表
+--------------
 
 ::
 
@@ -73,7 +76,8 @@ v1.0   bcbwallet 2019-11-7 初始版本
 
 返回钱包列表的 json 字符串.
 
-##4.打开普通 web页面
+4.打开普通 web页面
+------------------
 
 ::
 
@@ -87,7 +91,8 @@ v1.0   bcbwallet 2019-11-7 初始版本
 
    jsbridge("bcbwallet://req_web=https://www.bcbscan.io");
 
-##5.启动扫码功能
+5.启动扫码功能
+--------------
 
 ::
 
@@ -106,7 +111,8 @@ v1.0   bcbwallet 2019-11-7 初始版本
 
 返回结果:返回二维码扫描的识别结果.
 
-##6.退出 web页面
+6.退出 web页面
+--------------
 
 ::
 
@@ -120,7 +126,8 @@ v1.0   bcbwallet 2019-11-7 初始版本
 
    jsbridge("bcbwallet://req_info=exitpage");
 
-##7.竖屏操作
+7.竖屏操作
+----------
 
 ::
 
@@ -134,7 +141,8 @@ v1.0   bcbwallet 2019-11-7 初始版本
 
    jsbridge("bcbwallet://req_info=portscreen");
 
-##8.横屏操作
+8.横屏操作
+----------
 
 ::
 
@@ -148,7 +156,8 @@ v1.0   bcbwallet 2019-11-7 初始版本
 
    jsbridge("bcbwallet://req_info=landscreen");
 
-##9.全屏操作
+9.全屏操作
+----------
 
 ::
 
@@ -162,7 +171,8 @@ v1.0   bcbwallet 2019-11-7 初始版本
 
    jsbridge("bcbwallet://req_info=fullscreen");
 
-##通用方法
+通用方法
+--------
 
 .. code:: js
 

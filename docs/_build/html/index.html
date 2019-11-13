@@ -1,0 +1,256 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Welcome to BCB钱包DAPP调用原生交互接口文档说明’s documentation! &mdash; BCB钱包DAPP调用原生交互接口文档说明 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="BCB钱包DAPP调用原生交互接口文档说明" href="jsapi.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> BCB钱包DAPP调用原生交互接口文档说明
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="jsapi.html">BCB钱包DAPP调用原生交互接口文档说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bcbwallet protocol.html">bcbwallet://相关协议说明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">BCB钱包DAPP调用原生交互接口文档说明</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Welcome to BCB钱包DAPP调用原生交互接口文档说明’s documentation!</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="welcome-to-bcbdapp-s-documentation">
+<h1>Welcome to BCB钱包DAPP调用原生交互接口文档说明’s documentation!<a class="headerlink" href="#welcome-to-bcbdapp-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="jsapi.html">BCB钱包DAPP调用原生交互接口文档说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="jsapi.html#id1">版本&amp;更新记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsapi.html#id2">功能说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsapi.html#native">Native</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="jsapi.html#native-getversioncode">1.native.getVersionCode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jsapi.html#native-getversionname">2.native.getVersionName</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jsapi.html#native-openurl">3.native.openUrl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jsapi.html#native-goback">4.native.goBack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jsapi.html#native-scanqrcode">5.native.scanQRCode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jsapi.html#native-screenchange">6.native.screenChange</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="jsapi.html#bcb">BCB</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="jsapi.html#bcb-getwalletsinfo">1.bcb.getWalletsInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jsapi.html#bcb-transfer">2.bcb.transfer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jsapi.html#bcb-commonpayurl">3.bcb.commonPayUrl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jsapi.html#bcb-commonpayparams">4.bcb.commonPayParams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jsapi.html#bcb-signdata">5.bcb.signData</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jsapi.html#bcb-thirdauth">6.bcb.thirdAuth</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="jsapi.html#otc">OTC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="jsapi.html#otc-openotc">1.otc.openOtc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jsapi.html#otc-openfastexchange">2.otc.openFastExchange</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bcbwallet protocol.html">bcbwallet://相关协议说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bcbwallet protocol.html#id1">版本更新</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bcbwallet protocol.html#id2">1.支付协议</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bcbwallet protocol.html#id3">2.授权认证协议</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bcbwallet protocol.html#id4">3.获取钱包列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bcbwallet protocol.html#web">4.打开普通 web页面</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bcbwallet protocol.html#id5">5.启动扫码功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bcbwallet protocol.html#id6">6.退出 web页面</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bcbwallet protocol.html#id7">7.竖屏操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bcbwallet protocol.html#id8">8.横屏操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bcbwallet protocol.html#id9">9.全屏操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bcbwallet protocol.html#id10">通用方法</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="jsapi.html" class="btn btn-neutral float-right" title="BCB钱包DAPP调用原生交互接口文档说明" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, bcbwallet
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

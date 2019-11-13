@@ -1,0 +1,383 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>bcbwallet://相关协议说明 &mdash; BCB钱包DAPP调用原生交互接口文档说明 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="BCB钱包DAPP调用原生交互接口文档说明" href="jsapi.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> BCB钱包DAPP调用原生交互接口文档说明
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="jsapi.html">BCB钱包DAPP调用原生交互接口文档说明</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">bcbwallet://相关协议说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">版本更新</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">1.支付协议</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">2.授权认证协议</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">3.获取钱包列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#web">4.打开普通 web页面</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">5.启动扫码功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">6.退出 web页面</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">7.竖屏操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">8.横屏操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">9.全屏操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">通用方法</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BCB钱包DAPP调用原生交互接口文档说明</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>bcbwallet://相关协议说明</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/bcbwallet protocol.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="bcbwallet">
+<h1>bcbwallet://相关协议说明<a class="headerlink" href="#bcbwallet" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>版本更新<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>版本号</p></th>
+<th class="head"><p>作者</p></th>
+<th class="head"><p>日期</p></th>
+<th class="head"><p>更新内容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>v1.0</p></td>
+<td><p>bcbwallet</p></td>
+<td><p>2019-11-7</p></td>
+<td><p>初始版本</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h2>1.支付协议<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bcbwallet</span><span class="p">:</span><span class="o">//</span><span class="n">req_pay</span><span class="o">=</span><span class="n">支付链接</span>
+</pre></div>
+</div>
+<p>协议说明:通过此协议拉起 bcbwallet 的支付功能,并把支付hash 返回.</p>
+<p>示例代码:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">url</span> <span class="o">=</span> <span class="s2">&quot;bcbwallet://req_pay=https://testclt.cgs.cool/yeb/h5/bcb/investment/transfer/jcsd0IB7g444P9UyhyXsggqHfDOtuK6A&quot;</span>
+<span class="nx">jsbridge</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">inform</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">txHash</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">txHash</span><span class="p">);</span>
+     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;fail&quot;</span><span class="p">);</span>
+     <span class="p">}</span>
+   <span class="p">}</span>
+</pre></div>
+</div>
+<p>返回结果:</p>
+<p>支付完成后, 如果存在txHash, 可根据 txHash
+值查询支付详情,否则视为支付失败.</p>
+</div>
+<div class="section" id="id3">
+<h2>2.授权认证协议<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bcbwallet</span><span class="p">:</span><span class="o">//</span><span class="n">req_auth</span><span class="o">=</span><span class="n">授权链接</span>
+</pre></div>
+</div>
+<p>协议说明:通过此协议唤起bcbwallet 的授权功能.</p>
+<p>示例代码:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">&quot;bcbwallet://req_auth=https://clt.cgs.cool/otc/callback/token/nE74Lya9Oa4Z6H1a6hvPL9ntOiv2ot1v&quot;</span>
+<span class="nx">jsbridge</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>3.获取钱包列表<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bcbwallet</span><span class="p">:</span><span class="o">//</span><span class="n">req_info</span><span class="o">=</span><span class="n">bcbinforeq</span>
+</pre></div>
+</div>
+<p>协议说明:通过此协议获取 bcbwallet 所有的钱包地址的 json 字符串.</p>
+<p>示例代码:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">jsbridge</span><span class="p">(</span><span class="s2">&quot;bcbwallet://req_info=bcbinforeq&quot;</span><span class="p">);</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">inform</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">walletsJson</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">walletsJson</span><span class="p">);</span>
+   <span class="p">}</span>
+</pre></div>
+</div>
+<p>返回结果:</p>
+<p>返回钱包列表的 json 字符串.</p>
+</div>
+<div class="section" id="web">
+<h2>4.打开普通 web页面<a class="headerlink" href="#web" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bcbwallet</span><span class="p">:</span><span class="o">//</span><span class="n">req_web</span><span class="o">=</span><span class="n">h5链接</span>
+</pre></div>
+</div>
+<p>协议说明:通过此协议在 bcbwallet 钱包内部打开链接页面</p>
+<p>示例代码:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">jsbridge</span><span class="p">(</span><span class="s2">&quot;bcbwallet://req_web=https://www.bcbscan.io&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>5.启动扫码功能<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bcbwallet</span><span class="p">:</span><span class="o">//</span><span class="n">req_info</span><span class="o">=</span><span class="n">qrcode</span>
+</pre></div>
+</div>
+<p>协议说明:通过此协议唤起 bcbwallet 的二维码扫码功能,并把扫码识别结果返回.</p>
+<p>示例代码:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">jsbridge</span><span class="p">(</span><span class="s2">&quot;bcbwallet://req_info=qrcode&quot;</span><span class="p">);</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">inform</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">qrCode</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">qrCode</span><span class="p">);</span>
+   <span class="p">}</span>
+</pre></div>
+</div>
+<p>返回结果:返回二维码扫描的识别结果.</p>
+</div>
+<div class="section" id="id6">
+<h2>6.退出 web页面<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bcbwallet</span><span class="p">:</span><span class="o">//</span><span class="n">req_info</span><span class="o">=</span><span class="n">exitpage</span>
+</pre></div>
+</div>
+<p>协议说明:通过此协议可以强制退出当前的h5页面返回 iOS/Android 界面</p>
+<p>示例代码:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">jsbridge</span><span class="p">(</span><span class="s2">&quot;bcbwallet://req_info=exitpage&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>7.竖屏操作<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bcbwallet</span><span class="p">:</span><span class="o">//</span><span class="n">req_info</span><span class="o">=</span><span class="n">portscreen</span>
+</pre></div>
+</div>
+<p>协议说明:通过此协议可以在h5页面强制 app竖屏.</p>
+<p>示例代码:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">jsbridge</span><span class="p">(</span><span class="s2">&quot;bcbwallet://req_info=portscreen&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>8.横屏操作<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bcbwallet</span><span class="p">:</span><span class="o">//</span><span class="n">req_info</span><span class="o">=</span><span class="n">landscreen</span>
+</pre></div>
+</div>
+<p>协议说明:通过此协议可以在h5页面强制 app横屏.</p>
+<p>示例代码:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">jsbridge</span><span class="p">(</span><span class="s2">&quot;bcbwallet://req_info=landscreen&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>9.全屏操作<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bcbwallet</span><span class="p">:</span><span class="o">//</span><span class="n">req_info</span><span class="o">=</span><span class="n">fullscreen</span>
+</pre></div>
+</div>
+<p>协议说明:通过此协议可以在h5页面强制 app全屏.</p>
+<p>示例代码:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">jsbridge</span><span class="p">(</span><span class="s2">&quot;bcbwallet://req_info=fullscreen&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>通用方法<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">jsbridge</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">urlData</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">device</span> <span class="o">=</span> <span class="nx">Device</span><span class="p">()</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">urlData</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">&#39;://&#39;</span><span class="p">))</span> <span class="nx">urlData</span> <span class="o">=</span> <span class="s1">&#39;bcbwallet://&#39;</span> <span class="o">+</span> <span class="nx">urlData</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">device</span> <span class="o">==</span> <span class="s1">&#39;Android&#39;</span> <span class="o">||</span> <span class="nx">device</span> <span class="o">==</span> <span class="s1">&#39;WindowsPhone&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">iframe</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;iframe&#39;</span><span class="p">)</span>
+        <span class="nx">iframe</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="s1">&#39;1px&#39;</span>
+        <span class="nx">iframe</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="s1">&#39;1px&#39;</span>
+        <span class="nx">iframe</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span>
+        <span class="nx">iframe</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">urlData</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">iframe</span><span class="p">)</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">iframe</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+        <span class="p">},</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">device</span> <span class="o">==</span> <span class="s1">&#39;iPhone&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nb">window</span><span class="p">.</span><span class="nx">webkit</span><span class="p">.</span><span class="nx">messageHandlers</span><span class="p">.</span><span class="nx">BCBPay</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="nx">urlData</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="jsapi.html" class="btn btn-neutral float-left" title="BCB钱包DAPP调用原生交互接口文档说明" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, bcbwallet
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
