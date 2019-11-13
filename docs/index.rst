@@ -7,7 +7,7 @@ Welcome to BCB钱包DAPP调用原生交互接口文档说明's documentation!
 ===============================================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
    jsapi.rst
