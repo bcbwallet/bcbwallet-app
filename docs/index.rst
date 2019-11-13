@@ -13,3 +13,9 @@ Welcome to BCB钱包DAPP调用原生交互接口文档说明's documentation!
    jsapi.rst
 
 
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
