@@ -300,7 +300,7 @@ BCB
    });
 
 4.bcb.commonPayParams
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
 调用此方法可以打开 bcb wallet
 钱包显示当前支付信息,信息校验正确后可以进行支付操作,支付完成后返回支付的状态
@@ -316,49 +316,23 @@ BCB
    ::
 
       {
-        "ver": 2,
+        "ver": 3,
         "appUISeg": {
-          "referInfo": "使用100BCB购买理财项目",
-          "conAddr": "devtest9RcfiWWLH6KpVpbPYYQ55TUncnngSYPES",
-          "defaultPayAddr": "devtestLDpP6ggZVgMyq1avLtSvgdYz9NUPmQ2p1",
-          "affCode": "devtest7389jV8MMKiaC2Ri9TNXb7z2YDrRddqDR",
-          "title": "购买BCB理财项目",
-          "value": "100"
-        },
-        "coinParams": {
-          "note": "BCB理财存入",
-          "gasLimit": "25000",
-          "contractCall": [
-            {
-              "contractAddr": "devtestLL6sMXu8s2hhFRoZH67Q8fig9djogVi3H",
-              "methodParams": [
-                {
-                  "name": "_to",
-                  "type": "types.Address",
-                  "value": "devtest4YyjKX5cPA6RkReN3GWcFZ35MVU28PLVy"
-                },
-                {
-                  "name": "_value",
-                  "type": "bn.Number-decimal",
-                  "value": "100"
-                }
-              ],
-              "methodName": "Transfer",
-              "methodRet": ""
-            },
-            {
-              "contractAddr": "devtest9RcfiWWLH6KpVpbPYYQ55TUncnngSYPES",
-              "methodParams": [
-                {
-                  "name": "termDays",
-                  "type": "int64",
-                  "value": "180"
-                }
-              ],
-              "methodName": "Deposit",
-              "methodRet": ""
-            }
-          ]
+            "title": "通用支付",
+            "value": "0.1",
+            "affCode": "",
+            "referInfo": "进行支付操作",
+            "defaultPayAddr": "",
+            "symbol": "BCB"
+          },
+         "coinParams": {
+         "note": "备注",
+         "gasLimit": "25000",
+         "calls": [{
+          "contract": "bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe",
+          "method": "Transfer(types.Address,bn.Number)",
+          "params": ["bcbL8BzfVfcxtqh9umN3dUhxBYNyEnV7GiSa", "100000000"]
+         }]
         }
       }
 
@@ -378,6 +352,7 @@ BCB
       bcbwallet('bcb.commonPayParams', params, function (data) {
           alert(JSON.stringify(data));
       });
+      
 
 5.bcb.signData
 ~~~~~~~~~~~~~~
