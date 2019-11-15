@@ -316,16 +316,14 @@
 
   ```
   {
-      "ver": 3,
-      "appUISeg": {
-          "title": "通用支付",
-          "value": "0.1",
-          "affCode": "",
-          "referInfo": "进行支付操作",
-          "defaultPayAddr": "",
-          "symbol": "BCB"
+    "ver": 3,
+    "appUISeg": {
+        "title": "通用支付",
+        "value": "0.1",
+        "referInfo": "进行支付操作",
+        "symbol": "BCB"
       },
-      "coinParams": {
+     "coinParams": {
      "note": "备注",
      "gasLimit": "25000",
      "calls": [{

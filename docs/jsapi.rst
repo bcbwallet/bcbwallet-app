@@ -320,9 +320,7 @@ BCB
         "appUISeg": {
             "title": "通用支付",
             "value": "0.1",
-            "affCode": "",
             "referInfo": "进行支付操作",
-            "defaultPayAddr": "",
             "symbol": "BCB"
           },
          "coinParams": {
