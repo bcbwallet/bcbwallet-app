@@ -2,7 +2,7 @@
 ===================
 
 版本&更新记录
-=============
+-------------
 
 +-----------+-------------+--------------+----------------+
 | 版本号    | 作者        | 日期         | 更新内容       |
@@ -21,24 +21,24 @@
 --------------
 
 功能说明
-========
+--------
 
 本文档提供钱包的SDK访问接口说明。IOS版本。
 
 接口访问方式
-============
+------------
 
 API调用，返回的内容也是一个json串，里面会携带返回的状态
 码以及一些返回的必要参数。
 
 1.初始化设置
-============
+------------
 
 1.注册APP
----------
+~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **+ (BOOL)registerApp:(NSString *)appid pushID:(NSString *)pushid;**
 
@@ -53,7 +53,7 @@ API调用，返回的内容也是一个json串，里面会携带返回的状态
 +----------+----------+--------+-------------------------------+
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **示例：返回结果-注册成功**
 
@@ -68,7 +68,7 @@ API调用，返回的内容也是一个json串，里面会携带返回的状态
     return NO;
 
 2.语言设置
-----------
+~~~~~~~~~~
 
 + (**void**)setLanguage:(NSString \*)language;
 ''''''''''''''''''''''''''''''''''''''''''''''
@@ -82,7 +82,7 @@ API调用，返回的内容也是一个json串，里面会携带返回的状态
 +------------+----------+--------+----------------------------------------------------------+
 
 3.开发环境设置
---------------
+~~~~~~~~~~~~~~
 
 -(**void**)setWalletDebug:(ICRunType)walletDebug OTCDebug:(ICRunType)otcDebug;
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -98,16 +98,16 @@ API调用，返回的内容也是一个json串，里面会携带返回的状态
 +---------------+--------+--------+----------------------------------------------------------------+
 
 4.获取主链及所有侧链信息
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 -(**void**)loadAllChainsFinish:(\ **void**\ (^)(ICSDKResultModel \*
 result))finish;
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **示例：返回结果-正确时**
 
@@ -133,7 +133,7 @@ result))finish;
     }
 
 5.链环境设置
-------------
+~~~~~~~~~~~~
 
 \*\*-(void)setWalletChain:(NSString \*)chainId;\*\*
 '''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -147,16 +147,16 @@ result))finish;
 +-----------+----------+--------+------------------------------------+
 
 6.获取链环境对应的网络节点
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 -(**void**)loadChainNodesFinish:(\ **void**\ (^)(ICSDKResultModel \*
 result))finish;
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **示例：返回结果-正确时**
 
@@ -190,7 +190,7 @@ result))finish;
     }
 
 7.节点设置
-----------
+~~~~~~~~~~
 
 \*\*-(void)setNodeUrl:(NSString \*)nodeUrl nodeType:(NSInteger)nodeType;\*\*
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -206,13 +206,13 @@ result))finish;
 +------------+----------+--------+----------------------------------------+
 
 2.钱包管理
-==========
+----------
 
 1.创建新钱包
-------------
+~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 -(**void**)createWallet:(NSString *)name password:(NSString *)password recommend:(NSString *)recommend finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -230,7 +230,7 @@ result))finish;
 +-------------+----------+--------+--------------------+
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **示例：返回结果-正确时**
 
@@ -270,10 +270,10 @@ result))finish;
     }
 
 2.导入私钥生成钱包
-------------------
+~~~~~~~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **-(void)importPrivateKey:(NSString *)name key:(NSString *)key
 password:(NSString *)password recommend:(NSString *)recommend
@@ -294,7 +294,7 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 +-------------+----------+--------+--------------------+
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **示例：返回结果-正确时**
 
@@ -331,10 +331,10 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
     }
 
 3.导入Keystore生成钱包
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **-(void)importKeystore:(NSString *)name key:(NSString *)key
 password:(NSString *)password recommend:(NSString *)recommend
@@ -355,7 +355,7 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 +-------------+----------+--------+--------------------+
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **示例：返回结果-正确时**
 
@@ -392,10 +392,10 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
     }
 
 4.导入助记词生成钱包
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **-(void)importMnemonicWords:(NSString *)name key:(NSString *)key
 password:(NSString *)password recommend:(NSString *)recommend
@@ -416,7 +416,7 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 +-------------+----------+--------+--------------------+
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **示例：返回结果-正确时**
 
@@ -453,15 +453,15 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
     }
 
 5.获取所有钱包信息
-------------------
+~~~~~~~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 \*\*-(ICSDKResultModel \*)getWallets;\*\*
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **示例：返回结果-正确时**
 
@@ -504,10 +504,10 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
     }
 
 6.钱包推送绑定状态
-------------------
+~~~~~~~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **- (**\ BOOL)hasBindPushID:(NSString \*)walletAddr;
 
@@ -520,7 +520,7 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 +--------------+----------+--------+------------+
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **示例：返回结果-已绑定**
 
@@ -535,10 +535,10 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
     return NO;
 
 7.绑定钱包推送
---------------
+~~~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **--(**\ void\ **)bindWalletPush:(NSString *)walletAddr
 finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;**
@@ -552,7 +552,7 @@ finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;**
 +--------------+----------+--------+------------+
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **示例：返回结果-正确时**
 
@@ -575,10 +575,10 @@ finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;**
     }
 
 8.导出助记词
-------------
+~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **-(void)getMnemonicWords:(NSString *)walletAddr password:(NSString
 *)password finish:(void(^)(ICSDKResultModel \* result))finish;**
@@ -594,7 +594,7 @@ finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;**
 +--------------+----------+--------+------------+
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **示例：返回结果-正确时**
 
@@ -628,10 +628,10 @@ finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;**
     }
 
 9.导出私钥
-----------
+~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **-(void)exportPrivateKey:(NSString *)walletAddr password:(NSString
 *)password finish:(void(^)(ICSDKResultModel \* result))finish;**
@@ -647,7 +647,7 @@ finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;**
 +--------------+----------+--------+------------+
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **示例：返回结果-正确时**
 
@@ -680,10 +680,10 @@ finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;**
     }
 
 10.导出Keystore
----------------
+~~~~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **-(void)exportKeystore:(NSString *)walletAddr password:(NSString
 *)password finish:(void(^)(ICSDKResultModel \* result))finish;**
@@ -699,7 +699,7 @@ finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;**
 +--------------+----------+--------+------------+
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **示例：返回结果-正确时**
 
@@ -732,10 +732,10 @@ finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;**
     }
 
 11.验证钱包密码
----------------
+~~~~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **-(void)verifyPassword:(NSString *)walletAddr password:(NSString
 *)password finish:(void(^)(ICSDKResultModel \* result))finish;**
@@ -751,7 +751,7 @@ finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;**
 +--------------+----------+--------+------------+
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **返回结果-正确时**
 
@@ -774,10 +774,10 @@ finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;**
     }
 
 12.修改钱包密码（主链钱包对应的所有侧链钱包密码唯一）
------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **-(void)changePassword:(NSString *)walletAddr oldPassword:(NSString
 *)oldPassword newPassword:(NSString *)newPassword
@@ -796,7 +796,7 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
 +---------------+----------+--------+--------------+
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **返回结果-正确时**
 
@@ -819,10 +819,10 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
     }
 
 13.修改钱包名称（主链钱包对应的所有侧链钱包名称唯一）
------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **-(void)changeWalletName:(NSString *)walletAddr newName:(NSString
 *)newName finish:(void(^)(ICSDKResultModel \* result))finish;**
@@ -838,7 +838,7 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
 +--------------+----------+--------+--------------+
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **示例：返回结果-正确时**
 
@@ -874,10 +874,10 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
     }
 
 14.删除钱包（主链钱包对应的其他侧链钱包同步删除）
--------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **-(void)deleteWallet:(NSString *)walletAddr password:(NSString
 *)password finish:(void(^)(ICSDKResultModel \* result))finish;**
@@ -893,7 +893,7 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
 +--------------+----------+--------+------------+
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **返回结果-正确时**
 
@@ -916,13 +916,13 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
     }
 
 3.支付及交易查询
-================
+----------------
 
 1.钱包转账
-----------
+~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **-(void)walletTransation:(NSString *)walletAddr password:(NSString
 *)password coinAddr:(NSString *)coinAddr toAddr:(NSString *)toAddr
@@ -950,7 +950,7 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 +--------------+----------+--------+-----------------------------------------------------+
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **返回结果-正确时**
 
@@ -984,10 +984,10 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
     }
 
 2.通用支付-通用型合约支付接口
------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **-(void)walletCommonPay:(NSString *)walletAddr
 version:(\ **int**)version password:(NSString *)password
@@ -1046,7 +1046,7 @@ result))finish;**
     }
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **返回结果-正确时**
 
@@ -1080,10 +1080,10 @@ result))finish;**
     }
 
 3.查询指定地址资产
-------------------
+~~~~~~~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **-(void)getAddrsBalance:(NSString *)walletAddr legalSymbol:(NSString
 *)legalSymbol finish:(void(^)(ICSDKResultModel \* result))finish;**
@@ -1099,7 +1099,7 @@ result))finish;**
 +---------------+----------+--------+--------------------------------------------------+
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **返回结果-正确时**
 
@@ -1127,21 +1127,6 @@ result))finish;**
             {
                 "addr":"bcbtestCTLvcA7pa1RqCncL2fRcALgRrVYudJNeE",
                 "coinType":"0x1001",
-                "conAddr":"bcbtestDhxdEq9JPFhQ8xicUdSAHQHxymP2orXYW",
-                "name":"B99",
-                "symbol":"B99",
-                "balance":"0",
-                "last":"2019-04-01T14:21:00.8344529+08:00",
-                "decimals":"9",
-                "coinIcon":"https://testapi.n8.app/public/resource/coin/icon/B99.png",
-                "legalValue":"0",
-                "isToken":true,
-                "idx":1,
-                "feeInfo":null
-            },
-            {
-                "addr":"bcbtestCTLvcA7pa1RqCncL2fRcALgRrVYudJNeE",
-                "coinType":"0x1001",
                 "conAddr":"bcbtest6e8CEdrcGzX79kRCGJG6h5jVdpdkGDniU",
                 "name":"Diamond Coin",
                 "symbol":"DC",
@@ -1157,21 +1142,6 @@ result))finish;**
             {
                 "addr":"bcbtestCTLvcA7pa1RqCncL2fRcALgRrVYudJNeE",
                 "coinType":"0x1001",
-                "conAddr":"bcbtestHwF8F16QrKipxWxbNkQBAjyQ2a8qu74fU",
-                "name":"XT",
-                "symbol":"XT",
-                "balance":"0",
-                "last":"2019-04-01T14:21:00.8344562+08:00",
-                "decimals":"9",
-                "coinIcon":"https://testapi.n8.app/public/resource/coin/icon/XT.png",
-                "legalValue":"0",
-                "isToken":true,
-                "idx":3,
-                "feeInfo":null
-            },
-            {
-                "addr":"bcbtestCTLvcA7pa1RqCncL2fRcALgRrVYudJNeE",
-                "coinType":"0x1001",
                 "conAddr":"bcbtestHStZsJDbP945H1GbZSJx3xDegtMehMNWK",
                 "name":"USDX",
                 "symbol":"USDX",
@@ -1182,21 +1152,6 @@ result))finish;**
                 "legalValue":"0",
                 "isToken":true,
                 "idx":4,
-                "feeInfo":null
-            },
-            {
-                "addr":"bcbtestCTLvcA7pa1RqCncL2fRcALgRrVYudJNeE",
-                "coinType":"0x1001",
-                "conAddr":"bcbtestpQhqt5MStEAdKGuLFURZDax5mpu8r6Rj",
-                "name":"BYB",
-                "symbol":"BYB",
-                "balance":"0",
-                "last":"2019-04-01T14:21:00.8344597+08:00",
-                "decimals":"9",
-                "coinIcon":"https://testapi.n8.app/public/resource/coin/icon/BYB.png",
-                "legalValue":"0",
-                "isToken":true,
-                "idx":5,
                 "feeInfo":null
             }
         ]
@@ -1245,10 +1200,10 @@ result))finish;**
     }
 
 4.获取系统可添加资产列表
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **-(void)getAssets:(NSString *)walletAddr
 finish:(void(^)(ICSDKResultModel * result))finish;**
@@ -1262,7 +1217,7 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
 +--------------+----------+--------+------------+
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **返回结果-正确时**
 
@@ -1291,24 +1246,6 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
                 "modifyTime":"2018-09-29T13:21:10"
             },
             {
-                "id":3,
-                "cid":4,
-                "coinType":"0x1001",
-                "chainType":1,
-                "chainName":"BCB链",
-                "name":"B99",
-                "name_customer":"B99",
-                "symbol":"B99",
-                "symbol_customer":"B99",
-                "decimals":"9",
-                "conAddr":"bcbtestDhxdEq9JPFhQ8xicUdSAHQHxymP2orXYW",
-                "coinIcon":"https://testapi.n8.app/public/resource/coin/icon/B99.png",
-                "config":1,
-                "idx":1,
-                "appid":"1",
-                "modifyTime":"2018-09-29T11:51:06"
-            },
-            {
                 "id":2,
                 "cid":22,
                 "coinType":"0x1001",
@@ -1327,24 +1264,6 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
                 "modifyTime":"2018-09-27T21:58:30"
             },
             {
-                "id":5,
-                "cid":23,
-                "coinType":"0x1001",
-                "chainType":1,
-                "chainName":"BCB链",
-                "name":"XT",
-                "name_customer":"XT",
-                "symbol":"XT",
-                "symbol_customer":"XT",
-                "decimals":"9",
-                "conAddr":"bcbtestHwF8F16QrKipxWxbNkQBAjyQ2a8qu74fU",
-                "coinIcon":"https://testapi.n8.app/public/resource/coin/icon/XT.png",
-                "config":1,
-                "idx":3,
-                "appid":"1",
-                "modifyTime":"2018-10-30T16:36:14"
-            },
-            {
                 "id":6,
                 "cid":21,
                 "coinType":"0x1001",
@@ -1361,24 +1280,6 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
                 "idx":4,
                 "appid":"1",
                 "modifyTime":"2018-10-30T17:26:02"
-            },
-            {
-                "id":7,
-                "cid":31,
-                "coinType":"0x1001",
-                "chainType":1,
-                "chainName":"BCB链",
-                "name":"BYB",
-                "name_customer":"BYB",
-                "symbol":"BYB",
-                "symbol_customer":"BYB",
-                "decimals":"9",
-                "conAddr":"bcbtestpQhqt5MStEAdKGuLFURZDax5mpu8r6Rj",
-                "coinIcon":"https://testapi.n8.app/public/resource/coin/icon/BYB.png",
-                "config":1,
-                "idx":5,
-                "appid":"1",
-                "modifyTime":"2018-12-12T17:34:04"
             }
         ]
     }
@@ -1432,10 +1333,10 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
     }
 
 5.查询指定地址、指定币种信息
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **-(void)getCoinDeatil:(NSString *)walletAddr coinAddr:(NSString
 *)coinAddr legalSymbol:(NSString *)legalSymbol
@@ -1454,7 +1355,7 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
 +---------------+----------+--------+------------------------------------------------------+
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **返回结果-正确时**
 
@@ -1533,10 +1434,10 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
     }
 
 6.查询指定币种交易记录
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **-(void)getCoinTransactionDetail:(NSString *)walletAddr
 conAddr:(NSString *)coinAddr page:(NSInteger)page count:(NSInteger)count
@@ -1557,7 +1458,7 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 +--------------+----------+--------+----------------+
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **返回结果-正确时**
 
@@ -1648,13 +1549,13 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
     }
 
 4.OTC及闪兑模块
-===============
+---------------
 
 1.OTC模块皮肤主题设置
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 -(**void**)setOtcTheme:(ICOTCThemeType)theme;
 
@@ -1667,18 +1568,18 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 +----------+--------+--------+----------------------------+
 
 2.OTC入口
----------
+~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **[[OTCStart manager] OTCStart];**
 
 3.OTC买币强制绑定银行卡设置
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 -(**void**)setOtcBuyBindBankCard:(\ **BOOL**)bind;
 
@@ -1691,21 +1592,21 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 +----------+--------+--------+-----------------------------+
 
 4.闪兑入口
-----------
+~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **[[OTCStart manager] fastexStart];**
 
 5.工具
-======
+------
 
 1.是否为BYB股东
----------------
+~~~~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **-(**\ void\*\*)bybJudgeHolder:(NSString *)walletAddr
 finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;
@@ -1719,7 +1620,7 @@ finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;
 +--------------+----------+--------+------------+
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **返回结果-正确时**
 
@@ -1753,10 +1654,10 @@ finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;
     }
 
 2.获取BYB染色体
----------------
+~~~~~~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **-(**\ void\*\*)bybBalanceItems:(NSString *)walletAddr
 finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;
@@ -1770,7 +1671,7 @@ finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;
 +--------------+----------+--------+------------+
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **返回结果-正确时**
 
@@ -1807,10 +1708,10 @@ finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;
     }
 
 3.加密
-------
+~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **-(**\ void\*\*)encryptContent:(NSString *)content
 finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;
@@ -1824,7 +1725,7 @@ finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;
 +-----------+----------+--------+------------+
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **返回结果-正确时**
 
@@ -1847,10 +1748,10 @@ finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;
     }
 
 4.解密
-------
+~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **-(**\ void\*\*)decryptContent:(NSString *)content
 finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;
@@ -1864,7 +1765,7 @@ finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;
 +-----------+----------+--------+------------+
 
 1.2 返回结果
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **返回结果-正确时**
 
@@ -1887,14 +1788,182 @@ finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;
     }
 
 5.数据验签
-----------
+~~~~~~~~~~
 
 1.1 方法原型
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 **-(**\ void\ **)verifySign:(NSString *)type data:(NSString *)data
 pubKey:(NSString *)pubKey signature:(NSString *)signature
 finish:(**\ void\*\*(^)(ICSDKResultModel \* result))finish;
+
+**参数字段说明**
+
++-------------+----------+--------+---------------------------+
+| 字段名      | 类型     | 必须   | 说明                      |
++=============+==========+========+===========================+
+| type        | string   | 是     | 算法                      |
++-------------+----------+--------+---------------------------+
+| data        | string   | 是     | 待验签内容（hexstring）   |
++-------------+----------+--------+---------------------------+
+| pubKey      | string   | 是     | 验签公钥（hexstring）     |
++-------------+----------+--------+---------------------------+
+| signature   | string   | 是     | 签名（hexstring）         |
++-------------+----------+--------+---------------------------+
+
+1.2 返回结果
+^^^^^^^^^^^^
+
+**返回结果-正确时**
+
+.. code:: java
+
+    {
+        "code":0,
+        "msg": "success",
+        "result": ""
+    }
+
+**返回结果-错误时**
+
+.. code:: java
+
+    {
+        "code":-1,
+        "msg": "verify fail",
+        "result":""
+    }
+
+6.根据助记词返回对应钱包地址
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1.1 方法原型
+^^^^^^^^^^^^
+
+**-(**\ void\*\*)getAddrFromMnemonicWords:(NSString *)mnemonicWords
+finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;
+
+**参数字段说明**
+
++-----------------+----------+--------+----------+
+| 字段名          | 类型     | 必须   | 说明     |
++=================+==========+========+==========+
+| mnemonicWords   | string   | 是     | 助记词   |
++-----------------+----------+--------+----------+
+
+1.2 返回结果
+^^^^^^^^^^^^
+
+**返回结果-正确时**
+
+.. code:: java
+
+    {
+        "code":0,
+        "msg": "",
+        "result": {
+            "walletAddr":"bcbNg7srN9byDMLGL6tG18WEMFLExpVQqGX5"
+        }
+    }
+
+**返回结果-错误时**
+
+.. code:: java
+
+    {
+        "code":-1,
+        "msg": "fail",
+        "result":""
+    }
+
+7.根据私钥返回对应钱包地址
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1.1 方法原型
+^^^^^^^^^^^^
+
+**-(**\ void\*\*)getAddrFromPrivateKey:(NSString *)privateKey
+finish:(\ **void**\ (^)(ICSDKResultModel * result))finish;
+
+**参数字段说明**
+
++--------------+----------+--------+--------+
+| 字段名       | 类型     | 必须   | 说明   |
++==============+==========+========+========+
+| privateKey   | string   | 是     | 私钥   |
++--------------+----------+--------+--------+
+
+1.2 返回结果
+^^^^^^^^^^^^
+
+**返回结果-正确时**
+
+.. code:: java
+
+    {
+        "code":0,
+        "msg": "",
+        "result": {
+            "walletAddr":"bcbNg7srN9byDMLGL6tG18WEMFLExpVQqGX5"
+        }
+    }
+
+**返回结果-错误时**
+
+.. code:: java
+
+    {
+        "code":-1,
+        "msg": "fail",
+        "result":""
+    }
+
+8.根据Keystore返回对应钱包地址
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1.1 方法原型
+^^^^^^^^^^^^
+
+**-(**\ void\ **)getAddrFromKeystore:(NSString *)keystore
+password:(NSString *)password finish:(**\ void\*\*(^)(ICSDKResultModel
+\* result))finish;
+
+**参数字段说明**
+
++------------+----------+--------+------------+
+| 字段名     | 类型     | 必须   | 说明       |
++============+==========+========+============+
+| keystore   | string   | 是     | keystore   |
++------------+----------+--------+------------+
+| password   | string   | 是     | 密码       |
++------------+----------+--------+------------+
+
+1.2 返回结果
+^^^^^^^^^^^^
+
+**返回结果-正确时**
+
+.. code:: java
+
+    {
+        "code":0,
+        "msg": "",
+        "result": {
+            "walletAddr":"bcbNg7srN9byDMLGL6tG18WEMFLExpVQqGX5"
+        }
+    }
+
+**返回结果-错误时**
+
+.. code:: java
+
+    {
+        "code":-1,
+        "msg": "fail",
+        "result":""
+    }
+
+SDKResultModel \* result))finish;
 
 **参数字段说明**
 
