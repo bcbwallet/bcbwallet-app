@@ -300,7 +300,7 @@ BCB
    });
 
 4.bcb.commonPayParams
----------------------
+~~~~~~~~~~~~~~~~~~
 
 调用此方法可以打开 bcb wallet
 钱包显示当前支付信息,信息校验正确后可以进行支付操作,支付完成后返回支付的状态
@@ -354,7 +354,13 @@ BCB
 -  bcb wallet 钱包支付展示
 
    H5调用bcb.commonPayUrl 或 bcb.commonPayParams 方法时会唤起 bcb wallet
-   钱包的支付页面,用户此时可以查看支付信息并进行支付操作.如下图所示
+   钱包的支付页面,用户此时可以确认支付信息并进行支付操作.如下图所示
+
+   .. image:: /_static/pay.png
+    :scale: 30 %
+    :alt: alternate text
+    :align: center
+
 
 
 5.bcb.signData

@@ -111,6 +111,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="bcbwallet protocol.html">bcbwallet://相关协议说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BCBWalletSDK接口说明.html">钱包SDK接口文档说明</a></li>
 </ul>
 
             
@@ -490,49 +491,21 @@ walletsInfo:[
 <ul>
 <li><p>params</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;ver&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="s2">&quot;ver&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
   <span class="s2">&quot;appUISeg&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;referInfo&quot;</span><span class="p">:</span> <span class="s2">&quot;使用100BCB购买理财项目&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;conAddr&quot;</span><span class="p">:</span> <span class="s2">&quot;devtest9RcfiWWLH6KpVpbPYYQ55TUncnngSYPES&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;defaultPayAddr&quot;</span><span class="p">:</span> <span class="s2">&quot;devtestLDpP6ggZVgMyq1avLtSvgdYz9NUPmQ2p1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;affCode&quot;</span><span class="p">:</span> <span class="s2">&quot;devtest7389jV8MMKiaC2Ri9TNXb7z2YDrRddqDR&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;购买BCB理财项目&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;100&quot;</span>
-  <span class="p">},</span>
-  <span class="s2">&quot;coinParams&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;note&quot;</span><span class="p">:</span> <span class="s2">&quot;BCB理财存入&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;gasLimit&quot;</span><span class="p">:</span> <span class="s2">&quot;25000&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;contractCall&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-        <span class="s2">&quot;contractAddr&quot;</span><span class="p">:</span> <span class="s2">&quot;devtestLL6sMXu8s2hhFRoZH67Q8fig9djogVi3H&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;methodParams&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;_to&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;types.Address&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;devtest4YyjKX5cPA6RkReN3GWcFZ35MVU28PLVy&quot;</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;_value&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;bn.Number-decimal&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;100&quot;</span>
-          <span class="p">}</span>
-        <span class="p">],</span>
-        <span class="s2">&quot;methodName&quot;</span><span class="p">:</span> <span class="s2">&quot;Transfer&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;methodRet&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s2">&quot;contractAddr&quot;</span><span class="p">:</span> <span class="s2">&quot;devtest9RcfiWWLH6KpVpbPYYQ55TUncnngSYPES&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;methodParams&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;termDays&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int64&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;180&quot;</span>
-          <span class="p">}</span>
-        <span class="p">],</span>
-        <span class="s2">&quot;methodName&quot;</span><span class="p">:</span> <span class="s2">&quot;Deposit&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;methodRet&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
-      <span class="p">}</span>
-    <span class="p">]</span>
+      <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;通用支付&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;referInfo&quot;</span><span class="p">:</span> <span class="s2">&quot;进行支付操作&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;symbol&quot;</span><span class="p">:</span> <span class="s2">&quot;BCB&quot;</span>
+    <span class="p">},</span>
+   <span class="s2">&quot;coinParams&quot;</span><span class="p">:</span> <span class="p">{</span>
+   <span class="s2">&quot;note&quot;</span><span class="p">:</span> <span class="s2">&quot;备注&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;gasLimit&quot;</span><span class="p">:</span> <span class="s2">&quot;25000&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;calls&quot;</span><span class="p">:</span> <span class="p">[{</span>
+    <span class="s2">&quot;contract&quot;</span><span class="p">:</span> <span class="s2">&quot;bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;Transfer(types.Address,bn.Number)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;bcbL8BzfVfcxtqh9umN3dUhxBYNyEnV7GiSa&quot;</span><span class="p">,</span> <span class="s2">&quot;100000000&quot;</span><span class="p">]</span>
+   <span class="p">}]</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -553,6 +526,11 @@ walletsInfo:[
 <span class="p">});</span>
 </pre></div>
 </div>
+</li>
+<li><p>bcb wallet 钱包支付展示</p>
+<p>H5调用bcb.commonPayUrl 或 bcb.commonPayParams 方法时会唤起 bcb wallet
+钱包的支付页面,用户此时可以查看支付信息并进行支付操作.如下图所示</p>
+<a class="reference internal image-reference" href="_images/pay.png"><img alt="alternate text" class="align-center" src="_images/pay.png" style="width: 337.5px; height: 730.8px;" /></a>
 </li>
 </ul>
 </div>

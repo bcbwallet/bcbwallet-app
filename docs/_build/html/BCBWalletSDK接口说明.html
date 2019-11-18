@@ -1,0 +1,3413 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>钱包SDK接口文档说明 &mdash; BCB钱包DAPP调用原生交互接口文档说明 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="bcbwallet://相关协议说明" href="bcbwallet protocol.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> BCB钱包DAPP调用原生交互接口文档说明
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="jsapi.html">BCB钱包DAPP调用原生交互接口文档说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bcbwallet protocol.html">bcbwallet://相关协议说明</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">钱包SDK接口文档说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">版本&amp;更新记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">功能说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">接口访问方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">1.初始化设置</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app">1.注册APP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">2.语言设置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">3.开发环境设置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">4.获取主链及所有侧链信息</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id10">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">5.链环境设置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">6.获取链环境对应的网络节点</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id14">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">7.节点设置</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id17">2.钱包管理</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id18">1.创建新钱包</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id19">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id20">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">2.导入私钥生成钱包</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id22">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id23">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#keystore">3.导入Keystore生成钱包</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id24">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id25">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">4.导入助记词生成钱包</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id27">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id28">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id29">5.获取所有钱包信息</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id30">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id31">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id32">6.钱包推送绑定状态</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id33">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id34">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id35">7.绑定钱包推送</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id36">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id37">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id38">8.导出助记词</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id39">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id40">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id41">9.导出私钥</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id42">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id43">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id44">10.导出Keystore</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id45">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id46">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id47">11.验证钱包密码</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id48">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id49">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id50">12.修改钱包密码（主链钱包对应的所有侧链钱包密码唯一）</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id51">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id52">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id53">13.修改钱包名称（主链钱包对应的所有侧链钱包名称唯一）</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id54">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id55">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id56">14.删除钱包（主链钱包对应的其他侧链钱包同步删除）</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id57">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id58">1.2 返回结果</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id59">3.支付及交易查询</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id60">1.钱包转账</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id61">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id62">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id63">2.通用支付-通用型合约支付接口</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id64">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id65">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id66">3.查询指定地址资产</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id67">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id68">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id69">4.获取系统可添加资产列表</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id70">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id71">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id72">5.查询指定地址、指定币种信息</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id73">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id74">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id75">6.查询指定币种交易记录</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id76">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id77">1.2 返回结果</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#otc">4.OTC及闪兑模块</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id78">1.OTC模块皮肤主题设置</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id79">1.1 方法原型</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id80">2.OTC入口</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id81">1.1 方法原型</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id82">3.OTC买币强制绑定银行卡设置</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id83">1.1 方法原型</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id84">4.闪兑入口</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id85">1.1 方法原型</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id86">5.工具</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#byb">1.是否为BYB股东</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id87">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id88">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id89">2.获取BYB染色体</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id90">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id91">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id92">3.加密</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id93">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id94">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id95">4.解密</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id96">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id97">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id98">5.数据验签</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id99">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id100">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id101">6.根据助记词返回对应钱包地址</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id102">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id103">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id104">7.根据私钥返回对应钱包地址</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id105">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id106">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id107">8.根据Keystore返回对应钱包地址</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id108">1.1 方法原型</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id109">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id110">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id111">6.根据助记词返回对应钱包地址</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id112">1.1 方法原型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id113">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id114">7.根据私钥返回对应钱包地址</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id115">1.1 方法原型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id116">1.2 返回结果</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id117">8.根据Keystore返回对应钱包地址</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id118">1.1 方法原型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id119">1.2 返回结果</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BCB钱包DAPP调用原生交互接口文档说明</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>钱包SDK接口文档说明</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/BCBWalletSDK接口说明.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sdk">
+<h1>钱包SDK接口文档说明<a class="headerlink" href="#sdk" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>版本&amp;更新记录<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 24%" />
+<col style="width: 26%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>版本号</p></th>
+<th class="head"><p>作者</p></th>
+<th class="head"><p>日期</p></th>
+<th class="head"><p>更新内容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>v.1.0.0</p></td>
+<td><p>bcbwallet</p></td>
+<td><p>2019-04-01</p></td>
+<td><p>初始版本</p></td>
+</tr>
+<tr class="row-odd"><td><p>v.1.0.1</p></td>
+<td><p>bcbwallet</p></td>
+<td><p>2019-06-24</p></td>
+<td><p>推送模块</p></td>
+</tr>
+<tr class="row-even"><td><p>v.1.0.2</p></td>
+<td><p>bcbwallet</p></td>
+<td><p>2019-07-01</p></td>
+<td><p>bcbwallet2.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>v.1.0.3</p></td>
+<td><p>bcbwallet</p></td>
+<td><p>2019-10-23</p></td>
+<td><p>新增侧链钱包</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+</div>
+<hr class="docutils" />
+<div class="section" id="id2">
+<h2>功能说明<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>本文档提供钱包的SDK访问接口说明。IOS版本。</p>
+</div>
+<div class="section" id="id3">
+<h2>接口访问方式<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>API调用，返回的内容也是一个json串，里面会携带返回的状态
+码以及一些返回的必要参数。</p>
+</div>
+<div class="section" id="id4">
+<h2>1.初始化设置<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="app">
+<h3>1.注册APP<a class="headerlink" href="#app" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h4>1.1 方法原型<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<p><strong>+ (BOOL)registerApp:(NSString *)appid pushID:(NSString *)pushid;</strong></p>
+<p><strong>输入参数说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 14%" />
+<col style="width: 53%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>参数名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>appid</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包后台分配给第三方的APPID</p></td>
+</tr>
+<tr class="row-odd"><td><p>pushid</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>第三方接入的推送ID</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id6">
+<h4>1.2 返回结果<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<p><strong>示例：返回结果-注册成功</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="n">YES</span><span class="o">;</span>
+</pre></div>
+</div>
+<p><strong>示例：返回结果-注册失败</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="n">NO</span><span class="o">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>2.语言设置<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>(<strong>void</strong>)setLanguage:(NSString *)language;</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>输入参数说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 11%" />
+<col style="width: 9%" />
+<col style="width: 66%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>参数名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>language</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>SDK中API返回msg语言类型（<em>cn：中文、en：English</em>）</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id8">
+<h3>3.开发环境设置<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p><strong>输入参数说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>参数名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>walletDebug</p></td>
+<td><p>int</p></td>
+<td><p>是</p></td>
+<td><p>钱包管理链环境（<em>0：研发链、1：测试链、2：正式链</em>）</p></td>
+</tr>
+<tr class="row-odd"><td><p>otcDebug</p></td>
+<td><p>int</p></td>
+<td><p>是</p></td>
+<td><p>OTC及闪兑模块链环境（<em>0：研发链、1：测试链、2：正式链</em>）</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id9">
+<h3>4.获取主链及所有侧链信息<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h4>1.1 方法原型<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<p>-(<strong>void</strong>)loadAllChainsFinish:(<strong>void</strong>(^)(ICSDKResultModel *
+result))finish;</p>
+</div>
+<div class="section" id="id11">
+<h4>1.2 返回结果<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<p><strong>示例：返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span> <span class="o">{</span>
+        <span class="s">&quot;devtest&quot;</span><span class="o">:[</span><span class="s">&quot;http://103.17.30.84:46657&quot;</span><span class="o">],</span>
+        <span class="s">&quot;sctest&quot;</span><span class="o">:[</span><span class="s">&quot;http://103.17.30.85:46657/sctest&quot;</span><span class="o">]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>示例：返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;error&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id12">
+<h3>5.链环境设置<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p><strong>输入参数说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 15%" />
+<col style="width: 12%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>参数名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>chainId</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>链ID，传空字符串则重置为主链节点</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id13">
+<h3>6.获取链环境对应的网络节点<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h4>1.1 方法原型<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+<p>-(<strong>void</strong>)loadChainNodesFinish:(<strong>void</strong>(^)(ICSDKResultModel *
+result))finish;</p>
+</div>
+<div class="section" id="id15">
+<h4>1.2 返回结果<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
+<p><strong>示例：返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span> <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;devwallet&quot;</span><span class="o">,</span>
+            <span class="s">&quot;urlType&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+            <span class="s">&quot;url&quot;</span><span class="o">:</span><span class="s">&quot;http://172.18.10.78/sctest2&quot;</span>
+        <span class="o">},</span>
+       <span class="o">{</span>
+           <span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;http://148.66.11.75:46657&quot;</span><span class="o">,</span>
+           <span class="s">&quot;urlType&quot;</span><span class="o">:</span><span class="mi">1</span><span class="o">,</span>
+           <span class="s">&quot;url&quot;</span><span class="o">:</span><span class="s">&quot;http://148.66.11.75:46657&quot;</span>
+       <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>示例：返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;error&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id16">
+<h3>7.节点设置<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<p><strong>输入参数说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 14%" />
+<col style="width: 11%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>参数名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nodeUrl</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>网络节点，传空字符串则重置为默认节点</p></td>
+</tr>
+<tr class="row-odd"><td><p>nodeType</p></td>
+<td><p>int</p></td>
+<td><p>是</p></td>
+<td><p>节点类型</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="id17">
+<h2>2.钱包管理<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id18">
+<h3>1.创建新钱包<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id19">
+<h4>1.1 方法原型<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="void-createwallet-nsstring-name-password-nsstring-password-recommend-nsstring-recommend-finish-void-icsdkresultmodel-result-finish">
+<h5>-(<strong>void</strong>)createWallet:(NSString <em>)name password:(NSString *)password recommend:(NSString *)recommend finish:(**void*</em>(^)(ICSDKResultModel * result))finish;<a class="headerlink" href="#void-createwallet-nsstring-name-password-nsstring-password-recommend-nsstring-recommend-finish-void-icsdkresultmodel-result-finish" title="Permalink to this headline">¶</a></h5>
+<p><strong>输入参数说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 20%" />
+<col style="width: 16%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>参数名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包名称</p></td>
+</tr>
+<tr class="row-odd"><td><p>password</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包密码</p></td>
+</tr>
+<tr class="row-even"><td><p>recommend</p></td>
+<td><p>string</p></td>
+<td><p>否</p></td>
+<td><p>推荐人的钱包地址</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="id20">
+<h4>1.2 返回结果<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h4>
+<p><strong>示例：返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span>
+    <span class="o">{</span>
+        <span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;myWallet&quot;</span><span class="o">,</span>
+        <span class="s">&quot;mnemonicWords&quot;</span><span class="o">:</span><span class="s">&quot;eyebrow indoor orbit cinnamon hour gain category spawn walk bind spread clinic&quot;</span><span class="o">,</span>
+        <span class="s">&quot;walletAddr&quot;</span><span class="o">:</span><span class="s">&quot;bcbPDTi68XwoMgGTwxd7ioZeMHHz7p7ewLtQ&quot;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 18%" />
+<col style="width: 51%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>string</p></td>
+<td><p>钱包名称</p></td>
+</tr>
+<tr class="row-odd"><td><p>mnemonicWords</p></td>
+<td><p>string</p></td>
+<td><p>钱包的助记词，空格做分割</p></td>
+</tr>
+<tr class="row-even"><td><p>walletAddr</p></td>
+<td><p>string</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1001</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;创建钱包失败&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id21">
+<h3>2.导入私钥生成钱包<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id22">
+<h4>1.1 方法原型<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(void)importPrivateKey:(NSString *)name key:(NSString *)key
+password:(NSString *)password recommend:(NSString *)recommend
+finish:(void(^)(ICSDKResultModel * result))finish;</strong></p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 20%" />
+<col style="width: 16%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包名称</p></td>
+</tr>
+<tr class="row-odd"><td><p>key</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>私钥</p></td>
+</tr>
+<tr class="row-even"><td><p>password</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包密码</p></td>
+</tr>
+<tr class="row-odd"><td><p>recommend</p></td>
+<td><p>string</p></td>
+<td><p>否</p></td>
+<td><p>推荐人的钱包地址</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id23">
+<h4>1.2 返回结果<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
+<p><strong>示例：返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span>
+    <span class="o">{</span>
+        <span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;myWallet&quot;</span><span class="o">,</span>
+        <span class="s">&quot;walletAddr&quot;</span><span class="o">:</span><span class="s">&quot;bcbNg7srN9byDMLGL6tG18WEMFLExpVQqGX5&quot;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 39%" />
+<col style="width: 28%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>string</p></td>
+<td><p>钱包名称</p></td>
+</tr>
+<tr class="row-odd"><td><p>walletAddr</p></td>
+<td><p>string</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1001</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;导入钱包失败&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="keystore">
+<h3>3.导入Keystore生成钱包<a class="headerlink" href="#keystore" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id24">
+<h4>1.1 方法原型<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(void)importKeystore:(NSString *)name key:(NSString *)key
+password:(NSString *)password recommend:(NSString *)recommend
+finish:(void(^)(ICSDKResultModel * result))finish;</strong></p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 20%" />
+<col style="width: 16%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包名称</p></td>
+</tr>
+<tr class="row-odd"><td><p>key</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>Keystore</p></td>
+</tr>
+<tr class="row-even"><td><p>password</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包密码</p></td>
+</tr>
+<tr class="row-odd"><td><p>recommend</p></td>
+<td><p>string</p></td>
+<td><p>否</p></td>
+<td><p>推荐人的钱包地址</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id25">
+<h4>1.2 返回结果<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h4>
+<p><strong>示例：返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span>
+    <span class="o">{</span>
+        <span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;myWallet&quot;</span><span class="o">,</span>
+        <span class="s">&quot;walletAddr&quot;</span><span class="o">:</span><span class="s">&quot;bcbNg7srN9byDMLGL6tG18WEMFLExpVQqGX5&quot;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 39%" />
+<col style="width: 28%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>string</p></td>
+<td><p>钱包名称</p></td>
+</tr>
+<tr class="row-odd"><td><p>walletAddr</p></td>
+<td><p>string</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1001</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;导入钱包失败&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id26">
+<h3>4.导入助记词生成钱包<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id27">
+<h4>1.1 方法原型<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(void)importMnemonicWords:(NSString *)name key:(NSString *)key
+password:(NSString *)password recommend:(NSString *)recommend
+finish:(void(^)(ICSDKResultModel * result))finish;</strong></p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 20%" />
+<col style="width: 16%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包名称</p></td>
+</tr>
+<tr class="row-odd"><td><p>key</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>助记词</p></td>
+</tr>
+<tr class="row-even"><td><p>password</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包密码</p></td>
+</tr>
+<tr class="row-odd"><td><p>recommend</p></td>
+<td><p>string</p></td>
+<td><p>否</p></td>
+<td><p>推荐人的钱包地址</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id28">
+<h4>1.2 返回结果<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h4>
+<p><strong>示例：返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span>
+    <span class="o">{</span>
+        <span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;myWallet&quot;</span><span class="o">,</span>
+        <span class="s">&quot;walletAddr&quot;</span><span class="o">:</span><span class="s">&quot;bcbNg7srN9byDMLGL6tG18WEMFLExpVQqGX5&quot;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 39%" />
+<col style="width: 28%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>string</p></td>
+<td><p>钱包名称</p></td>
+</tr>
+<tr class="row-odd"><td><p>walletAddr</p></td>
+<td><p>string</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1001</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;导入钱包失败&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id29">
+<h3>5.获取所有钱包信息<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id30">
+<h4>1.1 方法原型<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h4>
+<p>**-(ICSDKResultModel *)getWallets;**</p>
+</div>
+<div class="section" id="id31">
+<h4>1.2 返回结果<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h4>
+<p><strong>示例：返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span>
+    <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;myWallet&quot;</span><span class="o">,</span>
+            <span class="s">&quot;walletAddr&quot;</span><span class="o">:</span><span class="s">&quot;bcbNg7srN9byDMLGL6tG18WEMFLExpVQqGX5&quot;</span>
+        <span class="o">},</span>
+        <span class="o">{</span>
+            <span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;newWallet&quot;</span><span class="o">,</span>
+            <span class="s">&quot;walletAddr&quot;</span><span class="o">:</span><span class="s">&quot;bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU&quot;</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 39%" />
+<col style="width: 28%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>string</p></td>
+<td><p>钱包名称</p></td>
+</tr>
+<tr class="row-odd"><td><p>walletAddr</p></td>
+<td><p>string</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1001</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;获取钱包失败&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id32">
+<h3>6.钱包推送绑定状态<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id33">
+<h4>1.1 方法原型<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h4>
+<p><strong>- (</strong>BOOL)hasBindPushID:(NSString *)walletAddr;</p>
+<p><strong>输入参数说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 23%" />
+<col style="width: 18%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>参数名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>walletAddr</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id34">
+<h4>1.2 返回结果<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h4>
+<p><strong>示例：返回结果-已绑定</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="n">YES</span><span class="o">;</span>
+</pre></div>
+</div>
+<p><strong>示例：返回结果-未绑定</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="n">NO</span><span class="o">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id35">
+<h3>7.绑定钱包推送<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id36">
+<h4>1.1 方法原型<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h4>
+<p><strong>–(</strong>void<strong>)bindWalletPush:(NSString *)walletAddr
+finish:(**void</strong>(^)(ICSDKResultModel * result))finish;**</p>
+<p><strong>输入参数说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 23%" />
+<col style="width: 18%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>参数名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>walletAddr</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id37">
+<h4>1.2 返回结果<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h4>
+<p><strong>示例：返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span> <span class="o">{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>示例：返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1001</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;推送注册失败&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id38">
+<h3>8.导出助记词<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id39">
+<h4>1.1 方法原型<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(void)getMnemonicWords:(NSString *)walletAddr password:(NSString
+*)password finish:(void(^)(ICSDKResultModel * result))finish;</strong></p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 23%" />
+<col style="width: 18%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>walletAddr</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>password</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包密码</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id40">
+<h4>1.2 返回结果<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h4>
+<p><strong>示例：返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span>
+    <span class="o">{</span>
+        <span class="s">&quot;mnemonicWords&quot;</span><span class="o">:</span><span class="s">&quot;eyebrow indoor orbit cinnamon hour gain category spawn walk bind spread clinic&quot;</span><span class="o">,</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 23%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>mnemonicWords</p></td>
+<td><p>string</p></td>
+<td><p>钱包的助记词</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1001</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;获取助记词失败&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id41">
+<h3>9.导出私钥<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id42">
+<h4>1.1 方法原型<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(void)exportPrivateKey:(NSString *)walletAddr password:(NSString
+*)password finish:(void(^)(ICSDKResultModel * result))finish;</strong></p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 23%" />
+<col style="width: 18%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>walletAddr</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>password</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包密码</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id43">
+<h4>1.2 返回结果<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h4>
+<p><strong>示例：返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span>
+    <span class="o">{</span>                <span class="s">&quot;privateKey&quot;</span><span class="o">:</span><span class="s">&quot;0x98BB2E49822A48728E3CBCFD1A933C1FC500A6204453E7DB85F84EFB90146600&quot;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 39%" />
+<col style="width: 28%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>privateKey</p></td>
+<td><p>string</p></td>
+<td><p>明文私钥</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1001</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;导出私钥失败&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id44">
+<h3>10.导出Keystore<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id45">
+<h4>1.1 方法原型<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(void)exportKeystore:(NSString *)walletAddr password:(NSString
+*)password finish:(void(^)(ICSDKResultModel * result))finish;</strong></p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 23%" />
+<col style="width: 18%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>walletAddr</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>password</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包密码</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id46">
+<h4>1.2 返回结果<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h4>
+<p><strong>示例：返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span> <span class="o">{</span>
+        <span class="s">&quot;keystore&quot;</span><span class="o">:</span> <span class="s">&quot;{\&quot;address\&quot;:\&quot;bcbMd6xUDQLoivMT45Qp8o7M8vjN5wRyHAF3\&quot;,\&quot;crypto\&quot;:{\&quot;cipher\&quot;:\&quot;aes-128-ctr\&quot;,\&quot;cipherparams\&quot;:{\&quot;iv\&quot;:\&quot;026fad88d89baadb9110ae533ef8039d\&quot;},\&quot;ciphertext\&quot;:\&quot;7c1dafc7e541cc14d0fe11773fc4d2da6933384d5279984df57693f98d3be4a8\&quot;,\&quot;kdf\&quot;:\&quot;scrypt\&quot;,\&quot;kdfparams\&quot;:{\&quot;dklen\&quot;:32,\&quot;n\&quot;:262144,\&quot;p\&quot;:1,\&quot;r\&quot;:8,\&quot;salt\&quot;:\&quot;c1fe07bed958a78763ac5816c7dbad9351accd80c18bbc70aa3279d5fb34638f\&quot;},\&quot;mac\&quot;:\&quot;d6042cf16b55c3bac25f392d1d33476e84e5276b672ad8e77ccd1713d586e18d\&quot;},\&quot;id\&quot;:\&quot;eabffab4-5c21-46a4-a709-9699a72d1339\&quot;,\&quot;version\&quot;:3}&quot;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 26%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>keystore</p></td>
+<td><p>string</p></td>
+<td><p>明文keystore</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1001</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;导出keystore失败&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id47">
+<h3>11.验证钱包密码<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id48">
+<h4>1.1 方法原型<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(void)verifyPassword:(NSString *)walletAddr password:(NSString
+*)password finish:(void(^)(ICSDKResultModel * result))finish;</strong></p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 23%" />
+<col style="width: 18%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>walletAddr</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>password</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包密码</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id49">
+<h4>1.2 返回结果<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h4>
+<p><strong>返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span> <span class="o">{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1001</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;密码错误&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id50">
+<h3>12.修改钱包密码（主链钱包对应的所有侧链钱包密码唯一）<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id51">
+<h4>1.1 方法原型<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(void)changePassword:(NSString *)walletAddr oldPassword:(NSString
+*)oldPassword newPassword:(NSString *)newPassword
+finish:(void(^)(ICSDKResultModel * result))finish;</strong></p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 21%" />
+<col style="width: 17%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>walletAddr</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>oldPassword</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>原钱包密码</p></td>
+</tr>
+<tr class="row-even"><td><p>newPassword</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>新钱包密码</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id52">
+<h4>1.2 返回结果<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h4>
+<p><strong>返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span> <span class="o">{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1001</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;原密码输入错误&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id53">
+<h3>13.修改钱包名称（主链钱包对应的所有侧链钱包名称唯一）<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id54">
+<h4>1.1 方法原型<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(void)changeWalletName:(NSString *)walletAddr newName:(NSString
+*)newName finish:(void(^)(ICSDKResultModel * result))finish;</strong></p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 22%" />
+<col style="width: 17%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>walletAddr</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>newName</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>新钱包名称</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id55">
+<h4>1.2 返回结果<a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h4>
+<p><strong>示例：返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span> <span class="o">{</span>
+        <span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;newWallet&quot;</span><span class="o">,</span>
+        <span class="s">&quot;walletAddr&quot;</span><span class="o">:</span><span class="s">&quot;bcbNg7srN9byDMLGL6tG18WEMFLExpVQqGX5&quot;</span><span class="o">,</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 39%" />
+<col style="width: 28%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>string</p></td>
+<td><p>钱包名称</p></td>
+</tr>
+<tr class="row-odd"><td><p>walletAddr</p></td>
+<td><p>string</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1001</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;钱包名称格式错误&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id56">
+<h3>14.删除钱包（主链钱包对应的其他侧链钱包同步删除）<a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id57">
+<h4>1.1 方法原型<a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(void)deleteWallet:(NSString *)walletAddr password:(NSString
+*)password finish:(void(^)(ICSDKResultModel * result))finish;</strong></p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 23%" />
+<col style="width: 18%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>walletAddr</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>password</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包密码</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id58">
+<h4>1.2 返回结果<a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h4>
+<p><strong>返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span> <span class="o">{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1001</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;密码错误&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id59">
+<h2>3.支付及交易查询<a class="headerlink" href="#id59" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id60">
+<h3>1.钱包转账<a class="headerlink" href="#id60" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id61">
+<h4>1.1 方法原型<a class="headerlink" href="#id61" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(void)walletTransation:(NSString *)walletAddr password:(NSString
+*)password coinAddr:(NSString *)coinAddr toAddr:(NSString *)toAddr
+value:(NSString *)value note:(NSString *)note byb:(</strong>BOOL<strong>)byb
+finish:(void(^)(ICSDKResultModel * result))finish;</strong></p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 12%" />
+<col style="width: 9%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>walletAddr</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>password</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包密码</p></td>
+</tr>
+<tr class="row-even"><td><p>coinAddr</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>要转账币种的合约地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>toAddr</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>转账到的目标地址</p></td>
+</tr>
+<tr class="row-even"><td><p>value</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>转账的金额，例如”102.23”</p></td>
+</tr>
+<tr class="row-odd"><td><p>note</p></td>
+<td><p>string</p></td>
+<td><p>否</p></td>
+<td><p>转账的备注，对于BCB链，这个字段最终会写入到区块中</p></td>
+</tr>
+<tr class="row-even"><td><p>byb</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>是否为BYB转账</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id62">
+<h4>1.2 返回结果<a class="headerlink" href="#id62" title="Permalink to this headline">¶</a></h4>
+<p><strong>返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span>
+    <span class="o">{</span>
+        <span class="s">&quot;txHash&quot;</span><span class="o">:</span><span class="s">&quot;0x0F8642968E48A16316CD499BF142E15EEFF03BE44816796AF87DDC2F1B72BBA4&quot;</span><span class="o">,</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>txHash</p></td>
+<td><p>string</p></td>
+<td><p>转账的链上hash值</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1001</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;转账失败&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id63">
+<h3>2.通用支付-通用型合约支付接口<a class="headerlink" href="#id63" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id64">
+<h4>1.1 方法原型<a class="headerlink" href="#id64" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(void)walletCommonPay:(NSString *)walletAddr
+version:(**int</strong>)version password:(NSString <em>)password
+walletCall:(NSString *)walletCall finish:(void(^)(ICSDKResultModel *
+result))finish;*</em></p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 8%" />
+<col style="width: 6%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>walletAddr</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>version</p></td>
+<td><p>Int</p></td>
+<td><p>是</p></td>
+<td><p>1.0的支付传1， 2.0的支付传2</p></td>
+</tr>
+<tr class="row-even"><td><p>password</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包密码</p></td>
+</tr>
+<tr class="row-odd"><td><p>walletCall</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>json串，此字段根据不同的合约定义有不同的数据格式；具体请参见《BCB钱包通用支付接入规范》总描述</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：walletCall字符串格式</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;{\&quot;walletCall\&quot;:{\&quot;conAddr\&quot;:\&quot;bcbLTwDzzZn3Jy8cJGvygWLgpTr9hEdVpWZ9\&quot;,\&quot;methodName\&quot;:\&quot;BuyXid\&quot;,\&quot;methodParam\&quot;:[{\&quot;name\&quot;:\&quot;_affCode\&quot;,\&quot;type\&quot;:\&quot;int64\&quot;,\&quot;value\&quot;:\&quot;12345678\&quot;},{\&quot;name\&quot;:\&quot;_team\&quot;,\&quot;type\&quot;:\&quot;int64\&quot;,\&quot;value\&quot;:\&quot;0\&quot;},{\&quot;name\&quot;:\&quot;_bcb\&quot;,\&quot;type\&quot;:\&quot;Number-decimal\&quot;,\&quot;value\&quot;:\&quot;2.5\&quot;}],\&quot;methodRet\&quot;:\&quot;smc.Error\&quot;}}&quot;</span>
+</pre></div>
+</div>
+<p><strong>示例：展开后的格式</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+        <span class="s">&quot;walletCall&quot;</span><span class="o">:</span>
+        <span class="o">{</span>
+            <span class="s">&quot;conAddr&quot;</span><span class="o">:</span><span class="s">&quot;bcbLTwDzzZn3Jy8cJGvygWLgpTr9hEdVpWZ9&quot;</span><span class="o">,</span>
+            <span class="s">&quot;methodName&quot;</span><span class="o">:</span><span class="s">&quot;BuyXid&quot;</span><span class="o">,</span>
+            <span class="s">&quot;methodParam&quot;</span><span class="o">:</span>
+            <span class="o">[</span>
+                <span class="o">{</span>
+                    <span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;_affCode&quot;</span><span class="o">,</span>
+                    <span class="s">&quot;type&quot;</span><span class="o">:</span><span class="s">&quot;int64&quot;</span><span class="o">,</span>
+                    <span class="s">&quot;value&quot;</span><span class="o">:</span><span class="s">&quot;12345678&quot;</span>
+                <span class="o">},</span>
+                <span class="o">{</span>
+                    <span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;_team&quot;</span><span class="o">,</span>
+                    <span class="s">&quot;type&quot;</span><span class="o">:</span><span class="s">&quot;int64&quot;</span><span class="o">,</span>
+                    <span class="s">&quot;value&quot;</span><span class="o">:</span><span class="s">&quot;0&quot;</span>
+                <span class="o">},</span>
+                <span class="o">{</span>
+                    <span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;_bcb&quot;</span><span class="o">,</span>
+                    <span class="s">&quot;type&quot;</span><span class="o">:</span><span class="s">&quot;Number-decimal&quot;</span><span class="o">,</span>
+                    <span class="s">&quot;value&quot;</span><span class="o">:</span><span class="s">&quot;2.5&quot;</span>
+                <span class="o">}</span>
+            <span class="o">],</span>
+            <span class="s">&quot;methodRet&quot;</span><span class="o">:</span><span class="s">&quot;smc.Error&quot;</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id65">
+<h4>1.2 返回结果<a class="headerlink" href="#id65" title="Permalink to this headline">¶</a></h4>
+<p><strong>返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span>
+    <span class="o">{</span>
+        <span class="s">&quot;txHash&quot;</span><span class="o">:</span><span class="s">&quot;0x0F8642968E48A16316CD499BF142E15EEFF03BE44816796AF87DDC2F1B72BBA4&quot;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>txHash</p></td>
+<td><p>string</p></td>
+<td><p>转账的链上hash值</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1001</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;支付失败&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id66">
+<h3>3.查询指定地址资产<a class="headerlink" href="#id66" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id67">
+<h4>1.1 方法原型<a class="headerlink" href="#id67" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(void)getAddrsBalance:(NSString *)walletAddr legalSymbol:(NSString
+*)legalSymbol finish:(void(^)(ICSDKResultModel * result))finish;</strong></p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 12%" />
+<col style="width: 10%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>walletAddr</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>legalSymbol</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>资产的法币计价单位，人民币为：CNY；美元为：USD</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id68">
+<h4>1.2 返回结果<a class="headerlink" href="#id68" title="Permalink to this headline">¶</a></h4>
+<p><strong>返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:[</span>
+        <span class="o">{</span>
+            <span class="s">&quot;addr&quot;</span><span class="o">:</span><span class="s">&quot;bcbtestCTLvcA7pa1RqCncL2fRcALgRrVYudJNeE&quot;</span><span class="o">,</span>
+            <span class="s">&quot;coinType&quot;</span><span class="o">:</span><span class="s">&quot;0x1001&quot;</span><span class="o">,</span>
+            <span class="s">&quot;conAddr&quot;</span><span class="o">:</span><span class="s">&quot;bcbtestAtEJ4dTejwJReKA4dtFjy9cQ3HzR6jbwF&quot;</span><span class="o">,</span>
+            <span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;BCBT&quot;</span><span class="o">,</span>
+            <span class="s">&quot;symbol&quot;</span><span class="o">:</span><span class="s">&quot;BCBT&quot;</span><span class="o">,</span>
+            <span class="s">&quot;balance&quot;</span><span class="o">:</span><span class="s">&quot;101&quot;</span><span class="o">,</span>
+            <span class="s">&quot;last&quot;</span><span class="o">:</span><span class="s">&quot;2019-04-01T14:21:00.8342387+08:00&quot;</span><span class="o">,</span>
+            <span class="s">&quot;decimals&quot;</span><span class="o">:</span><span class="s">&quot;9&quot;</span><span class="o">,</span>
+            <span class="s">&quot;coinIcon&quot;</span><span class="o">:</span><span class="s">&quot;https://testapi.n8.app/public/resource/coin/icon/BCBMainNet.png&quot;</span><span class="o">,</span>
+            <span class="s">&quot;legalValue&quot;</span><span class="o">:</span><span class="s">&quot;688.8604&quot;</span><span class="o">,</span>
+            <span class="s">&quot;isToken&quot;</span><span class="o">:</span><span class="kc">false</span><span class="o">,</span>
+            <span class="s">&quot;idx&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+            <span class="s">&quot;feeInfo&quot;</span><span class="o">:</span><span class="kc">null</span>
+        <span class="o">},</span>
+        <span class="o">{</span>
+            <span class="s">&quot;addr&quot;</span><span class="o">:</span><span class="s">&quot;bcbtestCTLvcA7pa1RqCncL2fRcALgRrVYudJNeE&quot;</span><span class="o">,</span>
+            <span class="s">&quot;coinType&quot;</span><span class="o">:</span><span class="s">&quot;0x1001&quot;</span><span class="o">,</span>
+            <span class="s">&quot;conAddr&quot;</span><span class="o">:</span><span class="s">&quot;bcbtest6e8CEdrcGzX79kRCGJG6h5jVdpdkGDniU&quot;</span><span class="o">,</span>
+            <span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;Diamond Coin&quot;</span><span class="o">,</span>
+            <span class="s">&quot;symbol&quot;</span><span class="o">:</span><span class="s">&quot;DC&quot;</span><span class="o">,</span>
+            <span class="s">&quot;balance&quot;</span><span class="o">:</span><span class="s">&quot;0&quot;</span><span class="o">,</span>
+            <span class="s">&quot;last&quot;</span><span class="o">:</span><span class="s">&quot;2019-04-01T14:21:00.8344546+08:00&quot;</span><span class="o">,</span>
+            <span class="s">&quot;decimals&quot;</span><span class="o">:</span><span class="s">&quot;9&quot;</span><span class="o">,</span>
+            <span class="s">&quot;coinIcon&quot;</span><span class="o">:</span><span class="s">&quot;https://testapi.n8.app/public/resource/coin/icon/DC.png&quot;</span><span class="o">,</span>
+            <span class="s">&quot;legalValue&quot;</span><span class="o">:</span><span class="s">&quot;0&quot;</span><span class="o">,</span>
+            <span class="s">&quot;isToken&quot;</span><span class="o">:</span><span class="kc">true</span><span class="o">,</span>
+            <span class="s">&quot;idx&quot;</span><span class="o">:</span><span class="mi">2</span><span class="o">,</span>
+            <span class="s">&quot;feeInfo&quot;</span><span class="o">:</span><span class="kc">null</span>
+        <span class="o">},</span>
+        <span class="o">{</span>
+            <span class="s">&quot;addr&quot;</span><span class="o">:</span><span class="s">&quot;bcbtestCTLvcA7pa1RqCncL2fRcALgRrVYudJNeE&quot;</span><span class="o">,</span>
+            <span class="s">&quot;coinType&quot;</span><span class="o">:</span><span class="s">&quot;0x1001&quot;</span><span class="o">,</span>
+            <span class="s">&quot;conAddr&quot;</span><span class="o">:</span><span class="s">&quot;bcbtestHStZsJDbP945H1GbZSJx3xDegtMehMNWK&quot;</span><span class="o">,</span>
+            <span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;USDX&quot;</span><span class="o">,</span>
+            <span class="s">&quot;symbol&quot;</span><span class="o">:</span><span class="s">&quot;USDX&quot;</span><span class="o">,</span>
+            <span class="s">&quot;balance&quot;</span><span class="o">:</span><span class="s">&quot;0&quot;</span><span class="o">,</span>
+            <span class="s">&quot;last&quot;</span><span class="o">:</span><span class="s">&quot;2019-04-01T14:21:00.8344578+08:00&quot;</span><span class="o">,</span>
+            <span class="s">&quot;decimals&quot;</span><span class="o">:</span><span class="s">&quot;9&quot;</span><span class="o">,</span>
+            <span class="s">&quot;coinIcon&quot;</span><span class="o">:</span><span class="s">&quot;https://testapi.n8.app/public/resource/coin/icon/USDX.png&quot;</span><span class="o">,</span>
+            <span class="s">&quot;legalValue&quot;</span><span class="o">:</span><span class="s">&quot;0&quot;</span><span class="o">,</span>
+            <span class="s">&quot;isToken&quot;</span><span class="o">:</span><span class="kc">true</span><span class="o">,</span>
+            <span class="s">&quot;idx&quot;</span><span class="o">:</span><span class="mi">4</span><span class="o">,</span>
+            <span class="s">&quot;feeInfo&quot;</span><span class="o">:</span><span class="kc">null</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 14%" />
+<col style="width: 66%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>addr</p></td>
+<td><p>string</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>coinType</p></td>
+<td><p>string</p></td>
+<td><p>币种主链编号，第三方应用无需关心</p></td>
+</tr>
+<tr class="row-even"><td><p>conAddr</p></td>
+<td><p>string</p></td>
+<td><p>币种合约地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>string</p></td>
+<td><p>币种名称</p></td>
+</tr>
+<tr class="row-even"><td><p>symbol</p></td>
+<td><p>string</p></td>
+<td><p>币种代号</p></td>
+</tr>
+<tr class="row-odd"><td><p>balance</p></td>
+<td><p>string</p></td>
+<td><p>地址的此币种余额</p></td>
+</tr>
+<tr class="row-even"><td><p>last</p></td>
+<td><p>string</p></td>
+<td><p>最后一次更新时间</p></td>
+</tr>
+<tr class="row-odd"><td><p>decimals</p></td>
+<td><p>string</p></td>
+<td><p>币种精度</p></td>
+</tr>
+<tr class="row-even"><td><p>coinIcon</p></td>
+<td><p>string</p></td>
+<td><p>币种图标</p></td>
+</tr>
+<tr class="row-odd"><td><p>legalValue</p></td>
+<td><p>string</p></td>
+<td><p>币种的法币价值</p></td>
+</tr>
+<tr class="row-even"><td><p>isToken</p></td>
+<td><p>bool</p></td>
+<td><p>是否为代币，true表示代币；false表示主链本币</p></td>
+</tr>
+<tr class="row-odd"><td><p>idx</p></td>
+<td><p>int</p></td>
+<td><p>币种在钱包后台的排序，，第三方应用无需关心</p></td>
+</tr>
+<tr class="row-even"><td><p>feeInfo</p></td>
+<td><p>object</p></td>
+<td><p>币种的转账手续费描述信息</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1001</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;获取指定地址资产表失败&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id69">
+<h3>4.获取系统可添加资产列表<a class="headerlink" href="#id69" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id70">
+<h4>1.1 方法原型<a class="headerlink" href="#id70" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(void)getAssets:(NSString *)walletAddr
+finish:(void(^)(ICSDKResultModel * result))finish;</strong></p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 23%" />
+<col style="width: 18%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>walletAddr</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id71">
+<h4>1.2 返回结果<a class="headerlink" href="#id71" title="Permalink to this headline">¶</a></h4>
+<p><strong>返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:[</span>
+        <span class="o">{</span>
+            <span class="s">&quot;id&quot;</span><span class="o">:</span><span class="mi">4</span><span class="o">,</span>
+            <span class="s">&quot;cid&quot;</span><span class="o">:</span><span class="mi">2</span><span class="o">,</span>
+            <span class="s">&quot;coinType&quot;</span><span class="o">:</span><span class="s">&quot;0x1001&quot;</span><span class="o">,</span>
+            <span class="s">&quot;chainType&quot;</span><span class="o">:</span><span class="mi">1</span><span class="o">,</span>
+            <span class="s">&quot;chainName&quot;</span><span class="o">:</span><span class="s">&quot;BCB链&quot;</span><span class="o">,</span>
+            <span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;BCBT&quot;</span><span class="o">,</span>
+            <span class="s">&quot;name_customer&quot;</span><span class="o">:</span><span class="s">&quot;BCBT&quot;</span><span class="o">,</span>
+            <span class="s">&quot;symbol&quot;</span><span class="o">:</span><span class="s">&quot;BCBT&quot;</span><span class="o">,</span>
+            <span class="s">&quot;symbol_customer&quot;</span><span class="o">:</span><span class="s">&quot;BCBT&quot;</span><span class="o">,</span>
+            <span class="s">&quot;decimals&quot;</span><span class="o">:</span><span class="s">&quot;9&quot;</span><span class="o">,</span>
+            <span class="s">&quot;conAddr&quot;</span><span class="o">:</span><span class="s">&quot;bcbtestAtEJ4dTejwJReKA4dtFjy9cQ3HzR6jbwF&quot;</span><span class="o">,</span>
+            <span class="s">&quot;coinIcon&quot;</span><span class="o">:</span><span class="s">&quot;https://testapi.n8.app/public/resource/coin/icon/BCBMainNet.png&quot;</span><span class="o">,</span>
+            <span class="s">&quot;config&quot;</span><span class="o">:</span><span class="mi">1</span><span class="o">,</span>
+            <span class="s">&quot;idx&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+            <span class="s">&quot;appid&quot;</span><span class="o">:</span><span class="s">&quot;1&quot;</span><span class="o">,</span>
+            <span class="s">&quot;modifyTime&quot;</span><span class="o">:</span><span class="s">&quot;2018-09-29T13:21:10&quot;</span>
+        <span class="o">},</span>
+        <span class="o">{</span>
+            <span class="s">&quot;id&quot;</span><span class="o">:</span><span class="mi">2</span><span class="o">,</span>
+            <span class="s">&quot;cid&quot;</span><span class="o">:</span><span class="mi">22</span><span class="o">,</span>
+            <span class="s">&quot;coinType&quot;</span><span class="o">:</span><span class="s">&quot;0x1001&quot;</span><span class="o">,</span>
+            <span class="s">&quot;chainType&quot;</span><span class="o">:</span><span class="mi">1</span><span class="o">,</span>
+            <span class="s">&quot;chainName&quot;</span><span class="o">:</span><span class="s">&quot;BCB链&quot;</span><span class="o">,</span>
+            <span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;Diamond Coin&quot;</span><span class="o">,</span>
+            <span class="s">&quot;name_customer&quot;</span><span class="o">:</span><span class="s">&quot;Diamond Coin&quot;</span><span class="o">,</span>
+            <span class="s">&quot;symbol&quot;</span><span class="o">:</span><span class="s">&quot;DC&quot;</span><span class="o">,</span>
+            <span class="s">&quot;symbol_customer&quot;</span><span class="o">:</span><span class="s">&quot;DC&quot;</span><span class="o">,</span>
+            <span class="s">&quot;decimals&quot;</span><span class="o">:</span><span class="s">&quot;9&quot;</span><span class="o">,</span>
+            <span class="s">&quot;conAddr&quot;</span><span class="o">:</span><span class="s">&quot;bcbtest6e8CEdrcGzX79kRCGJG6h5jVdpdkGDniU&quot;</span><span class="o">,</span>
+            <span class="s">&quot;coinIcon&quot;</span><span class="o">:</span><span class="s">&quot;https://testapi.n8.app/public/resource/coin/icon/DC.png&quot;</span><span class="o">,</span>
+            <span class="s">&quot;config&quot;</span><span class="o">:</span><span class="mi">1</span><span class="o">,</span>
+            <span class="s">&quot;idx&quot;</span><span class="o">:</span><span class="mi">2</span><span class="o">,</span>
+            <span class="s">&quot;appid&quot;</span><span class="o">:</span><span class="s">&quot;1&quot;</span><span class="o">,</span>
+            <span class="s">&quot;modifyTime&quot;</span><span class="o">:</span><span class="s">&quot;2018-09-27T21:58:30&quot;</span>
+        <span class="o">},</span>
+        <span class="o">{</span>
+            <span class="s">&quot;id&quot;</span><span class="o">:</span><span class="mi">6</span><span class="o">,</span>
+            <span class="s">&quot;cid&quot;</span><span class="o">:</span><span class="mi">21</span><span class="o">,</span>
+            <span class="s">&quot;coinType&quot;</span><span class="o">:</span><span class="s">&quot;0x1001&quot;</span><span class="o">,</span>
+            <span class="s">&quot;chainType&quot;</span><span class="o">:</span><span class="mi">1</span><span class="o">,</span>
+            <span class="s">&quot;chainName&quot;</span><span class="o">:</span><span class="s">&quot;BCB链&quot;</span><span class="o">,</span>
+            <span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;USDX&quot;</span><span class="o">,</span>
+            <span class="s">&quot;name_customer&quot;</span><span class="o">:</span><span class="s">&quot;USDX&quot;</span><span class="o">,</span>
+            <span class="s">&quot;symbol&quot;</span><span class="o">:</span><span class="s">&quot;USDX&quot;</span><span class="o">,</span>
+            <span class="s">&quot;symbol_customer&quot;</span><span class="o">:</span><span class="s">&quot;USDX&quot;</span><span class="o">,</span>
+            <span class="s">&quot;decimals&quot;</span><span class="o">:</span><span class="s">&quot;9&quot;</span><span class="o">,</span>
+            <span class="s">&quot;conAddr&quot;</span><span class="o">:</span><span class="s">&quot;bcbtestHStZsJDbP945H1GbZSJx3xDegtMehMNWK&quot;</span><span class="o">,</span>
+            <span class="s">&quot;coinIcon&quot;</span><span class="o">:</span><span class="s">&quot;https://testapi.n8.app/public/resource/coin/icon/USDX.png&quot;</span><span class="o">,</span>
+            <span class="s">&quot;config&quot;</span><span class="o">:</span><span class="mi">1</span><span class="o">,</span>
+            <span class="s">&quot;idx&quot;</span><span class="o">:</span><span class="mi">4</span><span class="o">,</span>
+            <span class="s">&quot;appid&quot;</span><span class="o">:</span><span class="s">&quot;1&quot;</span><span class="o">,</span>
+            <span class="s">&quot;modifyTime&quot;</span><span class="o">:</span><span class="s">&quot;2018-10-30T17:26:02&quot;</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 14%" />
+<col style="width: 59%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>int</p></td>
+<td><p>序号</p></td>
+</tr>
+<tr class="row-odd"><td><p>cid</p></td>
+<td><p>int</p></td>
+<td><p>后台字段，第三方应用无需关心</p></td>
+</tr>
+<tr class="row-even"><td><p>coinType</p></td>
+<td><p>string</p></td>
+<td><p>币种主链编号，第三方应用无需关心</p></td>
+</tr>
+<tr class="row-odd"><td><p>chainType</p></td>
+<td><p>int</p></td>
+<td><p>第三方应用无需关心</p></td>
+</tr>
+<tr class="row-even"><td><p>chainName</p></td>
+<td><p>string</p></td>
+<td><p>链的名称说明，第三方应用无需关心</p></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>string</p></td>
+<td><p>币种名称</p></td>
+</tr>
+<tr class="row-even"><td><p>name_customer</p></td>
+<td><p>string</p></td>
+<td><p>客户自定义的币种名称，第三方应用无需关心</p></td>
+</tr>
+<tr class="row-odd"><td><p>symbol</p></td>
+<td><p>string</p></td>
+<td><p>币种符号</p></td>
+</tr>
+<tr class="row-even"><td><p>symbol_customer</p></td>
+<td><p>string</p></td>
+<td><p>客户自定义的币种符号，第三方应用无需关心</p></td>
+</tr>
+<tr class="row-odd"><td><p>decimals</p></td>
+<td><p>string</p></td>
+<td><p>币种小数点精度</p></td>
+</tr>
+<tr class="row-even"><td><p>conAddr</p></td>
+<td><p>string</p></td>
+<td><p>币种合约地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>coinIcon</p></td>
+<td><p>string</p></td>
+<td><p>币种logo的地址</p></td>
+</tr>
+<tr class="row-even"><td><p>config</p></td>
+<td><p>int</p></td>
+<td><p>币种是否可以配置，第三方应用无需关心</p></td>
+</tr>
+<tr class="row-odd"><td><p>idx</p></td>
+<td><p>int</p></td>
+<td><p>币种的自定义排序，第三方应用无需关心</p></td>
+</tr>
+<tr class="row-even"><td><p>appid</p></td>
+<td><p>int</p></td>
+<td><p>应用id，第三方应用无需关心</p></td>
+</tr>
+<tr class="row-odd"><td><p>modifyTime</p></td>
+<td><p>string</p></td>
+<td><p>最后一次更新时间</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1001</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;查询失败&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id72">
+<h3>5.查询指定地址、指定币种信息<a class="headerlink" href="#id72" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id73">
+<h4>1.1 方法原型<a class="headerlink" href="#id73" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(void)getCoinDeatil:(NSString *)walletAddr coinAddr:(NSString
+*)coinAddr legalSymbol:(NSString *)legalSymbol
+finish:(void(^)(ICSDKResultModel * result))finish;</strong></p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 11%" />
+<col style="width: 9%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>walletAddr</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>conAddr</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>币种合约地址</p></td>
+</tr>
+<tr class="row-even"><td><p>legalSymbol</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>币种资产的法币计价单位，人民币为：CNY；美元为：USD</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id74">
+<h4>1.2 返回结果<a class="headerlink" href="#id74" title="Permalink to this headline">¶</a></h4>
+<p><strong>返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{</span>
+        <span class="s">&quot;addr&quot;</span><span class="o">:</span><span class="s">&quot;bcbESMNFs8Cekc9H6xQcu3a2p4NvJDtNoy8S&quot;</span><span class="o">,</span>
+        <span class="s">&quot;coinType&quot;</span><span class="o">:</span><span class="s">&quot;0x1002&quot;</span><span class="o">,</span>
+        <span class="s">&quot;conAddr&quot;</span><span class="o">:</span><span class="s">&quot;bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe&quot;</span><span class="o">,</span>
+        <span class="s">&quot;name&quot;</span><span class="o">:</span><span class="s">&quot;BCB&quot;</span><span class="o">,</span>
+        <span class="s">&quot;symbol&quot;</span><span class="o">:</span><span class="s">&quot;BCB&quot;</span><span class="o">,</span>
+        <span class="s">&quot;balance&quot;</span><span class="o">:</span><span class="s">&quot;4.99905&quot;</span><span class="o">,</span>
+        <span class="s">&quot;last&quot;</span><span class="o">:</span><span class="s">&quot;2019-04-01T14:44:20.4735693+08:00&quot;</span><span class="o">,</span>
+        <span class="s">&quot;decimals&quot;</span><span class="o">:</span><span class="s">&quot;9&quot;</span><span class="o">,</span>
+        <span class="s">&quot;coinIcon&quot;</span><span class="o">:</span><span class="s">&quot;https://www.n8.app/public/resource/coin/icon/BCBMainNet.png&quot;</span><span class="o">,</span>
+        <span class="s">&quot;legalValue&quot;</span><span class="o">:</span><span class="s">&quot;215.21092615344&quot;</span><span class="o">,</span>
+        <span class="s">&quot;isToken&quot;</span><span class="o">:</span><span class="kc">false</span><span class="o">,</span>
+        <span class="s">&quot;idx&quot;</span><span class="o">:</span><span class="mi">65535</span><span class="o">,</span>
+        <span class="s">&quot;feeInfo&quot;</span><span class="o">:{</span>
+            <span class="s">&quot;id&quot;</span><span class="o">:</span><span class="mi">1</span><span class="o">,</span>
+            <span class="s">&quot;isUniteCoin&quot;</span><span class="o">:</span><span class="kc">false</span><span class="o">,</span>
+            <span class="s">&quot;conAddr&quot;</span><span class="o">:</span><span class="s">&quot;bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe&quot;</span><span class="o">,</span>
+            <span class="s">&quot;percent&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+            <span class="s">&quot;maxfee&quot;</span><span class="o">:</span><span class="kc">null</span><span class="o">,</span>
+            <span class="s">&quot;minfee&quot;</span><span class="o">:</span><span class="kc">null</span><span class="o">,</span>
+            <span class="s">&quot;feeName&quot;</span><span class="o">:</span><span class="kc">null</span><span class="o">,</span>
+            <span class="s">&quot;bcbFee&quot;</span><span class="o">:</span><span class="s">&quot;0.00125&quot;</span><span class="o">,</span>
+            <span class="s">&quot;modifyTime&quot;</span><span class="o">:</span><span class="s">&quot;2018-11-01T08:56:40&quot;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 17%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>addr</p></td>
+<td><p>string</p></td>
+<td><p>地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>coinType</p></td>
+<td><p>string</p></td>
+<td><p>币种主链编号，第三方应用无需关心</p></td>
+</tr>
+<tr class="row-even"><td><p>conAddr</p></td>
+<td><p>string</p></td>
+<td><p>币种合约地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p>string</p></td>
+<td><p>币种名称</p></td>
+</tr>
+<tr class="row-even"><td><p>symbol</p></td>
+<td><p>string</p></td>
+<td><p>币种符号</p></td>
+</tr>
+<tr class="row-odd"><td><p>balance</p></td>
+<td><p>string</p></td>
+<td><p>地址的此币种余额</p></td>
+</tr>
+<tr class="row-even"><td><p>last</p></td>
+<td><p>string</p></td>
+<td><p>最后一次更新时间</p></td>
+</tr>
+<tr class="row-odd"><td><p>decimals</p></td>
+<td><p>string</p></td>
+<td><p>币种小数点精度</p></td>
+</tr>
+<tr class="row-even"><td><p>coinIcon</p></td>
+<td><p>string</p></td>
+<td><p>币种logo的地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>legalValue</p></td>
+<td><p>string</p></td>
+<td><p>币种的法币价值</p></td>
+</tr>
+<tr class="row-even"><td><p>isToken</p></td>
+<td><p>bool</p></td>
+<td><p>是否为代币</p></td>
+</tr>
+<tr class="row-odd"><td><p>idx</p></td>
+<td><p>int</p></td>
+<td><p>第三方应用无需关心</p></td>
+</tr>
+<tr class="row-even"><td><p>feeInfo</p></td>
+<td><p>object</p></td>
+<td><p>币种手续费描述信息</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1001</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;查询失败&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id75">
+<h3>6.查询指定币种交易记录<a class="headerlink" href="#id75" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id76">
+<h4>1.1 方法原型<a class="headerlink" href="#id76" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(void)getCoinTransactionDetail:(NSString *)walletAddr
+conAddr:(NSString *)coinAddr page:(NSInteger)page count:(NSInteger)count
+finish:(void(^)(ICSDKResultModel * result))finish;</strong></p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 21%" />
+<col style="width: 17%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>walletAddr</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>conAddr</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>币种合约地址</p></td>
+</tr>
+<tr class="row-even"><td><p>page</p></td>
+<td><p>int</p></td>
+<td><p>是</p></td>
+<td><p>页码从0开始</p></td>
+</tr>
+<tr class="row-odd"><td><p>count</p></td>
+<td><p>int</p></td>
+<td><p>是</p></td>
+<td><p>条数</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id77">
+<h4>1.2 返回结果<a class="headerlink" href="#id77" title="Permalink to this headline">¶</a></h4>
+<p><strong>返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{</span>
+        <span class="s">&quot;records&quot;</span><span class="o">:[</span>
+            <span class="o">{</span>
+                <span class="s">&quot;id&quot;</span><span class="o">:</span><span class="mi">12858549</span><span class="o">,</span>
+                <span class="s">&quot;coinType&quot;</span><span class="o">:</span><span class="s">&quot;0x1002&quot;</span><span class="o">,</span>
+                <span class="s">&quot;from&quot;</span><span class="o">:</span><span class="s">&quot;bcb2kerqmq8ZRPneB4mp2Qv4qSwDyhtLYwb8&quot;</span><span class="o">,</span>
+                <span class="s">&quot;to&quot;</span><span class="o">:</span><span class="s">&quot;bcbESMNFs8Cekc9H6xQcu3a2p4NvJDtNoy8S&quot;</span><span class="o">,</span>
+                <span class="s">&quot;conAddr&quot;</span><span class="o">:</span><span class="s">&quot;bcbCsRXXMGkUJ8wRnrBUD7mQsMST4d53JRKJ&quot;</span><span class="o">,</span>
+                <span class="s">&quot;value&quot;</span><span class="o">:</span><span class="s">&quot;175.756694&quot;</span><span class="o">,</span>
+                <span class="s">&quot;valueName&quot;</span><span class="o">:</span><span class="s">&quot;DC&quot;</span><span class="o">,</span>
+                <span class="s">&quot;fee&quot;</span><span class="o">:</span><span class="s">&quot;0.0015&quot;</span><span class="o">,</span>
+                <span class="s">&quot;feeName&quot;</span><span class="o">:</span><span class="s">&quot;BCB&quot;</span><span class="o">,</span>
+                <span class="s">&quot;timeStamp&quot;</span><span class="o">:</span><span class="s">&quot;1553238936&quot;</span><span class="o">,</span>
+                <span class="s">&quot;blockN&quot;</span><span class="o">:</span><span class="s">&quot;9603760&quot;</span><span class="o">,</span>
+                <span class="s">&quot;source&quot;</span><span class="o">:</span><span class="kc">null</span><span class="o">,</span>
+                <span class="s">&quot;txHash&quot;</span><span class="o">:</span><span class="s">&quot;D67097C9E342213B7F46C8D680C96099907A81096E975847D7C204CDA76CAD70&quot;</span><span class="o">,</span>
+                <span class="s">&quot;memo&quot;</span><span class="o">:</span><span class="s">&quot;BalancePo CoinTransfer:1553238925228RK7EwEBSC1KO&quot;</span><span class="o">,</span>
+                <span class="s">&quot;status&quot;</span><span class="o">:</span><span class="s">&quot;0x1&quot;</span><span class="o">,</span>
+                <span class="s">&quot;balanceFromFlag&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+                <span class="s">&quot;balanceToFlag&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+                <span class="s">&quot;pushFromCnt&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+                <span class="s">&quot;modifyTime&quot;</span><span class="o">:</span><span class="s">&quot;2019-03-22T15:15:37&quot;</span>
+            <span class="o">}</span>
+        <span class="o">]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 15%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>int</p></td>
+<td><p>第三方应用无需关心</p></td>
+</tr>
+<tr class="row-odd"><td><p>coinType</p></td>
+<td><p>string</p></td>
+<td><p>币种主链编号，第三方应用无需关心</p></td>
+</tr>
+<tr class="row-even"><td><p>from</p></td>
+<td><p>string</p></td>
+<td><p>转出方地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>to</p></td>
+<td><p>string</p></td>
+<td><p>收款人地址</p></td>
+</tr>
+<tr class="row-even"><td><p>conAddr</p></td>
+<td><p>string</p></td>
+<td><p>币种合约地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>value</p></td>
+<td><p>string</p></td>
+<td><p>转账金额</p></td>
+</tr>
+<tr class="row-even"><td><p>valueName</p></td>
+<td><p>string</p></td>
+<td><p>转账金额名称</p></td>
+</tr>
+<tr class="row-odd"><td><p>fee</p></td>
+<td><p>string</p></td>
+<td><p>手续费金额份额</p></td>
+</tr>
+<tr class="row-even"><td><p>feeName</p></td>
+<td><p>string</p></td>
+<td><p>手续费币种名称</p></td>
+</tr>
+<tr class="row-odd"><td><p>timeStamp</p></td>
+<td><p>string</p></td>
+<td><p>转账时间戳</p></td>
+</tr>
+<tr class="row-even"><td><p>blockN</p></td>
+<td><p>string</p></td>
+<td><p>区块号</p></td>
+</tr>
+<tr class="row-odd"><td><p>source</p></td>
+<td></td>
+<td><p>第三方无需关心</p></td>
+</tr>
+<tr class="row-even"><td><p>txHash</p></td>
+<td><p>string</p></td>
+<td><p>交易hash</p></td>
+</tr>
+<tr class="row-odd"><td><p>memo</p></td>
+<td><p>string</p></td>
+<td><p>交易备注信息</p></td>
+</tr>
+<tr class="row-even"><td><p>status</p></td>
+<td><p>string</p></td>
+<td><p>交易是否成功，”0x1”表示成功</p></td>
+</tr>
+<tr class="row-odd"><td><p>balanceFromFlag</p></td>
+<td><p>int</p></td>
+<td><p>第三方无需关心</p></td>
+</tr>
+<tr class="row-even"><td><p>balanceToFlag</p></td>
+<td><p>int</p></td>
+<td><p>第三方无需关心</p></td>
+</tr>
+<tr class="row-odd"><td><p>pushFromCnt</p></td>
+<td><p>int</p></td>
+<td><p>第三方无需关心</p></td>
+</tr>
+<tr class="row-even"><td><p>modifyTime</p></td>
+<td><p>string</p></td>
+<td><p>最后一次修改时间</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1001</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;查询失败&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="otc">
+<h2>4.OTC及闪兑模块<a class="headerlink" href="#otc" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id78">
+<h3>1.OTC模块皮肤主题设置<a class="headerlink" href="#id78" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id79">
+<h4>1.1 方法原型<a class="headerlink" href="#id79" title="Permalink to this headline">¶</a></h4>
+<p>-(<strong>void</strong>)setOtcTheme:(ICOTCThemeType)theme;</p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 52%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>theme</p></td>
+<td><p>int</p></td>
+<td><p>是</p></td>
+<td><p>0：白色主题、1：暗色主题</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="id80">
+<h3>2.OTC入口<a class="headerlink" href="#id80" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id81">
+<h4>1.1 方法原型<a class="headerlink" href="#id81" title="Permalink to this headline">¶</a></h4>
+<p><strong>[[OTCStart manager] OTCStart];</strong></p>
+</div>
+</div>
+<div class="section" id="id82">
+<h3>3.OTC买币强制绑定银行卡设置<a class="headerlink" href="#id82" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id83">
+<h4>1.1 方法原型<a class="headerlink" href="#id83" title="Permalink to this headline">¶</a></h4>
+<p>-(<strong>void</strong>)setOtcBuyBindBankCard:(<strong>BOOL</strong>)bind;</p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 53%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>bind</p></td>
+<td><p>Bool</p></td>
+<td><p>是</p></td>
+<td><p>默认不强制，强制绑定为YES</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="id84">
+<h3>4.闪兑入口<a class="headerlink" href="#id84" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id85">
+<h4>1.1 方法原型<a class="headerlink" href="#id85" title="Permalink to this headline">¶</a></h4>
+<p><strong>[[OTCStart manager] fastexStart];</strong></p>
+</div>
+</div>
+</div>
+<div class="section" id="id86">
+<h2>5.工具<a class="headerlink" href="#id86" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="byb">
+<h3>1.是否为BYB股东<a class="headerlink" href="#byb" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id87">
+<h4>1.1 方法原型<a class="headerlink" href="#id87" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(</strong>void**)bybJudgeHolder:(NSString <em>)walletAddr
+finish:(**void*</em>(^)(ICSDKResultModel * result))finish;</p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 23%" />
+<col style="width: 18%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>walletAddr</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id88">
+<h4>1.2 返回结果<a class="headerlink" href="#id88" title="Permalink to this headline">¶</a></h4>
+<p><strong>返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span>
+    <span class="o">{</span>
+        <span class="s">&quot;holder&quot;</span><span class="o">:</span><span class="s">&quot;0&quot;</span><span class="o">,</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 24%" />
+<col style="width: 52%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>holder</p></td>
+<td><p>string</p></td>
+<td><p>0：非股东，1：股东</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1001</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;网络错误&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id89">
+<h3>2.获取BYB染色体<a class="headerlink" href="#id89" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id90">
+<h4>1.1 方法原型<a class="headerlink" href="#id90" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(</strong>void**)bybBalanceItems:(NSString <em>)walletAddr
+finish:(**void*</em>(^)(ICSDKResultModel * result))finish;</p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 23%" />
+<col style="width: 18%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>walletAddr</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>钱包地址</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id91">
+<h4>1.2 返回结果<a class="headerlink" href="#id91" title="Permalink to this headline">¶</a></h4>
+<p><strong>返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span>
+    <span class="o">{</span>
+        <span class="s">&quot;chromo&quot;</span><span class="o">:</span><span class="s">&quot;2&quot;</span><span class="o">,</span>
+        <span class="s">&quot;balance&quot;</span><span class="o">:</span><span class="s">&quot;100&quot;</span><span class="o">,</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 29%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>chromo</p></td>
+<td><p>string</p></td>
+<td><p>染色体号码</p></td>
+</tr>
+<tr class="row-odd"><td><p>balance</p></td>
+<td><p>string</p></td>
+<td><p>染色体余额</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1001</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;网络错误&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id92">
+<h3>3.加密<a class="headerlink" href="#id92" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id93">
+<h4>1.1 方法原型<a class="headerlink" href="#id93" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(</strong>void**)encryptContent:(NSString <em>)content
+finish:(**void*</em>(^)(ICSDKResultModel * result))finish;</p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 24%" />
+<col style="width: 20%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>content</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>加密内容</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id94">
+<h4>1.2 返回结果<a class="headerlink" href="#id94" title="Permalink to this headline">¶</a></h4>
+<p><strong>返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span> <span class="s">&quot;/suzXLeVk3tU3AmFe1/lhA==&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;fail&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span><span class="s">&quot;&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id95">
+<h3>4.解密<a class="headerlink" href="#id95" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id96">
+<h4>1.1 方法原型<a class="headerlink" href="#id96" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(</strong>void**)decryptContent:(NSString <em>)content
+finish:(**void*</em>(^)(ICSDKResultModel * result))finish;</p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 24%" />
+<col style="width: 20%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>content</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>解密内容</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id97">
+<h4>1.2 返回结果<a class="headerlink" href="#id97" title="Permalink to this headline">¶</a></h4>
+<p><strong>返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;ok&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span> <span class="s">&quot;123&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;fail&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span><span class="s">&quot;&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id98">
+<h3>5.数据验签<a class="headerlink" href="#id98" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id99">
+<h4>1.1 方法原型<a class="headerlink" href="#id99" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(</strong>void<strong>)verifySign:(NSString *)type data:(NSString *)data
+pubKey:(NSString *)pubKey signature:(NSString *)signature
+finish:(</strong>void**(^)(ICSDKResultModel * result))finish;</p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 17%" />
+<col style="width: 14%" />
+<col style="width: 47%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>算法</p></td>
+</tr>
+<tr class="row-odd"><td><p>data</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>待验签内容（hexstring）</p></td>
+</tr>
+<tr class="row-even"><td><p>pubKey</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>验签公钥（hexstring）</p></td>
+</tr>
+<tr class="row-odd"><td><p>signature</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>签名（hexstring）</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id100">
+<h4>1.2 返回结果<a class="headerlink" href="#id100" title="Permalink to this headline">¶</a></h4>
+<p><strong>返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;success&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span> <span class="s">&quot;&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;verify fail&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span><span class="s">&quot;&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id101">
+<h3>6.根据助记词返回对应钱包地址<a class="headerlink" href="#id101" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id102">
+<h4>1.1 方法原型<a class="headerlink" href="#id102" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(</strong>void**)getAddrFromMnemonicWords:(NSString <em>)mnemonicWords
+finish:(**void*</em>(^)(ICSDKResultModel * result))finish;</p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 22%" />
+<col style="width: 18%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>mnemonicWords</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>助记词</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id103">
+<h4>1.2 返回结果<a class="headerlink" href="#id103" title="Permalink to this headline">¶</a></h4>
+<p><strong>返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span> <span class="o">{</span>
+        <span class="s">&quot;walletAddr&quot;</span><span class="o">:</span><span class="s">&quot;bcbNg7srN9byDMLGL6tG18WEMFLExpVQqGX5&quot;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;fail&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span><span class="s">&quot;&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id104">
+<h3>7.根据私钥返回对应钱包地址<a class="headerlink" href="#id104" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id105">
+<h4>1.1 方法原型<a class="headerlink" href="#id105" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(</strong>void**)getAddrFromPrivateKey:(NSString <em>)privateKey
+finish:(**void*</em>(^)(ICSDKResultModel * result))finish;</p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 25%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>privateKey</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>私钥</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id106">
+<h4>1.2 返回结果<a class="headerlink" href="#id106" title="Permalink to this headline">¶</a></h4>
+<p><strong>返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span> <span class="o">{</span>
+        <span class="s">&quot;walletAddr&quot;</span><span class="o">:</span><span class="s">&quot;bcbNg7srN9byDMLGL6tG18WEMFLExpVQqGX5&quot;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;fail&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span><span class="s">&quot;&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id107">
+<h3>8.根据Keystore返回对应钱包地址<a class="headerlink" href="#id107" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id108">
+<h4>1.1 方法原型<a class="headerlink" href="#id108" title="Permalink to this headline">¶</a></h4>
+<p><strong>-(</strong>void<strong>)getAddrFromKeystore:(NSString *)keystore
+password:(NSString *)password finish:(</strong>void**(^)(ICSDKResultModel
+* result))finish;</p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 24%" />
+<col style="width: 19%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>keystore</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>keystore</p></td>
+</tr>
+<tr class="row-odd"><td><p>password</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>密码</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id109">
+<h4>1.2 返回结果<a class="headerlink" href="#id109" title="Permalink to this headline">¶</a></h4>
+<p><strong>返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span> <span class="o">{</span>
+        <span class="s">&quot;walletAddr&quot;</span><span class="o">:</span><span class="s">&quot;bcbNg7srN9byDMLGL6tG18WEMFLExpVQqGX5&quot;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;fail&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span><span class="s">&quot;&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>SDKResultModel * result))finish;</p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 17%" />
+<col style="width: 14%" />
+<col style="width: 47%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>算法</p></td>
+</tr>
+<tr class="row-odd"><td><p>data</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>待验签内容（hexstring）</p></td>
+</tr>
+<tr class="row-even"><td><p>pubKey</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>验签公钥（hexstring）</p></td>
+</tr>
+<tr class="row-odd"><td><p>signature</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>签名（hexstring）</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="id110">
+<h3>1.2 返回结果<a class="headerlink" href="#id110" title="Permalink to this headline">¶</a></h3>
+<p><strong>返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;success&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span> <span class="s">&quot;&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;verify fail&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span><span class="s">&quot;&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id111">
+<h2>6.根据助记词返回对应钱包地址<a class="headerlink" href="#id111" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id112">
+<h3>1.1 方法原型<a class="headerlink" href="#id112" title="Permalink to this headline">¶</a></h3>
+<p><strong>-(</strong>void**)getAddrFromMnemonicWords:(NSString <em>)mnemonicWords
+finish:(**void*</em>(^)(ICSDKResultModel * result))finish;</p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 22%" />
+<col style="width: 18%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>mnemonicWords</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>助记词</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id113">
+<h3>1.2 返回结果<a class="headerlink" href="#id113" title="Permalink to this headline">¶</a></h3>
+<p><strong>返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span> <span class="o">{</span>
+        <span class="s">&quot;walletAddr&quot;</span><span class="o">:</span><span class="s">&quot;bcbNg7srN9byDMLGL6tG18WEMFLExpVQqGX5&quot;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;fail&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span><span class="s">&quot;&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id114">
+<h2>7.根据私钥返回对应钱包地址<a class="headerlink" href="#id114" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id115">
+<h3>1.1 方法原型<a class="headerlink" href="#id115" title="Permalink to this headline">¶</a></h3>
+<p><strong>-(</strong>void**)getAddrFromPrivateKey:(NSString <em>)privateKey
+finish:(**void*</em>(^)(ICSDKResultModel * result))finish;</p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 25%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>privateKey</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>私钥</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id116">
+<h3>1.2 返回结果<a class="headerlink" href="#id116" title="Permalink to this headline">¶</a></h3>
+<p><strong>返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span> <span class="o">{</span>
+        <span class="s">&quot;walletAddr&quot;</span><span class="o">:</span><span class="s">&quot;bcbNg7srN9byDMLGL6tG18WEMFLExpVQqGX5&quot;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;fail&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span><span class="s">&quot;&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id117">
+<h2>8.根据Keystore返回对应钱包地址<a class="headerlink" href="#id117" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id118">
+<h3>1.1 方法原型<a class="headerlink" href="#id118" title="Permalink to this headline">¶</a></h3>
+<p><strong>-(</strong>void<strong>)getAddrFromKeystore:(NSString *)keystore
+password:(NSString *)password finish:(</strong>void**(^)(ICSDKResultModel
+* result))finish;</p>
+<p><strong>参数字段说明</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 24%" />
+<col style="width: 19%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段名</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>必须</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>keystore</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>keystore</p></td>
+</tr>
+<tr class="row-odd"><td><p>password</p></td>
+<td><p>string</p></td>
+<td><p>是</p></td>
+<td><p>密码</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id119">
+<h3>1.2 返回结果<a class="headerlink" href="#id119" title="Permalink to this headline">¶</a></h3>
+<p><strong>返回结果-正确时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:</span><span class="mi">0</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span> <span class="o">{</span>
+        <span class="s">&quot;walletAddr&quot;</span><span class="o">:</span><span class="s">&quot;bcbNg7srN9byDMLGL6tG18WEMFLExpVQqGX5&quot;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>返回结果-错误时</strong></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s">&quot;code&quot;</span><span class="o">:-</span><span class="mi">1</span><span class="o">,</span>
+    <span class="s">&quot;msg&quot;</span><span class="o">:</span> <span class="s">&quot;fail&quot;</span><span class="o">,</span>
+    <span class="s">&quot;result&quot;</span><span class="o">:</span><span class="s">&quot;&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="bcbwallet protocol.html" class="btn btn-neutral float-left" title="bcbwallet://相关协议说明" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, bcbwallet
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
