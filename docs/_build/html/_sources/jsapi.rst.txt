@@ -354,12 +354,11 @@ BCB
 -  bcb wallet 钱包支付展示
 
    H5调用bcb.commonPayUrl 或 bcb.commonPayParams 方法时会唤起 bcb wallet钱包的支付页面,用户此时可以查看支付信息并进行支付操作.如下图所示
-
+  
    .. image:: /_static/pay.png
     :scale: 30 %
-    :alt: alternate text
+    :alt: pay
     :align: center
-
 
 
 5.bcb.signData
