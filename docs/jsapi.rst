@@ -2,7 +2,7 @@ BCB钱包DAPP调用原生交互接口文档说明
 ===================================
 
 版本&更新记录
-----------
+-----------
 
 ======= ========= ========== ========
 版本号  作者      日期       更新内容
@@ -11,21 +11,11 @@ v.1.0.0 bcbwallet 2019-07-15 初始版本
 ======= ========= ========== ========
 
 背景
-----
+-----
 
-为方便DAPP应用接入 bcb wallet 钱包,参与 BCB
-生态建设,整理成接口集成文档提供给开发者使用。开发者集成后可以利用 bcb wallet钱包进行调试。
-调试步骤:
-    1.下载官方钱包 bcb wallet;
-    2.调试 url 按照 bcbwallet://req_web=url规则生成二维码(如:bcbwallet://req_web=http://172.18.20.130:8000/jsapi/ )
-    3.打开 bcb wallet 钱包,首页右上角找到扫描二维码功能,然后扫描上述步骤生成的二维码进行调试
-    
-
-官方钱包下载地址:\ https://www.bcbchain.io/down
-
-H5demo 参考地址:\ https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbwallet
-
-   
+为方便DAPP应用接入 bcb wallet 钱包,参与
+BCB生态建设,整理成接口集成文档提供给开发者使用。开发者集成后可以利用 bcb
+wallet钱包进行调试。
 
 功能说明
 -------
@@ -47,6 +37,22 @@ module.method    string    module:模块 method:具体方法名
 params           dictionry js 调用 app 时传递的参数
 function(data){} callback  回调方法, data类型: json string
 ================ ========= ===============================
+
+调试步骤:
+
+​ 1.下载官方钱包 bcb wallet;
+
+​ 2.调试 url 按照
+bcbwallet://req_web=url规则生成二维码(如:bcbwallet://req_web=http://172.18.20.130:8000/jsapi/
+);
+
+​ 3.打开 bcb wallet
+钱包,首页右上角找到扫描二维码功能,然后扫描上述步骤生成的二维码进行调试。
+
+官方钱包下载地址:\ https://www.bcbchain.io/down
+
+H5demo
+参考地址:\ https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbwallet
 
 Native
 ------

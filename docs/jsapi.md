@@ -10,19 +10,7 @@
 
 # 背景
 
-为方便DAPP应用接入 bcb wallet 钱包,参与  BCB 生态建设,整理成接口集成文档提供给开发者使用。为方便开发者集成和调试,可下载官方钱包通过首页的扫描二维码入口进行调试。
-
-官方钱包下载地址:<https://www.bcbchain.io/down>
-
-H5demo 参考地址:<https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbwallet>
-
-bcb wallet 钱包首页二维码扫描规则:bcbwallet://req_web=url,在 bcb wallet 打开 url 链接。
-
-示例:
-
-```
-bcbwallet://req_web=http://172.18.20.130:8000/jsapi/ 
-```
+为方便DAPP应用接入 bcb wallet 钱包,参与 BCB生态建设,整理成接口集成文档提供给开发者使用。开发者集成后可以利用 bcb wallet钱包进行调试。
 
 
 
@@ -43,6 +31,20 @@ bcbwallet('module.method', params, function(data){
 | module.method    | string    | module:模块  method:具体方法名  |
 | params           | dictionry | js 调用 app 时传递的参数        |
 | function(data){} | callback  | 回调方法, data类型: json string |
+
+调试步骤:
+
+​	1.下载官方钱包 bcb wallet;
+
+​	2.调试 url 按照 bcbwallet://req_web=url规则生成二维码(如:bcbwallet://req_web=http://172.18.20.130:8000/jsapi/ );
+
+​       3.打开 bcb wallet 钱包,首页右上角找到扫描二维码功能,然后扫描上述步骤生成的二维码进行调试。
+
+
+
+官方钱包下载地址:<https://www.bcbchain.io/down>
+
+H5demo 参考地址:<https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbwallet>
 
 # Native
 
