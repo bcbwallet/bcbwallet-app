@@ -66,7 +66,7 @@ Native
 2.native.getVersionName
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-获取 bcb wallet 钱包的版本名称
+获取 bcb wallet 钱包构建版本号
 
 -  调用方式
 

@@ -64,7 +64,7 @@ bcbwallet://req_web=http://172.18.20.130:8000/jsapi/
 
 ## 2.native.getVersionName
 
- 获取 bcb wallet 钱包的版本名称
+ 获取 bcb wallet 钱包构建版本号
 
 -  调用方式
 
