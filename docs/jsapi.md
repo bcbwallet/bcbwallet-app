@@ -16,7 +16,7 @@
 
 H5demo 参考地址:<https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbwallet>
 
-bcb wallet 钱包首页二维码扫描规则:bcbwallet://req_web=url。
+bcb wallet 钱包首页二维码扫描规则:bcbwallet://req_web=url,在 bcb wallet 打开 url 链接。
 
 示例:
 
@@ -30,7 +30,19 @@ bcbwallet://req_web=http://172.18.20.130:8000/jsapi/
 
 本文档提供钱包的DAPP访问接口说明。Andriod/IOS通用版本。
 
+方法:
 
+```js
+bcbwallet('module.method', params, function(data){
+    
+})
+```
+
+| 参数             | 类型      | 描述                            |
+| ---------------- | --------- | ------------------------------- |
+| module.method    | string    | module:模块  method:具体方法名  |
+| params           | dictionry | js 调用 app 时传递的参数        |
+| function(data){} | callback  | 回调方法, data类型: json string |
 
 # Native
 
