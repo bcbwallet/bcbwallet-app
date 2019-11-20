@@ -18,7 +18,7 @@ v.1.0.0 bcbwallet 2019-07-15 初始版本
 
 官方钱包下载地址:\ https://www.bcbchain.io/down
 
-H5demo 参考地址:\ https://github.com/bcbwallet/bcbwallet-app
+H5demo 参考地址:\ https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbwallet
 
 bcb wallet 钱包首页二维码扫描规则:bcbwallet://req_web=url。
 
