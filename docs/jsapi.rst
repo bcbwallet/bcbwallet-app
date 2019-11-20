@@ -14,19 +14,18 @@ v.1.0.0 bcbwallet 2019-07-15 初始版本
 ----
 
 为方便DAPP应用接入 bcb wallet 钱包,参与 BCB
-生态建设,整理成接口集成文档提供给开发者使用。为方便开发者集成和调试,可下载官方钱包通过首页的扫描二维码入口进行调试。
+生态建设,整理成接口集成文档提供给开发者使用。开发者集成后可以利用 bcb wallet钱包进行调试。
+调试步骤:
+    1.下载官方钱包 bcb wallet;
+    2.调试 url 按照 bcbwallet://req_web=url规则生成二维码(如:bcbwallet://req_web=http://172.18.20.130:8000/jsapi/ )
+    3.打开 bcb wallet 钱包,首页右上角找到扫描二维码功能,然后扫描上述步骤生成的二维码进行调试
+    
 
 官方钱包下载地址:\ https://www.bcbchain.io/down
 
 H5demo 参考地址:\ https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbwallet
 
-bcb wallet 钱包首页二维码扫描规则:bcbwallet://req_web=url。
-
-示例:
-
-::
-
-   bcbwallet://req_web=http://172.18.20.130:8000/jsapi/ 
+   
 
 功能说明
 -------
