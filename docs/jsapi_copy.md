@@ -8,21 +8,9 @@
 | ------- | --------- | ---------- | -------- |
 | v.1.0.0 | bcbwallet | 2019-07-15 | 初始版本 |
 
-# 背景
+---
 
-为方便DAPP应用接入 bcb wallet 钱包,参与  BCB 生态建设,整理成接口集成文档提供给开发者使用。为方便开发者集成和调试,可下载官方钱包通过首页的扫描二维码入口进行调试。
-
-官方钱包下载地址:<https://www.bcbchain.io/down>
-
-H5demo 参考地址:<https://github.com/bcbwallet/bcbwallet-app>
-
-bcb wallet 钱包首页二维码扫描规则:bcbwallet://req_web=url。
-
-示例:
-
-```
-bcbwallet://req_web=http://172.18.20.130:8000/jsapi/ 
-```
+---
 
 
 
@@ -48,7 +36,7 @@ bcbwallet://req_web=http://172.18.20.130:8000/jsapi/
 
   ```html
   function(data) {
-  	//data: 返回钱包的版本号
+  　data.versionCode
   }
   ```
 
@@ -56,7 +44,7 @@ bcbwallet://req_web=http://172.18.20.130:8000/jsapi/
 
   ```
   bcbwallet('native.getVersionCode', null, function (data) {
-      alert(data);
+      alert(JSON.stringify(data));
   });
   ```
 
@@ -76,7 +64,7 @@ bcbwallet://req_web=http://172.18.20.130:8000/jsapi/
 
   ```html
   function(data) {
-  　//data: 返回钱包的构建版本号
+  　data.versionName
   }
   ```
 
@@ -84,7 +72,7 @@ bcbwallet://req_web=http://172.18.20.130:8000/jsapi/
 
   ```
   bcbwallet('native.getVersionName', null, function (data) {
-      alert(data);
+      alert(JSON.stringify(data));
   });
   ```
 
@@ -104,8 +92,8 @@ bcbwallet://req_web=http://172.18.20.130:8000/jsapi/
 
   ```html
   {
-  	"url":"https://www.bcbscan.io/", //链接地址
-  	"title":"BCBScan", //页面标题
+  	"url":"https://www.baidu.com", //链接地址
+  	"title":"百度", //页面标题
   	"showTitle":true  //true为显示app 导航栏并显示title，false则隐藏app 导航栏
   }
   ```
@@ -114,8 +102,8 @@ bcbwallet://req_web=http://172.18.20.130:8000/jsapi/
 
   ```
   bcbwallet('native.openUrl', {
-      "url":"https://www.bcbscan.io/",
-      "title":"BCBScan",
+      "url":"https://www.baidu.com",
+      "title":"百度",
       "showTitle":true
   }, null);
   ```
@@ -147,7 +135,7 @@ bcbwallet://req_web=http://172.18.20.130:8000/jsapi/
 
   ```html
   function(data) {
-  　//data: 扫描结果字符串
+  　data.scanResult //扫描结果字符串
   }
   ```
 
@@ -155,7 +143,7 @@ bcbwallet://req_web=http://172.18.20.130:8000/jsapi/
 
   ```
   bcbwallet('native.openUrl', null, function (data) {
-      alert(data);
+      alert(JSON.stringify(data));
   });
   ```
 
@@ -174,8 +162,8 @@ bcbwallet://req_web=http://172.18.20.130:8000/jsapi/
 
   ```html
   {
-  	"landType":"0", //横竖屏 0：竖屏，1：横屏
-  	"fullType":"0", //是否全屏显示 0：非全屏，1：全屏
+  	"landType":1, //横竖屏 1：横屏，2：竖屏
+  	"fullType":1, //是否全屏显示 1：全屏，2：退出全屏
   }
   ```
 
@@ -183,8 +171,8 @@ bcbwallet://req_web=http://172.18.20.130:8000/jsapi/
 
   ```
   bcbwallet('native.screenChange', {
-      "landType":"1",
-      "fullType":"1"
+      "landType":1,
+      "fullType":1
   }, null);
   ```
 
@@ -205,10 +193,10 @@ bcbwallet://req_web=http://172.18.20.130:8000/jsapi/
 
   ```html
   function(data) {
-  　data //所有钱包地址信息
+  　data.walletsInfo //所有钱包地址信息
   }
   ****返回钱包列表信息****
-  data:[
+  walletsInfo:[
   	{
   		"name":"myWallet",
   		"walletAddr":"bcbPDTi68XwoMgGTwxd7ioZeMHHz7p7ewLtQ"
@@ -224,12 +212,58 @@ bcbwallet://req_web=http://172.18.20.130:8000/jsapi/
 
   ```
   bcbwallet('native.getWalletsInfo', null, function (data) {
-      alert(data);
+      alert(JSON.stringify(data));
   });
   ```
 
 
-## 2.bcb.commonPayUrl
+## 2.bcb.transfer
+
+ 调用此方法可以根据设置的参数进行转账操作,并把转账结果返回
+
+-  调用方式
+
+  ```html
+  bcbwallet('bcb.transfer', params, callback);
+  ```
+
+-  params
+
+  ```
+  {
+      "from":"", //转账钱包地址
+      "to":"", //转账到的目标地址
+      "contractAddr":"", //转账币种的合约地址
+      "amount":"", //转账金额
+      "note":"" //转账备注
+  }
+  ```
+
+-  callback
+
+  ```html
+  function(data) {
+  	data.code, //0为转账成功
+    	data.message
+  }
+  ```
+
+-  代码示例	
+
+  ```
+  bcbwallet('native.getWalletsInfo', {
+      "from":"bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU", //转账钱包地址
+      "to":"bcbNg7srN9byDMLGL6tG18WEMFLExpVQqGX5", //转账到的目标地址
+      "contractAddr":"bcbLTwDzzZn3Jy8cJGvygWLgpTr9hEdVpWZ9", //转账币种的合约地址
+      "amount":"100", //转账金额
+      "note":"转账" //转账备注
+  }, function (data) {
+      alert(JSON.stringify(data));
+  });
+  ```
+
+
+## 3.bcb.commonPayUrl
 
  调用此方法可以打开 bcb wallet 钱包显示当前支付信息,信息校验正确后可以进行支付操作,支付完成后返回支付的状态
 
@@ -243,32 +277,32 @@ bcbwallet://req_web=http://172.18.20.130:8000/jsapi/
 
   ```
   {
-      "payUrl":"http://172.18.20.130:8000/bcbpay/" //支付订单链接
+      "payUrl":"http://172.18.20.156:8080/bcbtest/test2.txt" //支付订单链接
   }
   ```
 
-- callback
+-  callback
 
   ```html
   function(data) {
-  	//data: 返回交易hash
+  	data.code, //0为支付成功
+    	data.message
   }
   ```
 
-- 代码示例	
+-  代码示例	
 
-  ```js
+  ```
   bcbwallet('bcb.commonPayUrl', {
       "payUrl":"http://172.18.20.156:8080/bcbtest/test2.txt"
   }, function (data) {
-      alert(data);
-      //"{  \"txHash\" : \"3E105CCAD994B5F1E8415086A1EA65B7420EDCCF8331D2EB02BC0B626EEF8A41\"}"
+      alert(JSON.stringify(data));
   });
   ```
 
 
 
-## 3.bcb.commonPayParams
+## 4.bcb.commonPayParams
 
  调用此方法可以打开 bcb wallet 钱包显示当前支付信息,信息校验正确后可以进行支付操作,支付完成后返回支付的状态
 
@@ -301,20 +335,20 @@ bcbwallet://req_web=http://172.18.20.130:8000/jsapi/
   }
   ```
 
-- callback
+-  callback
 
   ```html
   function(data) {
-  	//data: 返回交易hash
+  	data.code, //0为支付成功
+    	data.message
   }
   ```
 
 - 代码示例	
 
-  ```js
+  ```
   bcbwallet('bcb.commonPayParams', params, function (data) {
-      alert(data);
-      //"{  \"txHash\" : \"3E105CCAD994B5F1E8415086A1EA65B7420EDCCF8331D2EB02BC0B626EEF8A41\"}"
+      alert(JSON.stringify(data));
   });
   ```
 
@@ -324,7 +358,7 @@ bcbwallet://req_web=http://172.18.20.130:8000/jsapi/
 
   <img src="/Users/chuangshizhilian/Documents/ProjectRepository/bcbwallet-app/docs/_static/imgs/pay.png" style="zoom:30%" />
 
-## 4.bcb.signData
+## 5.bcb.signData
 
  调用此方法利用bcb wallet钱包的底层库进行数据签名,并把签名的数据返回
 
@@ -355,18 +389,18 @@ bcbwallet://req_web=http://172.18.20.130:8000/jsapi/
 
 -  代码示例	
 
-  ```js
+  ```
   bcbwallet('bcb.signData', {
-      "address":"bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU", //指定签名的钱包地址
+      "address":"bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU",
       "signContent":"test"
   }, function (data) {
-      alert(data);
+      alert(JSON.stringify(data));
   });
   ```
 
 
 
-## 5.bcb.thirdAuth
+## 6.bcb.thirdAuth
 
  调用此方法进行 bcb wallet 钱包的进行授权,并把授权状态返回
 
@@ -376,36 +410,35 @@ bcbwallet://req_web=http://172.18.20.130:8000/jsapi/
   bcbwallet('bcb.thirdAuth', params, callback);
   ```
 
-- params
+-  params
 
   ```
   {
       "nonce":"cpNGXLhwjkVMXrrOvJj1UjwV8v2qftvM", //随机数
       "appID":"10", //业务ID
-      "sessionInfo":"RFzLhUreEUM9eCAN0UEJXFXYYyvdctsU", //用户信息
-      "address": "bcbi6Xt6356NuGxfGmmXm2kjPaQ9F1GefA2"  //指定钱包地址授权
+      "sessionInfo":"RFzLhUreEUM9eCAN0UEJXFXYYyvdctsU" //用户信息
   }
   ```
 
-- callback
+-  callback
 
   ```html
   function(data) {
   	data.code, //0为授权成功
     	data.message,
+  	data.address //授权登录的钱包地址
   }
   ```
 
-- 代码示例	
+-  代码示例	
 
   ```
   bcbwallet('bcb.thirdAuth', {
       "nonce":"cpNGXLhwjkVMXrrOvJj1UjwV8v2qftvM",
       "appID":"10",
-      "sessionInfo":"RFzLhUreEUM9eCAN0UEJXFXYYyvdctsU",
-      "address": "bcbi6Xt6356NuGxfGmmXm2kjPaQ9F1GefA2"
+      "sessionInfo":"RFzLhUreEUM9eCAN0UEJXFXYYyvdctsU"
   }, function (data) {
-      alert(data);
+      alert(JSON.stringify(data));
   });
   ```
 

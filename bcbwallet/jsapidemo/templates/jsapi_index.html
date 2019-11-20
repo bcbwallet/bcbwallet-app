@@ -1,0 +1,202 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no" />
+    <title>jsapi demo</title>
+    <style>
+        .btn {
+            /* display: inline-block; */
+            padding: .3em .5em;
+            background-image: linear-gradient(#ddd, #bbb);
+            border: 1px solid rgba(0, 0, 0, .2);
+            border-radius: .3em;
+            text-align: center;
+            color: white;
+        }
+
+        .btn:active {
+            box-shadow: .05em .1em .2em rgba(0, 0, 0, .6) inset;
+            border-color: rgba(0, 0, 0, .3);
+            background: #bbb;
+        }
+       
+       span {
+           color: rgb(250, 202, 202);
+           font-size: 14px;
+       }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tbody>
+
+            <div>native</div>
+            <tr><input type="button" class="btn" value="获取bcbwallet版本号" onclick="getVersionCode()"></tr>
+            <tr><input type="button" class="btn" value="获取bcbwallet版本名称" onclick="getVersionName()"></tr>
+            <tr><input type="button" class="btn" value="打开新页面" onclick="openUrl()"></tr>
+            <tr><input type="button" class="btn" value="返回 app" onclick="goBack()"></tr>
+            <tr><input type="button" class="btn" value="扫描二维码" onclick="scanQRCode()"></tr>
+            <tr><input type="button" class="btn" value="切换横全屏" onclick="screenChange('1', '1')"></tr>
+            <tr><input type="button" class="btn" value="切换竖屏" onclick="screenChange('0', '0')"></tr>
+            <tr><input type="button" class="btn" value="切换横非全屏" onclick="screenChange('1', '0')"></tr>
+            <tr><input type="button" class="btn" value="切换竖全屏" onclick="screenChange('0', '1')"></tr>
+
+            <div>BCB</div>
+            <tr><input type="button" class="btn" value="获取钱包信息" onclick="getWalletsInfo()"></tr>
+            <tr><input type="button" class="btn" value="转账" onclick="transfer()"></tr>
+            <tr><input type="button" class="btn" value="url 支付" onclick="commonPayUrl()"></tr>
+            <tr><input type="button" class="btn" value="Params支付" onclick="commonPayParams()"></tr>
+            <tr><input type="button" class="btn" value="签名数据" onclick="sigaData()"></tr>
+            <tr><input type="button" class="btn" value="钱包授权" onclick="thirdAuth()"></tr>
+
+            <div>OTC</div>
+            <tr><input type="button" class="btn" value="进入OTC" onclick="openOtc()"></tr>
+            <tr><input type="button" class="btn" value="进入闪兑" onclick="openFastExchange()"></tr>
+
+        </tbody>
+    </table>
+    <div><span id="content"></span></div>
+</body>
+
+<script>
+    function getVersionCode() {
+        bcbwallet('native.getVersionCode', null, function (data) {
+            document.getElementById('content').innerText = data;
+            console.log('版本号:' + data);
+        });
+    }
+
+    function getVersionName() {
+        bcbwallet('native.getVersionName', null, function (data) {
+            document.getElementById('content').innerText = data;
+            console.log('版本名称:' + data);
+        });
+    }
+
+    function openUrl() {
+        bcbwallet('native.openUrl', {
+            'url': 'https://www.bcbscan.io/',
+            'title': 'bcb scan',
+            'showTitle': true
+        }, null);
+    }
+
+    function goBack() {
+        bcbwallet('native.goBack', null, null);
+    }
+
+    function scanQRCode() {
+        bcbwallet('native.scanQRCode', null, function (data) {
+            document.getElementById('content').innerText = data;
+            console.log('二维码内容:' + data);
+        });
+    }
+
+    function screenChange(land, full) {
+        bcbwallet('native.screenChange', { "landType": land, "fullType": full }, null);
+    }
+
+    function getWalletsInfo() {
+        bcbwallet('bcb.getWalletsInfo', null, function (data) {
+            document.getElementById('content').innerText = data;
+            console.log('钱包列表:' + data);
+        })
+    }
+
+    function transfer() {
+        bcbwallet('bcb.transfer', {
+            "from": "",
+            "to": "",
+            "contractAddr": "",
+            "amount": "",
+            "note": "转账"
+        }, function (data) {
+            document.getElementById('content').innerText = data;
+            console.log('转账结果:' + data);
+        });
+    }
+
+    function commonPayUrl() {
+        bcbwallet('bcb.commonPayUrl', { "payUrl": "http://172.18.20.130:8000/bcbpay/" }, function (data) {
+            document.getElementById('content').innerText = data;
+            console.log('支付结果:' + data);
+            // "{  \"txHash\" : \"3E105CCAD994B5F1E8415086A1EA65B7420EDCCF8331D2EB02BC0B626EEF8A41\"}"
+        });
+    }
+
+    function commonPayParams() {
+        params = {
+            "ver": 3,
+            "appUISeg": {
+                "title": "通用支付",
+                "value": "0.1",
+                "referInfo": "进行支付操作",
+                "symbol": "BCB"
+            },
+            "coinParams": {
+                "note": "备注",
+                "gasLimit": "25000",
+                "calls": [{
+                    "contract": "bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe",
+                    "method": "Transfer(types.Address,bn.Number)",
+                    "params": ["bcbL8BzfVfcxtqh9umN3dUhxBYNyEnV7GiSa", "100000000"]
+                }]
+            }
+        }
+
+        commonPay = JSON.stringify(params)
+        console.log('支付 Json字符串:' + commonPay)
+        bcbwallet('bcb.commonPayParams', {"payParams": commonPay}, function (data) {
+            document.getElementById('content').innerText = data;
+            console.log('支付结果:' + data);
+        });
+    }
+
+    function sigaData(){
+        params = {
+            "address": "bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo",
+            "signContent": "签名一段数据"
+        }
+        bcbwallet('bcb.signData', params, function(data){
+            document.getElementById('content').innerText = data;
+            console.log('签名后的数据:' + data);
+
+            // "{  \"type\" : \"ed25519\",  \"pubKey\" : \"54531094FA183C33625C0F69DB03C3A2462E4E8994321CCB069A7C00C21D7057\",  \"signature\" : \"C4610FA1776B594A6E34B0D553FCC4B1C30064CD4359F82BBAEAC889F7833CEDBE6BAFB61B790437E86A08EB041E84969D457F606924EE11A83C8871BDCCE503\"}"
+        });
+    }
+
+    function thirdAuth(){
+        params = {
+            "nonce" : "zoye3tOJ0uRpKOzGomPO7kDSeW9sysqy",       //随机数
+            "appID" : "onlineotc",       //业务 ID
+            "sessionInfo" : "h9af5Gp4wapUIatv4T7BNiZ1hM0angZJ",  //用户信息
+            "address": "bcbi6Xt6356NuGxfGmmXm2kjPaQ9F1GefA2"       //指定授权钱包地址
+        }
+        bcbwallet('bcb.thirdAuth', params, function(data){
+            document.getElementById('content').innerText = data;
+            console.log('授权结果:' + data);
+            // "{  \"result\" : true,  \"message\" : \"ok\"}"
+        });
+    }
+
+    function openOtc(){
+        
+        bcbwallet('bcb.openOtc', null, null)
+    }
+
+    function openFastExchange(){
+        params = {
+            "inCoin": "",
+            "outCoin": "",
+            "autoFinish" : true
+        }
+
+        bcbwallet('otc.openFastExchange', params, null);
+    }
+</script>
+
+</html>
