@@ -4,14 +4,14 @@ BCB钱包DAPP调用原生交互接口文档说明
 版本&更新记录
 =============
 
-+-----------+-------------+--------------+------------+
-| 版本号    | 作者        | 日期         | 更新内容   |
-+===========+=============+==============+============+
-| v.1.0.0   | bcbwallet   | 2019-07-15   | 初始版本   |
-+-----------+-------------+--------------+------------+
+======= ========= ========== ========
+版本号  作者      日期       更新内容
+======= ========= ========== ========
+v.1.0.0 bcbwallet 2019-07-15 初始版本
+======= ========= ========== ========
 
 背景
-====
+----
 
 为方便DAPP应用接入 bcb wallet 钱包,参与 BCB
 生态建设,整理成接口集成文档提供给开发者使用。为方便开发者集成和调试,可下载官方钱包通过首页的扫描二维码入口进行调试。
@@ -20,185 +20,306 @@ BCB钱包DAPP调用原生交互接口文档说明
 
 H5demo 参考地址:\ https://github.com/bcbwallet/bcbwallet-app
 
-bcb wallet 钱包首页二维码扫描规则:bcbwallet://req\_web=url。
+bcb wallet 钱包首页二维码扫描规则:bcbwallet://req_web=url。
 
 示例:
 
 ::
 
-    bcbwallet://req_web=http://172.18.20.130:8000/jsapi/ 
+   bcbwallet://req_web=http://172.18.20.130:8000/jsapi/ 
 
 功能说明
-========
+------
 
 本文档提供钱包的DAPP访问接口说明。Andriod/IOS通用版本。
 
 Native
-======
+------
 
 1.native.getVersionCode
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
 获取bcb wallet 钱包的版本号
 
 -  调用方式
 
-``html   bcbwallet('native.getVersionCode', null, callback);``
+.. code:: html
+
+   bcbwallet('native.getVersionCode', null, callback);
 
 -  callback
 
-``html   function(data) {     //data: 返回钱包的版本号   }``
+.. code:: html
+
+   function(data) {
+     //data: 返回钱包的版本号
+   }
 
 -  代码示例
 
-``bcbwallet('native.getVersionCode', null, function (data) {       alert(data);   });``
+::
+
+   bcbwallet('native.getVersionCode', null, function (data) {
+       alert(data);
+   });
 
 2.native.getVersionName
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 获取 bcb wallet 钱包的版本名称
 
 -  调用方式
 
-``html   bcbwallet('native.getVersionName', null, callback);``
+.. code:: html
+
+   bcbwallet('native.getVersionName', null, callback);
 
 -  callback
 
-``html   function(data) {   　//data: 返回钱包的构建版本号   }``
+   .. code:: html
+
+      function(data) {
+      　//data: 返回钱包的构建版本号
+      }
 
 -  代码示例
 
-``bcbwallet('native.getVersionName', null, function (data) {       alert(data);   });``
+::
+
+   bcbwallet('native.getVersionName', null, function (data) {
+       alert(data);
+   });
 
 3.native.openUrl
-----------------
+~~~~~~~~~~~~~~~~~
 
 通过此方法在 bcb wallet 钱包中打开一个新的 webview页面
 
 -  调用方式
 
-``html   bcbwallet('native.openUrl', params, null);``
+.. code:: html
+
+   bcbwallet('native.openUrl', params, null);
 
 -  params
 
-``html   {     "url":"https://www.bcbscan.io/", //链接地址     "title":"BCBScan", //页面标题     "showTitle":true  //true为显示app 导航栏并显示title，false则隐藏app 导航栏   }``
+.. code:: html
+
+   {
+     "url":"https://www.bcbscan.io/", //链接地址
+     "title":"BCBScan", //页面标题
+     "showTitle":true  //true为显示app 导航栏并显示title，false则隐藏app 导航栏
+   }
 
 -  代码示例
 
-``bcbwallet('native.openUrl', {       "url":"https://www.bcbscan.io/",       "title":"BCBScan",       "showTitle":true   }, null);``
+::
+
+   bcbwallet('native.openUrl', {
+       "url":"https://www.bcbscan.io/",
+       "title":"BCBScan",
+       "showTitle":true
+   }, null);
 
 4.native.goBack
----------------
+~~~~~~~~~~~~~~~
 
 调用此方法退出当前 webview 界面,回到 app界面
 
 -  调用方式
 
-``html   bcbwallet('native.goBack', null, null);``
+.. code:: html
+
+   bcbwallet('native.goBack', null, null);
 
 5.native.scanQRCode
--------------------
+~~~~~~~~~~~~~~~~~~~~
 
 调用此方法打开 bcb wallet 钱包的相机扫描二维码功能,并把扫码结果返回
 
 -  调用方式
 
-``html   bcbwallet('native.scanQRCode', null, callback);``
+.. code:: html
+
+   bcbwallet('native.scanQRCode', null, callback);
 
 -  callback
 
-``html   function(data) {   　//data: 扫描结果字符串   }``
+.. code:: html
+
+   function(data) {
+   　//data: 扫描结果字符串
+   }
 
 -  代码示例
 
-``bcbwallet('native.openUrl', null, function (data) {       alert(data);   });``
+::
+
+   bcbwallet('native.openUrl', null, function (data) {
+       alert(data);
+   });
 
 6.native.screenChange
----------------------
+~~~~~~~~~~~~~~~~~~~~
 
 调用此方法,可以设置不同的参数强制bcb wallet 钱包进行横竖屏或全屏操作
 
 -  调用方式
 
-``html   bcbwallet('native.screenChange', params, null);``
+.. code:: html
+
+   bcbwallet('native.screenChange', params, null);
 
 -  params
 
-``html   {     "landType":"0", //横竖屏 0：竖屏，1：横屏     "fullType":"0", //是否全屏显示 0：非全屏，1：全屏   }``
+.. code:: html
+
+   {
+     "landType":"0", //横竖屏 0：竖屏，1：横屏
+     "fullType":"0", //是否全屏显示 0：非全屏，1：全屏
+   }
 
 -  代码示例
 
-``bcbwallet('native.screenChange', {       "landType":"1",       "fullType":"1"   }, null);``
+::
+
+   bcbwallet('native.screenChange', {
+       "landType":"1",
+       "fullType":"1"
+   }, null);
 
 BCB
-===
+---
 
 1.bcb.getWalletsInfo
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 调用此方法可以获取当前bcb wallet
 钱包的所有钱包信息列表(钱包名称和钱包地址)
 
 -  调用方式
 
-``html   bcbwallet('bcb.getWalletsInfo', null, callback);``
+.. code:: html
+
+   bcbwallet('bcb.getWalletsInfo', null, callback);
 
 -  callback
 
-``html   function(data) {   　data //所有钱包地址信息   }   ****返回钱包列表信息****   data:[     {         "name":"myWallet",         "walletAddr":"bcbPDTi68XwoMgGTwxd7ioZeMHHz7p7ewLtQ"     },     {         "name":"newWallet",           "walletAddr":"bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU"     }   ]``
+   .. code:: html
+
+      function(data) {
+      　data //所有钱包地址信息
+      }
+      ****返回钱包列表信息****
+      data:[
+        {
+            "name":"myWallet",
+            "walletAddr":"bcbPDTi68XwoMgGTwxd7ioZeMHHz7p7ewLtQ"
+        },
+        {
+            "name":"newWallet",
+              "walletAddr":"bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU"
+        }
+      ]
 
 -  代码示例
 
-``bcbwallet('native.getWalletsInfo', null, function (data) {       alert(data);   });``
+::
+
+   bcbwallet('native.getWalletsInfo', null, function (data) {
+       alert(data);
+   });
 
 2.bcb.commonPayUrl
-------------------
+~~~~~~~~~~~~~~~~~~~~
 
 调用此方法可以打开 bcb wallet
 钱包显示当前支付信息,信息校验正确后可以进行支付操作,支付完成后返回支付的状态
 
 -  调用方式
 
-``html   bcbwallet('bcb.commonPayUrl', params, callback);``
+.. code:: html
+
+   bcbwallet('bcb.commonPayUrl', params, callback);
 
 -  params
 
-``{       "payUrl":"http://172.18.20.130:8000/bcbpay/" //支付订单链接   }``
+::
+
+   {
+       "payUrl":"http://172.18.20.130:8000/bcbpay/" //支付订单链接
+   }
 
 -  callback
 
-``html   function(data) {     //data: 返回交易hash   }``
+   .. code:: html
+
+      function(data) {
+        //data: 返回交易hash
+      }
 
 -  代码示例
 
-``js   bcbwallet('bcb.commonPayUrl', {       "payUrl":"http://172.18.20.156:8080/bcbtest/test2.txt"   }, function (data) {       alert(data);       //"{  \"txHash\" : \"3E105CCAD994B5F1E8415086A1EA65B7420EDCCF8331D2EB02BC0B626EEF8A41\"}"   });``
+   .. code:: js
 
+      bcbwallet('bcb.commonPayUrl', {
+          "payUrl":"http://172.18.20.156:8080/bcbtest/test2.txt"
+      }, function (data) {
+          alert(data);
+          //"{  \"txHash\" : \"3E105CCAD994B5F1E8415086A1EA65B7420EDCCF8331D2EB02BC0B626EEF8A41\"}"
+      });
 3.bcb.commonPayParams
----------------------
+~~~~~~~~~~~~~~~~~~~~
 
 调用此方法可以打开 bcb wallet
 钱包显示当前支付信息,信息校验正确后可以进行支付操作,支付完成后返回支付的状态
 
 -  调用方式
 
-``html   bcbwallet('bcb.commonPayParams', params, callback);``
+.. code:: html
+
+   bcbwallet('bcb.commonPayParams', params, callback);
 
 -  params
 
-``{     "ver": 3,     "appUISeg": {         "title": "通用支付",         "value": "0.1",         "referInfo": "进行支付操作",         "symbol": "BCB"       },      "coinParams": {      "note": "备注",      "gasLimit": "25000",      "calls": [{       "contract": "bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe",       "method": "Transfer(types.Address,bn.Number)",       "params": ["bcbL8BzfVfcxtqh9umN3dUhxBYNyEnV7GiSa", "100000000"]      }]     }   }``
+   ::
+
+      {
+        "ver": 3,
+        "appUISeg": {
+            "title": "通用支付",
+            "value": "0.1",
+            "referInfo": "进行支付操作",
+            "symbol": "BCB"
+          },
+         "coinParams": {
+         "note": "备注",
+         "gasLimit": "25000",
+         "calls": [{
+          "contract": "bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe",
+          "method": "Transfer(types.Address,bn.Number)",
+          "params": ["bcbL8BzfVfcxtqh9umN3dUhxBYNyEnV7GiSa", "100000000"]
+         }]
+        }
+      }
 
 -  callback
 
-``html   function(data) {     //data: 返回交易hash   }``
+   .. code:: html
+
+      function(data) {
+        //data: 返回交易hash
+      }
 
 -  代码示例
 
-``js   bcbwallet('bcb.commonPayParams', params, function (data) {       alert(data);       //"{  \"txHash\" : \"3E105CCAD994B5F1E8415086A1EA65B7420EDCCF8331D2EB02BC0B626EEF8A41\"}"   });``
+   .. code:: js
 
--  bcb wallet 钱包支付展示
+      bcbwallet('bcb.commonPayParams', params, function (data) {
+          alert(data);
+          //"{  \"txHash\" : \"3E105CCAD994B5F1E8415086A1EA65B7420EDCCF8331D2EB02BC0B626EEF8A41\"}"
+      });
 
-H5调用bcb.commonPayUrl 或 bcb.commonPayParams 方法时会唤起 bcb wallet
-钱包的支付页面,用户此时可以查看支付信息并进行支付操作.如下图所示
 -  bcb wallet 钱包支付展示
 
    H5调用bcb.commonPayUrl 或 bcb.commonPayParams 方法时会唤起 bcb wallet钱包的支付页面,用户此时可以查看支付信息并进行支付操作.如下图所示
@@ -208,73 +329,133 @@ H5调用bcb.commonPayUrl 或 bcb.commonPayParams 方法时会唤起 bcb wallet
     :alt: pay
     :align: center
 
+
 4.bcb.signData
---------------
+~~~~~~~~~~~~~~~~~~~~
 
 调用此方法利用bcb wallet钱包的底层库进行数据签名,并把签名的数据返回
 
 -  调用方式
 
-``html   bcbwallet('bcb.signData', params, callback);``
+.. code:: html
+
+   bcbwallet('bcb.signData', params, callback);
 
 -  params
 
-``{       "address":"bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU", //签名钱包地址       "signContent":"test" //待签名内容   }``
+::
+
+   {
+       "address":"bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU", //签名钱包地址
+       "signContent":"test" //待签名内容
+   }
 
 -  callback
 
-``html   function(data) {     data.type, //签名方式     date.pubKey, //公钥     data.signature //签名后内容   }``
+   .. code:: html
+
+      function(data) {
+        data.type, //签名方式
+        date.pubKey, //公钥
+        data.signature //签名后内容
+      }
 
 -  代码示例
 
-``js   bcbwallet('bcb.signData', {       "address":"bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU", //指定签名的钱包地址       "signContent":"test"   }, function (data) {       alert(data);   });``
+.. code:: js
+
+   bcbwallet('bcb.signData', {
+       "address":"bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU", //指定签名的钱包地址
+       "signContent":"test"
+   }, function (data) {
+       alert(data);
+   });
 
 5.bcb.thirdAuth
----------------
+~~~~~~~~~~~~~~~~~~~~
 
 调用此方法进行 bcb wallet 钱包的进行授权,并把授权状态返回
 
 -  调用方式
 
-``html   bcbwallet('bcb.thirdAuth', params, callback);``
+.. code:: html
+
+   bcbwallet('bcb.thirdAuth', params, callback);
 
 -  params
 
-``{       "nonce":"cpNGXLhwjkVMXrrOvJj1UjwV8v2qftvM", //随机数       "appID":"10", //业务ID       "sessionInfo":"RFzLhUreEUM9eCAN0UEJXFXYYyvdctsU", //用户信息       "address": "bcbi6Xt6356NuGxfGmmXm2kjPaQ9F1GefA2"  //指定钱包地址授权   }``
+   ::
+
+      {
+          "nonce":"cpNGXLhwjkVMXrrOvJj1UjwV8v2qftvM", //随机数
+          "appID":"10", //业务ID
+          "sessionInfo":"RFzLhUreEUM9eCAN0UEJXFXYYyvdctsU", //用户信息
+          "address": "bcbi6Xt6356NuGxfGmmXm2kjPaQ9F1GefA2"  //指定钱包地址授权
+      }
 
 -  callback
 
-``html   function(data) {     data.code, //0为授权成功         data.message,   }``
+   .. code:: html
+
+      function(data) {
+        data.code, //0为授权成功
+            data.message,
+      }
 
 -  代码示例
 
-``bcbwallet('bcb.thirdAuth', {       "nonce":"cpNGXLhwjkVMXrrOvJj1UjwV8v2qftvM",       "appID":"10",       "sessionInfo":"RFzLhUreEUM9eCAN0UEJXFXYYyvdctsU",       "address": "bcbi6Xt6356NuGxfGmmXm2kjPaQ9F1GefA2"   }, function (data) {       alert(data);   });``
+   ::
+
+      bcbwallet('bcb.thirdAuth', {
+          "nonce":"cpNGXLhwjkVMXrrOvJj1UjwV8v2qftvM",
+          "appID":"10",
+          "sessionInfo":"RFzLhUreEUM9eCAN0UEJXFXYYyvdctsU",
+          "address": "bcbi6Xt6356NuGxfGmmXm2kjPaQ9F1GefA2"
+      }, function (data) {
+          alert(data);
+      });
 
 OTC
-===
+---
 
 1.otc.openOtc
--------------
+~~~~~~~~~~~~~~~~~~~~
 
 调用此方法进入bcb wallet 钱包的OTC模块
 
 -  调用方式
 
-``html   bcbwallet('otc.openOtc', null, null);``
+.. code:: html
+
+   bcbwallet('otc.openOtc', null, null);
 
 2.otc.openFastExchange
-----------------------
+~~~~~~~~~~~~~~~~~~~~
 
 调用此方法进入bcb wallet 钱包的闪兑模块
 
 -  调用方式
 
-``html   bcbwallet('otc.openFastExchange', params, null);``
+.. code:: html
+
+   bcbwallet('otc.openFastExchange', params, null);
 
 -  params
 
-``{       "inCoin":"DC", //待兑换币种       "outCoin":"USDX", //目标兑换币种       "autoFinish":true   }``
+::
+
+   {
+       "inCoin":"DC", //待兑换币种
+       "outCoin":"USDX", //目标兑换币种
+       "autoFinish":true
+   }
 
 -  代码示例
 
-``html   bcbwallet('otc.openFastExchange', {       "inCoin":"DC",       "outCoin":"USDX",       "autoFinish":true   }, null);``
+.. code:: html
+
+   bcbwallet('otc.openFastExchange', {
+       "inCoin":"DC",
+       "outCoin":"USDX",
+       "autoFinish":true
+   }, null);
