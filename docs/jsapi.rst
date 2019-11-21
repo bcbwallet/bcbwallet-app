@@ -305,9 +305,9 @@ BCB
 
 -  params
 
-   ::
+::
 
-      {
+    {
         "ver": 3,
         "appUISeg": {
             "title": "通用支付",
@@ -407,14 +407,14 @@ BCB
 
 -  params
 
-   ::
+::
 
-      {
-          "nonce":"cpNGXLhwjkVMXrrOvJj1UjwV8v2qftvM", //随机数
-          "appID":"10", //业务ID
-          "sessionInfo":"RFzLhUreEUM9eCAN0UEJXFXYYyvdctsU", //用户信息
-          "address": "bcbi6Xt6356NuGxfGmmXm2kjPaQ9F1GefA2"  //指定钱包地址授权
-      }
+    {
+        "nonce":"cpNGXLhwjkVMXrrOvJj1UjwV8v2qftvM", //随机数
+        "appID":"10", //业务ID
+        "sessionInfo":"RFzLhUreEUM9eCAN0UEJXFXYYyvdctsU", //用户信息
+        "address": "bcbi6Xt6356NuGxfGmmXm2kjPaQ9F1GefA2"  //指定钱包地址授权
+    }
 
 -  callback
 
@@ -427,14 +427,14 @@ BCB
 
 -  代码示例
 
-   ::
+::
 
-      bcbwallet('bcb.thirdAuth', {
-          "nonce":"cpNGXLhwjkVMXrrOvJj1UjwV8v2qftvM",
-          "appID":"10",
-          "sessionInfo":"RFzLhUreEUM9eCAN0UEJXFXYYyvdctsU",
-          "address": "bcbi6Xt6356NuGxfGmmXm2kjPaQ9F1GefA2"
-      }, function (data) {
-          alert(data);
-      });
+    bcbwallet('bcb.thirdAuth', {
+        "nonce":"cpNGXLhwjkVMXrrOvJj1UjwV8v2qftvM",
+        "appID":"10",
+        "sessionInfo":"RFzLhUreEUM9eCAN0UEJXFXYYyvdctsU",
+        "address": "bcbi6Xt6356NuGxfGmmXm2kjPaQ9F1GefA2"
+    }, function (data) {
+        alert(data);
+    });
 
