@@ -13,15 +13,11 @@ v.1.0.0 bcbwallet 2019-07-15 初始版本
 背景
 -----
 
-<<<<<<< HEAD
-为方便DAPP应用接入 bcb wallet 钱包，参与
-BCB生态建设,整理成接口集成文档提供给开发者使用。开发者集成后可以利用 bcb
-wallet钱包进行调试。
-=======
+
 本文档的主要阅读对象是面向bcb链开发DAPP的第三方开发者。
 DAPP开发者只需要按照本文档的接口说明进行集成，就可以快速的完成DAPP接入到bcb wallet。
 开发者集成后，还可以利用 bcb wallet 钱包进行调试。
->>>>>>> 173655afd2987c7b8e988541c716bec1fcfe6831
+
 
 功能说明
 -------
@@ -442,50 +438,3 @@ BCB
           alert(data);
       });
 
-<<<<<<< HEAD
-=======
-OTC
----
-
-1.otc.openOtc
-~~~~~~~~~~~~~~~~~~~~
-
-调用此方法进入bcb wallet 钱包的OTC模块
-
--  调用方式
-
-.. code:: html
-
-   bcbwallet('otc.openOtc', null, null);
-
-2.otc.openFastExchange
-~~~~~~~~~~~~~~~~~~~~
-
-调用此方法进入bcb wallet 钱包的闪兑模块
-
--  调用方式
-
-.. code:: html
-
-   bcbwallet('otc.openFastExchange', params, null);
-
--  params
-
-::
-
-   {
-       "inCoin":"DC", //待兑换币种
-       "outCoin":"USDX", //目标兑换币种
-       "autoFinish":true
-   }
-
--  代码示例
-
-.. code:: html
-
-   bcbwallet('otc.openFastExchange', {
-       "inCoin":"DC",
-       "outCoin":"USDX",
-       "autoFinish":true
-   }, null);
->>>>>>> 173655afd2987c7b8e988541c716bec1fcfe6831
