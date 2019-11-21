@@ -1,4 +1,4 @@
-BCB钱包DAPP调用原生交互接口文档说明
+bcb wallet DAPP接入文档
 ===================================
 
 版本&更新记录
@@ -13,7 +13,7 @@ v.1.0.0 bcbwallet 2019-07-15 初始版本
 背景
 -----
 
-为方便DAPP应用接入 bcb wallet 钱包,参与
+为方便DAPP应用接入 bcb wallet 钱包，参与
 BCB生态建设,整理成接口集成文档提供给开发者使用。开发者集成后可以利用 bcb
 wallet钱包进行调试。
 
@@ -22,7 +22,7 @@ wallet钱包进行调试。
 
 本文档提供钱包的DAPP访问接口说明。Andriod/IOS通用版本。
 
-方法:
+方法：
 
 .. code:: js
 
@@ -38,16 +38,16 @@ params           dictionry js 调用 app 时传递的参数
 function(data){} callback  回调方法, data类型: json string
 ================ ========= ===============================
 
-调试步骤:
+调试步骤：
 
-​ 1.下载官方钱包 bcb wallet;
+​ 1.下载官方钱包 bcb wallet；
 
 ​ 2.调试 url 按照
-bcbwallet://req_web=url规则生成二维码(如:bcbwallet://req_web=http://172.18.20.130:8000/jsapi/
-);
+bcbwallet://req_web=url规则生成二维码(如：bcbwallet://req_web=http://172.18.20.130:8000/jsapi/
+)；
 
 ​ 3.打开 bcb wallet
-钱包,首页右上角找到扫描二维码功能,然后扫描上述步骤生成的二维码进行调试。
+钱包，首页右上角找到扫描二维码功能,然后扫描上述步骤生成的二维码进行调试。
 
 官方钱包下载地址:\ https://www.bcbchain.io/down
 
@@ -97,11 +97,11 @@ Native
 
 -  callback
 
-   .. code:: html
+.. code:: html
 
-      function(data) {
-      　//data: 返回钱包的构建版本号
-      }
+   function(data) {
+      //data: 返回钱包的构建版本号
+   }
 
 -  代码示例
 
@@ -145,7 +145,7 @@ Native
 4.native.goBack
 ~~~~~~~~~~~~~~~
 
-调用此方法退出当前 webview 界面,回到 app界面
+调用此方法退出当前 webview 界面，回到 app界面
 
 -  调用方式
 
@@ -156,7 +156,7 @@ Native
 5.native.scanQRCode
 ~~~~~~~~~~~~~~~~~~~~
 
-调用此方法打开 bcb wallet 钱包的相机扫描二维码功能,并把扫码结果返回
+调用此方法打开 bcb wallet 钱包的相机扫描二维码功能，并把扫码结果返回
 
 -  调用方式
 
@@ -183,7 +183,7 @@ Native
 6.native.screenChange
 ~~~~~~~~~~~~~~~~~~~~
 
-调用此方法,可以设置不同的参数强制bcb wallet 钱包进行横竖屏或全屏操作
+调用此方法，可以设置不同的参数强制bcb wallet 钱包进行横竖屏或全屏操作
 
 -  调用方式
 
@@ -226,22 +226,22 @@ BCB
 
 -  callback
 
-   .. code:: html
+.. code:: html
 
-      function(data) {
-      　data //所有钱包地址信息
-      }
-      ****返回钱包列表信息****
-      data:[
-        {
-            "name":"myWallet",
-            "walletAddr":"bcbPDTi68XwoMgGTwxd7ioZeMHHz7p7ewLtQ"
-        },
-        {
-            "name":"newWallet",
-              "walletAddr":"bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU"
-        }
-      ]
+   function(data) {
+      data //所有钱包地址信息
+   }
+   ****返回钱包列表信息****
+    data:[
+            {
+                "name":"myWallet",
+                "walletAddr":"bcbPDTi68XwoMgGTwxd7ioZeMHHz7p7ewLtQ"
+            },
+            {
+                "name":"newWallet",
+                "walletAddr":"bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU"
+            }
+        ]
 
 -  代码示例
 
@@ -255,7 +255,7 @@ BCB
 ~~~~~~~~~~~~~~~~~~~~
 
 调用此方法可以打开 bcb wallet
-钱包显示当前支付信息,信息校验正确后可以进行支付操作,支付完成后返回支付的状态
+钱包显示当前支付信息，信息校验正确后可以进行支付操作,支付完成后返回支付的状态
 
 -  调用方式
 
@@ -273,27 +273,27 @@ BCB
 
 -  callback
 
-   .. code:: html
+.. code:: html
 
-      function(data) {
-        //data: 返回交易hash
-      }
+   function(data) {
+      //data: 返回交易hash
+   }
 
 -  代码示例
 
-   .. code:: js
+.. code:: js
 
-      bcbwallet('bcb.commonPayUrl', {
-          "payUrl":"http://172.18.20.156:8080/bcbtest/test2.txt"
-      }, function (data) {
-          alert(data);
-          //"{  \"txHash\" : \"3E105CCAD994B5F1E8415086A1EA65B7420EDCCF8331D2EB02BC0B626EEF8A41\"}"
-      });
+   bcbwallet('bcb.commonPayUrl', {
+     "payUrl":"http://172.18.20.156:8080/bcbtest/test2.txt"
+   }, function (data) {
+      alert(data);
+      //"{  \"txHash\" : \"3E105CCAD994B5F1E8415086A1EA65B7420EDCCF8331D2EB02BC0B626EEF8A41\"}"
+   });
 3.bcb.commonPayParams
 ~~~~~~~~~~~~~~~~~~~~
 
 调用此方法可以打开 bcb wallet
-钱包显示当前支付信息,信息校验正确后可以进行支付操作,支付完成后返回支付的状态
+钱包显示当前支付信息，信息校验正确后可以进行支付操作，支付完成后返回支付的状态
 
 -  调用方式
 
@@ -326,24 +326,24 @@ BCB
 
 -  callback
 
-   .. code:: html
+.. code:: html
 
-      function(data) {
-        //data: 返回交易hash
-      }
+   function(data) {
+      //data: 返回交易hash
+   }
 
 -  代码示例
 
-   .. code:: js
+.. code:: js
 
-      bcbwallet('bcb.commonPayParams', params, function (data) {
-          alert(data);
-          //"{  \"txHash\" : \"3E105CCAD994B5F1E8415086A1EA65B7420EDCCF8331D2EB02BC0B626EEF8A41\"}"
-      });
+   bcbwallet('bcb.commonPayParams', params, function (data) {
+       alert(data);
+       //"{  \"txHash\" : \"3E105CCAD994B5F1E8415086A1EA65B7420EDCCF8331D2EB02BC0B626EEF8A41\"}"
+   });
 
 -  bcb wallet 钱包支付展示
 
-   H5调用bcb.commonPayUrl 或 bcb.commonPayParams 方法时会唤起 bcb wallet钱包的支付页面,用户此时可以查看支付信息并进行支付操作.如下图所示
+   H5调用bcb.commonPayUrl 或 bcb.commonPayParams 方法时会唤起 bcb wallet钱包的支付页面，用户此时可以查看支付信息并进行支付操作。如下图所示
   
    .. image:: /_static/pay.png
     :scale: 30 %
@@ -354,7 +354,7 @@ BCB
 4.bcb.signData
 ~~~~~~~~~~~~~~~~~~~~
 
-调用此方法利用bcb wallet钱包的底层库进行数据签名,并把签名的数据返回
+调用此方法利用bcb wallet钱包的底层库进行数据签名，并把签名的数据返回
 
 -  调用方式
 
@@ -373,13 +373,13 @@ BCB
 
 -  callback
 
-   .. code:: html
+.. code:: html
 
-      function(data) {
-        data.type, //签名方式
-        date.pubKey, //公钥
-        data.signature //签名后内容
-      }
+   fnction(data) {
+       data.type, //签名方式
+       date.pubKey, //公钥
+       data.signature //签名后内容
+   }
 
 -  代码示例
 
@@ -395,7 +395,7 @@ BCB
 5.bcb.thirdAuth
 ~~~~~~~~~~~~~~~~~~~~
 
-调用此方法进行 bcb wallet 钱包的进行授权,并把授权状态返回
+调用此方法进行 bcb wallet 钱包进行授权，并把授权状态返回
 
 -  调用方式
 
@@ -416,12 +416,12 @@ BCB
 
 -  callback
 
-   .. code:: html
+.. code:: html
 
-      function(data) {
-        data.code, //0为授权成功
-            data.message,
-      }
+   function(data) {
+   data.code, //0为授权成功
+      data.message,
+   }
 
 -  代码示例
 
@@ -436,47 +436,3 @@ BCB
           alert(data);
       });
 
-OTC
----
-
-1.otc.openOtc
-~~~~~~~~~~~~~~~~~~~~
-
-调用此方法进入bcb wallet 钱包的OTC模块
-
--  调用方式
-
-.. code:: html
-
-   bcbwallet('otc.openOtc', null, null);
-
-2.otc.openFastExchange
-~~~~~~~~~~~~~~~~~~~~
-
-调用此方法进入bcb wallet 钱包的闪兑模块
-
--  调用方式
-
-.. code:: html
-
-   bcbwallet('otc.openFastExchange', params, null);
-
--  params
-
-::
-
-   {
-       "inCoin":"DC", //待兑换币种
-       "outCoin":"USDX", //目标兑换币种
-       "autoFinish":true
-   }
-
--  代码示例
-
-.. code:: html
-
-   bcbwallet('otc.openFastExchange', {
-       "inCoin":"DC",
-       "outCoin":"USDX",
-       "autoFinish":true
-   }, null);
