@@ -18,7 +18,7 @@ import sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
 
-project = 'BCB钱包DAPP调用原生交互接口文档说明'
+project = 'bcb wallet DAPP 接入文档'
 copyright = '2019, bcbwallet'
 author = 'bcbwallet'
 

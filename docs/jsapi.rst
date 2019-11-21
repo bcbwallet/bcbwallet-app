@@ -7,7 +7,7 @@ bcb wallet DAPP接入文档
 ======= ========= ========== ========
 版本号  作者      日期       更新内容
 ======= ========= ========== ========
-v.1.0.0 bcbwallet 2019-07-15 初始版本
+v.1.0.0 bcbwallet 2019-08-15 初始版本
 ======= ========= ========== ========
 
 背景
@@ -15,7 +15,7 @@ v.1.0.0 bcbwallet 2019-07-15 初始版本
 
 
 本文档的主要阅读对象是面向bcb链开发DAPP的第三方开发者。
-DAPP开发者只需要按照本文档的接口说明进行集成，就可以快速的完成DAPP接入到bcb wallet。
+DAPP开发者只需要按照本文档的接口说明进行集成，就可以快速的完成DAPP接入到 bcb wallet。
 开发者集成后，还可以利用 bcb wallet 钱包进行调试。
 
 
@@ -44,17 +44,13 @@ function(data){} callback  回调方法, data类型: json string
 
 ​ 1.下载官方钱包 bcb wallet；
 
-​ 2.调试 url 按照
-bcbwallet://req_web=url规则生成二维码(如：bcbwallet://req_web=http://172.18.20.130:8000/jsapi/
-)；
+​ 2.调试 url 按照bcbwallet://req_web=url规则生成二维码(如：bcbwallet://req_web=http://172.18.20.130:8000/jsapi/)；
 
-​ 3.打开 bcb wallet
-钱包，首页右上角找到扫描二维码功能,然后扫描上述步骤生成的二维码进行调试。
+​ 3.打开 bcb wallet 钱包，首页右上角找到扫描二维码功能,然后扫描上述步骤生成的二维码进行调试。
 
 官方钱包下载地址:\ https://www.bcbchain.io/down
 
-H5demo
-参考地址:\ https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbwallet
+H5demo 参考地址:\ https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbwallet
 
 Native
 ------
@@ -347,7 +343,7 @@ BCB
 
    H5调用bcb.commonPayUrl 或 bcb.commonPayParams 方法时会唤起 bcb wallet钱包的支付页面，用户此时可以查看支付信息并进行支付操作。如下图所示
   
-   .. image:: /_static/pay.png
+   .. image:: /_static/commonPay.png
     :scale: 30 %
     :alt: pay
     :align: center
@@ -356,7 +352,7 @@ BCB
 4.bcb.signData
 ~~~~~~~~~~~~~~~~~~~~
 
-调用此方法利用bcb wallet钱包的底层库进行数据签名，并把签名的数据返回
+调用此方法利用 bcb wallet 钱包进行数据签名，并把签名的数据返回
 
 -  调用方式
 
@@ -369,8 +365,8 @@ BCB
 ::
 
    {
-       "address":"bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU", //签名钱包地址
-       "signContent":"test" //待签名内容
+      "address":"bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU", //签名钱包地址
+      "signContent":"test" //待签名内容
    }
 
 -  callback
@@ -388,16 +384,16 @@ BCB
 .. code:: js
 
    bcbwallet('bcb.signData', {
-       "address":"bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU", //指定签名的钱包地址
-       "signContent":"test"
-   }, function (data) {
+        "address":"bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU", //指定签名的钱包地址
+        "signContent":"test"
+    }, function (data) {
        alert(data);
    });
 
 5.bcb.thirdAuth
 ~~~~~~~~~~~~~~~~~~~~
 
-调用此方法进行 bcb wallet 钱包进行授权，并把授权状态返回
+调用此方法利用 bcb wallet 钱包进行授权，并把授权状态返回
 
 -  调用方式
 
@@ -421,8 +417,7 @@ BCB
 .. code:: html
 
    function(data) {
-   data.code, //0为授权成功
-      data.message,
+      alert(data);
    }
 
 -  代码示例
@@ -430,11 +425,11 @@ BCB
 ::
 
     bcbwallet('bcb.thirdAuth', {
-        "nonce":"cpNGXLhwjkVMXrrOvJj1UjwV8v2qftvM",
-        "appID":"10",
-        "sessionInfo":"RFzLhUreEUM9eCAN0UEJXFXYYyvdctsU",
-        "address": "bcbi6Xt6356NuGxfGmmXm2kjPaQ9F1GefA2"
-    }, function (data) {
-        alert(data);
+         "nonce":"cpNGXLhwjkVMXrrOvJj1UjwV8v2qftvM",
+         "appID":"10",
+         "sessionInfo":"RFzLhUreEUM9eCAN0UEJXFXYYyvdctsU",
+         "address": "bcbi6Xt6356NuGxfGmmXm2kjPaQ9F1GefA2"
+     }, function (data) {
+         alert(data);
     });
 
