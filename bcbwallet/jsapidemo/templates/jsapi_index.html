@@ -24,7 +24,7 @@
         }
        
        span {
-           color: rgb(250, 202, 202);
+           color:red;
            font-size: 14px;
        }
     </style>
@@ -91,7 +91,7 @@
 
     function scanQRCode() {
         bcbwallet('native.scanQRCode', null, function (data) {
-            document.getElementById('content').innerText = data;
+            document.getElementById('content').innerText = JSON.stringify(data);
             console.log('二维码内容:' + data);
         });
     }
@@ -102,7 +102,7 @@
 
     function getWalletsInfo() {
         bcbwallet('bcb.getWalletsInfo', null, function (data) {
-            document.getElementById('content').innerText = data;
+            document.getElementById('content').innerText = JSON.stringify(data);
             console.log('钱包列表:' + data);
         })
     }
@@ -115,7 +115,7 @@
             "amount": "",
             "note": "转账"
         }, function (data) {
-            document.getElementById('content').innerText = data;
+            document.getElementById('content').innerText = JSON.stringify(data);
             console.log('转账结果:' + data);
         });
     }
@@ -159,10 +159,10 @@
     function sigaData(){
         params = {
             "address": "bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo",
-            "signContent": "签名一段数据"
+            "signContent": "作为一名普通的钱包用户，当我在topgate系统里面进行充值支付的时候唤醒BCB钱包进行支付"
         }
         bcbwallet('bcb.signData', params, function(data){
-            document.getElementById('content').innerText = data;
+            document.getElementById('content').innerText = JSON.stringify(data);
             console.log('签名后的数据:' + data);
 
             // "{  \"type\" : \"ed25519\",  \"pubKey\" : \"54531094FA183C33625C0F69DB03C3A2462E4E8994321CCB069A7C00C21D7057\",  \"signature\" : \"C4610FA1776B594A6E34B0D553FCC4B1C30064CD4359F82BBAEAC889F7833CEDBE6BAFB61B790437E86A08EB041E84969D457F606924EE11A83C8871BDCCE503\"}"
@@ -177,7 +177,7 @@
             "address": "bcbi6Xt6356NuGxfGmmXm2kjPaQ9F1GefA2"       //指定授权钱包地址
         }
         bcbwallet('bcb.thirdAuth', params, function(data){
-            document.getElementById('content').innerText = data;
+            document.getElementById('content').innerText = JSON.stringify(data);
             console.log('授权结果:' + data);
             // "{  \"result\" : true,  \"message\" : \"ok\"}"
         });

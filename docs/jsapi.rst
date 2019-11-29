@@ -37,7 +37,7 @@ DAPP开发者只需要按照本文档的接口说明进行集成，就可以快�
 ================ ========= ===============================
 module.method    string    module:模块 method:具体方法名
 params           dictionry js 调用 app 时传递的参数
-function(data){} callback  回调方法, data类型: json string
+function(data){} callback  回调方法, data类型: object
 ================ ========= ===============================
 
 调试步骤：
@@ -71,7 +71,7 @@ Native
 .. code:: html
 
    function(data) {
-     //data: 返回钱包的版本号
+     //data.versionCode: 返回钱包的版本号
    }
 
 -  代码示例
@@ -79,7 +79,7 @@ Native
 ::
 
    bcbwallet('native.getVersionCode', null, function (data) {
-       alert(data);
+       alert(JSON.stringify(data));
    });
 
 2.native.getVersionName
@@ -98,7 +98,7 @@ Native
 .. code:: html
 
    function(data) {
-      //data: 返回钱包的构建版本号
+      //data.versionName: 返回钱包的构建版本号
    }
 
 -  代码示例
@@ -106,7 +106,7 @@ Native
 ::
 
    bcbwallet('native.getVersionName', null, function (data) {
-       alert(data);
+       alert(JSON.stringify(data));
    });
 
 3.native.openUrl
@@ -167,15 +167,15 @@ Native
 .. code:: html
 
    function(data) {
-   　//data: 扫描结果字符串
+   　//data.scanResult: 扫描结果字符串
    }
 
 -  代码示例
 
 ::
 
-   bcbwallet('native.openUrl', null, function (data) {
-       alert(data);
+   bcbwallet('native.scanQRCode', null, function (data) {
+       alert(JSON.stringify(data));
    });
 
 6.native.screenChange
@@ -246,7 +246,7 @@ BCB
 ::
 
    bcbwallet('native.getWalletsInfo', null, function (data) {
-       alert(data);
+       alert(JSON.stringify(data));
    });
 
 2.bcb.commonPayUrl
@@ -285,7 +285,7 @@ BCB
      "payUrl":"http://172.18.20.156:8080/bcbtest/test2.txt"
    }, function (data) {
       alert(data);
-      //"{  \"txHash\" : \"3E105CCAD994B5F1E8415086A1EA65B7420EDCCF8331D2EB02BC0B626EEF8A41\"}"
+       //{"txHash" : "3E105CCAD994B5F1E8415086A1EA65B7420EDCCF8331D2EB02BC0B626EEF8A41"}"
    });
 3.bcb.commonPayParams
 ~~~~~~~~~~~~~~~~~~~~
@@ -336,7 +336,7 @@ BCB
 
    bcbwallet('bcb.commonPayParams', params, function (data) {
        alert(data);
-       //"{  \"txHash\" : \"3E105CCAD994B5F1E8415086A1EA65B7420EDCCF8331D2EB02BC0B626EEF8A41\"}"
+       //{ "txHash" : "3E105CCAD994B5F1E8415086A1EA65B7420EDCCF8331D2EB02BC0B626EEF8A41"}
    });
 
 -  bcb wallet 钱包支付展示
@@ -387,7 +387,7 @@ BCB
         "address":"bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU", //指定签名的钱包地址
         "signContent":"test"
     }, function (data) {
-       alert(data);
+       alert(JSON.stringify(data));
    });
 
 5.bcb.thirdAuth
@@ -417,7 +417,7 @@ BCB
 .. code:: html
 
    function(data) {
-      alert(data);
+      alert(JSON.stringify(data));
    }
 
 -  代码示例
@@ -430,6 +430,6 @@ BCB
          "sessionInfo":"RFzLhUreEUM9eCAN0UEJXFXYYyvdctsU",
          "address": "bcbi6Xt6356NuGxfGmmXm2kjPaQ9F1GefA2"
      }, function (data) {
-         alert(data);
+         alert(JSON.stringify(data));
     });
 
