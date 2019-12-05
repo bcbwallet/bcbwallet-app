@@ -159,7 +159,7 @@
     function sigaData(){
         params = {
             "address": "bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo",
-            "signContent": "作为一名普通的钱包用户，当我在topgate系统里面进行充值支付的时候唤醒BCB钱包进行支付"
+            "signContent": "作为一名普通的钱包用户，当我在BCB Wallet 钱包签名数据时可以利用此方法"
         }
         bcbwallet('bcb.signData', params, function(data){
             document.getElementById('content').innerText = JSON.stringify(data);

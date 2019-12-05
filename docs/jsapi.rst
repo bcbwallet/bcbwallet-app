@@ -389,7 +389,14 @@ BCB
     }, function (data) {
        alert(JSON.stringify(data));
    });
+-  bcb wallet 钱包签名数据展示
 
+   H5调用signData 方法时会唤起 bcb wallet钱包的数据签名功能，用户可以查看待签名数据并利用 bcb wallet 钱包进行签名操作。如下图所示
+  
+   .. image:: /_static/signdata.png
+    :scale: 30 %
+    :alt: pay
+    :align: center
 5.bcb.thirdAuth
 ~~~~~~~~~~~~~~~~~~~~
 
