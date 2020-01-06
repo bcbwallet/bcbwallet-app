@@ -491,7 +491,7 @@ BCB
 
 .. code:: js
 
-   {"address": "bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo", "contractAddr":""}
+   {"address": "bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo", "contractAddr":"bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe"}
 
 -  callback
 

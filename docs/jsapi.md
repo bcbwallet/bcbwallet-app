@@ -232,7 +232,7 @@ H5demo 参考地址:<https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbw
   	{
   		"name":"newWallet",
   		"defaultWallet": False,
-          "walletAddr":"bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU"
+      "walletAddr":"bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU"
   	}
   ]
   ```
