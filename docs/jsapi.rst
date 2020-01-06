@@ -440,3 +440,103 @@ BCB
          alert(JSON.stringify(data));
     });
 
+6. bcb.getTxhashInfo
+~~~~~~~~~~~~~~~~~~~~
+
+调用此方法可以查询指定 txhash 的交易详情
+
+-  调用方式
+
+.. code:: js
+
+   bcbwallet('bcb.getTxhashInfo', params, callback);
+
+-  params
+
+   .. code:: javascript
+
+      {"txHash":"0x246CD611C5AAD32B47C7B7FFB54B98AB2528DEF2DB049F2CB0F9990974DB94BA"}
+
+-  callback
+
+   ::
+
+      function(data){
+          alert(JSON.stringify(data))
+      }
+
+-  代码示例
+
+.. code:: javascript
+
+    bcbwallet('bcb.getTxhashInfo', {"txHash": "0x246CD611C5AAD32B47C7B7FFB54B98AB2528DEF2DB049F2CB0F9990974DB94BA"}, function(data){
+        document.getElementById('content').innerText = JSON.stringify(data);
+    });
+
+7. bcb.getTokenBalance
+~~~~~~~~~~~~~~~~~~~~
+
+调用此方法可以获取指定钱包的具体资产的余额信息
+
+-  调用方式
+
+.. code:: js
+
+    bcbwallet('bcb.getTokenBalance', params, callback);
+
+-  params
+
+.. code:: js
+
+   {"address": "bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo", "contractAddr":""}
+
+-  callback
+
+.. code:: js
+
+    function(data){
+        alert(JSON.stringify(data))
+    }
+
+-  代码示例
+
+.. code:: js
+
+    bcbwallet('bcb.getTokenBalance', {"address": "bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo", "contractAddr":"bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe"}, function(data){
+        document.getElementById('content').innerText = JSON.stringify(data);
+    });
+
+8. bcb.getAllBalance
+~~~~~~~~~~~~~~~~~~~~
+
+调用此方法可以获取指定钱包地址的所有资产信息
+
+-  调用方式
+
+.. code:: js
+
+   bcbwallet('bcb.getAllBalance', params, callback);
+
+-  params
+
+-  .. code:: js
+
+    {"address": "bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo"}
+
+-  callback
+
+-  .. code:: js
+
+    function(data){
+        alert(JSON.stringify(data))
+    }
+
+-  代码示例
+
+-  .. code:: js
+
+     bcbwallet('bcb.getAllBalance', {"address": "bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo"}, function(data){
+         document.getElementById('content').innerText = JSON.stringify(data);
+      });
+
+-  

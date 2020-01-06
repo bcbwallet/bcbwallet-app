@@ -52,6 +52,9 @@
             <tr><input type="button" class="btn" value="Params支付" onclick="commonPayParams()"></tr>
             <tr><input type="button" class="btn" value="签名数据" onclick="sigaData()"></tr>
             <tr><input type="button" class="btn" value="钱包授权" onclick="thirdAuth()"></tr>
+            <tr><input type="button" class="btn" value="Hash查询" onclick="getTxhashInfo()"></tr>
+            <tr><input type="button" class="btn" value="查询资产余额" onclick="getTokenBalance()"></tr>
+            <tr><input type="button" class="btn" value="查询钱包所有资产余额" onclick="getAllBalance()"></tr>
 
             <div>OTC</div>
             <tr><input type="button" class="btn" value="进入OTC" onclick="openOtc()"></tr>
@@ -182,6 +185,28 @@
             // "{  \"result\" : true,  \"message\" : \"ok\"}"
         });
     }
+
+    function getTxhashInfo() {
+        bcbwallet('bcb.getTxhashInfo', {"txHash": "0x246CD611C5AAD32B47C7B7FFB54B98AB2528DEF2DB049F2CB0F9990974DB94BA"}, function(data){
+            document.getElementById('content').innerText = JSON.stringify(data);
+
+        });
+    }
+
+    function getTokenBalance() {
+        bcbwallet('bcb.getTokenBalance', {"address": "bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo", "contractAddr":""}, function(data){
+            document.getElementById('content').innerText = JSON.stringify(data);
+
+        });
+    }
+
+    function getAllBalance() {
+        bcbwallet('bcb.getAllBalance', {"address": "bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo"}, function(data){
+            document.getElementById('content').innerText = JSON.stringify(data);
+
+        });
+    }
+
 
     function openOtc(){
         

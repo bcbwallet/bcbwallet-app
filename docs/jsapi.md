@@ -4,9 +4,10 @@
 
 # 版本&更新记录
 
-| 版本号  | 作者      | 日期       | 更新内容 |
-| ------- | --------- | ---------- | -------- |
-| v.1.0.0 | bcbwallet | 2019-07-15 | 初始版本 |
+| 版本号  | 作者      | 日期       | 更新内容                   |
+| ------- | --------- | ---------- | -------------------------- |
+| v.1.0.0 | bcbwallet | 2019-07-15 | 初始版本                   |
+| v1.1    | bcbwallet | 2020-01-06 | 新增方法(BCB模块6,7,8方法) |
 
 # 背景
 
@@ -225,10 +226,12 @@ H5demo 参考地址:<https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbw
   data:[
   	{
   		"name":"myWallet",
+  		"defaultWallet" : True,
   		"walletAddr":"bcbPDTi68XwoMgGTwxd7ioZeMHHz7p7ewLtQ"
   	},
   	{
   		"name":"newWallet",
+  		"defaultWallet": False,
           "walletAddr":"bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU"
   	}
   ]
@@ -422,6 +425,106 @@ H5demo 参考地址:<https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbw
       alert(data);
   });
   ```
+
+## 6. bcb.getTxhashInfo
+
+调用此方法可以查询指定 txhash 的交易详情
+
+-  调用方式
+
+  ```js
+  bcbwallet('bcb.getTxhashInfo', params, callback);
+  ```
+
+- params
+
+  ```javascript
+  {"txHash":"0x246CD611C5AAD32B47C7B7FFB54B98AB2528DEF2DB049F2CB0F9990974DB94BA"}
+  ```
+
+- callback
+
+  ```
+  function(data){
+      alert(JSON.stringify(data))
+  }
+  ```
+
+- 代码示例
+
+  ```javascript
+  bcbwallet('bcb.getTxhashInfo', {"txHash": "0x246CD611C5AAD32B47C7B7FFB54B98AB2528DEF2DB049F2CB0F9990974DB94BA"}, function(data){
+              document.getElementById('content').innerText = JSON.stringify(data);
+        });
+  ```
+
+## 7. bcb.getTokenBalance
+
+调用此方法可以获取指定钱包的具体资产的余额信息
+
+- 调用方式
+
+  ```js
+  bcbwallet('bcb.getTokenBalance', params, callback);
+  ```
+
+- params
+
+  ```js
+  {"address": "bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo", "contractAddr":""}
+  ```
+
+- callback
+
+  ```js
+  function(data){
+      alert(JSON.stringify(data))
+  }
+  ```
+
+- 代码示例
+
+  ```js
+  bcbwallet('bcb.getTokenBalance', {"address": "bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo", "contractAddr":""}, function(data){
+             document.getElementById('content').innerText = JSON.stringify(data);
+        });
+  ```
+
+## 8. bcb.getAllBalance
+
+调用此方法可以获取指定钱包地址的所有资产信息
+
+- 调用方式
+
+  ```js
+  bcbwallet('bcb.getAllBalance', params, callback);
+  ```
+
+- params
+
+- ```js
+  {"address": "bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo"}
+  ```
+
+- callback
+
+- ```js
+  function(data){
+      alert(JSON.stringify(data))
+  }
+  ```
+
+- 代码示例
+
+- ```js
+  bcbwallet('bcb.getAllBalance', {"address": "bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo"}, function(data){
+            document.getElementById('content').innerText = JSON.stringify(data);
+      });
+  ```
+
+- 
+
+   
 
 
 
