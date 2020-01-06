@@ -9,7 +9,8 @@ bcb wallet DAPP接入文档
 ======= ========= ========== ========
 v.1.0.0 bcbwallet 2019-08-15 初始版本
 ======= ========= ========== ========
-
+v1.1    bcbwallet 2020-01-06 新增方法(BCB模块6,7,8方法)
+======= ========= ========== ========================
 背景
 -----
 
@@ -233,10 +234,12 @@ BCB
     data:[
             {
                 "name":"myWallet",
+                "defaultWallet" : True,
                 "walletAddr":"bcbPDTi68XwoMgGTwxd7ioZeMHHz7p7ewLtQ"
             },
             {
                 "name":"newWallet",
+                "defaultWallet": False,
                 "walletAddr":"bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU"
             }
         ]
