@@ -453,17 +453,17 @@ BCB
 
 -  params
 
-   .. code:: javascript
+.. code:: javascript
 
-      {"txHash":"0x246CD611C5AAD32B47C7B7FFB54B98AB2528DEF2DB049F2CB0F9990974DB94BA"}
+   {"txHash":"0x246CD611C5AAD32B47C7B7FFB54B98AB2528DEF2DB049F2CB0F9990974DB94BA"}
 
 -  callback
 
-   ::
+::
 
-      function(data){
-          alert(JSON.stringify(data))
-      }
+    function(data){
+        alert(JSON.stringify(data))
+    }
 
 -  代码示例
 
@@ -519,13 +519,13 @@ BCB
 
 -  params
 
--  .. code:: js
+.. code:: js
 
     {"address": "bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo"}
 
 -  callback
 
--  .. code:: js
+.. code:: js
 
     function(data){
         alert(JSON.stringify(data))
@@ -533,7 +533,7 @@ BCB
 
 -  代码示例
 
--  .. code:: js
+.. code:: js
 
      bcbwallet('bcb.getAllBalance', {"address": "bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo"}, function(data){
          document.getElementById('content').innerText = JSON.stringify(data);

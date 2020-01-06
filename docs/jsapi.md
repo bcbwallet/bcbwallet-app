@@ -485,7 +485,7 @@ H5demo 参考地址:<https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbw
 - 代码示例
 
   ```js
-  bcbwallet('bcb.getTokenBalance', {"address": "bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo", "contractAddr":""}, function(data){
+  bcbwallet('bcb.getTokenBalance', {"address": "bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo", "contractAddr":"bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe"}, function(data){
              document.getElementById('content').innerText = JSON.stringify(data);
         });
   ```
@@ -502,13 +502,13 @@ H5demo 参考地址:<https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbw
 
 - params
 
-- ```js
+```js
   {"address": "bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo"}
   ```
 
 - callback
 
-- ```js
+```js
   function(data){
       alert(JSON.stringify(data))
   }
@@ -516,7 +516,7 @@ H5demo 参考地址:<https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbw
 
 - 代码示例
 
-- ```js
+```js
   bcbwallet('bcb.getAllBalance', {"address": "bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo"}, function(data){
             document.getElementById('content').innerText = JSON.stringify(data);
       });
