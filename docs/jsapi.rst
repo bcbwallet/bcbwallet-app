@@ -337,7 +337,7 @@ BCB
 
 .. code:: js
 
-   bcbwallet('bcb.commonPayParams', params, function (data) {
+   bcbwallet('bcb.commonPayParams', {"payParams": params}, function (data) {
        alert(data);
        //{ "txHash" : "3E105CCAD994B5F1E8415086A1EA65B7420EDCCF8331D2EB02BC0B626EEF8A41"}
    });
