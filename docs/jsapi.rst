@@ -248,7 +248,7 @@ BCB
 
 ::
 
-   bcbwallet('native.getWalletsInfo', null, function (data) {
+   bcbwallet('bcb.getWalletsInfo', null, function (data) {
        alert(JSON.stringify(data));
    });
 
