@@ -222,19 +222,8 @@ H5demo 参考地址:<https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbw
   function(data) {
   　data //所有钱包地址信息
   }
-  ****返回钱包列表信息****
-  data:[
-  	{
-  		"name":"myWallet",
-  		"defaultWallet" : True,
-  		"walletAddr":"bcbPDTi68XwoMgGTwxd7ioZeMHHz7p7ewLtQ"
-  	},
-  	{
-  		"name":"newWallet",
-  		"defaultWallet": False,
-      "walletAddr":"bcbCUh7Zsb7PBgLwHJVok2QaMhbW64HNK4FU"
-  	}
-  ]
+  ****data****
+  {"walletsinfo":[{"name":"钱包-nde","address":"bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo","defaultWallet":true},{"name":"jjj","address":"bcbAaZpiE2U7AdH3PGJzhKy3TrpV8EgENJva","defaultWallet":false},{"name":"Mywallet","address":"bcbL8BzfVfcxtqh9umN3dUhxBYNyEnV7GiSa","defaultWallet":false}]}
   ```
 
 -  代码示例	
@@ -504,7 +493,7 @@ H5demo 参考地址:<https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbw
 
 ```js
   {"address": "bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo"}
-  ```
+```
 
 - callback
 
@@ -512,7 +501,7 @@ H5demo 参考地址:<https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbw
   function(data){
       alert(JSON.stringify(data))
   }
-  ```
+```
 
 - 代码示例
 
@@ -520,7 +509,7 @@ H5demo 参考地址:<https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbw
   bcbwallet('bcb.getAllBalance', {"address": "bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo"}, function(data){
             document.getElementById('content').innerText = JSON.stringify(data);
       });
-  ```
+```
 
 - 
 
