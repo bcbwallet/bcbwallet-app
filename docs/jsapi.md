@@ -218,12 +218,17 @@ H5demo 参考地址:<https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbw
 
 - callback
 
-  ```html
+  ```js
   function(data) {
   　data //所有钱包地址信息
   }
   ****data****
-  {"walletsinfo":[{"name":"钱包-nde","address":"bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo","defaultWallet":true},{"name":"jjj","address":"bcbAaZpiE2U7AdH3PGJzhKy3TrpV8EgENJva","defaultWallet":false},{"name":"Mywallet","address":"bcbL8BzfVfcxtqh9umN3dUhxBYNyEnV7GiSa","defaultWallet":false}]}
+  {"walletsinfo":[
+        {"name":"钱包-nde","address":"bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo","defaultWallet":true},
+        {"name":"jjj","address":"bcbAaZpiE2U7AdH3PGJzhKy3TrpV8EgENJva","defaultWallet":false},
+        {"name":"Mywallet","address":"bcbL8BzfVfcxtqh9umN3dUhxBYNyEnV7GiSa","defaultWallet":false}
+      ]
+  }
   ```
 
 -  代码示例	
@@ -234,8 +239,36 @@ H5demo 参考地址:<https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbw
   });
   ```
 
+## 2.bcb.getCurrentWallet
 
-## 2.bcb.commonPayUrl
+调用此方法可以获取bcb wallet 钱包当前正在使用的钱包地址和名称信息
+
+- 调用方式
+
+  ```js
+  bcbwallet('bcb.getCurrentWallet', null, callback);
+  ```
+
+- callback
+
+  ```js
+  function(data) {
+  　data //所有钱包地址信息
+  }
+  ****data****
+  {"name":"钱包-nde","address":"bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo"}
+  ```
+
+- 代码示例
+
+  ```js
+  bcbwallet('bcb.getCurrentWallet', null, function(data){
+              alert(data);
+          });
+  ```
+
+
+## 3.bcb.commonPayUrl
 
  调用此方法可以打开 bcb wallet 钱包显示当前支付信息,信息校验正确后可以进行支付操作,支付完成后返回支付的状态
 
@@ -274,7 +307,7 @@ H5demo 参考地址:<https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbw
 
 
 
-## 3.bcb.commonPayParams
+## 4.bcb.commonPayParams
 
  调用此方法可以打开 bcb wallet 钱包显示当前支付信息,信息校验正确后可以进行支付操作,支付完成后返回支付的状态
 
@@ -330,7 +363,7 @@ H5demo 参考地址:<https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbw
 
   <img src="/Users/chuangshizhilian/Documents/ProjectRepository/bcbwallet-app/docs/_static/imgs/pay.png" style="zoom:30%" />
 
-## 4.bcb.signData
+## 5.bcb.signData
 
  调用此方法利用bcb wallet钱包的底层库进行数据签名,并把签名的数据返回
 
@@ -372,7 +405,7 @@ H5demo 参考地址:<https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbw
 
 
 
-## 5.bcb.thirdAuth
+## 6.bcb.thirdAuth
 
  调用此方法进行 bcb wallet 钱包的进行授权,并把授权状态返回
 
@@ -415,7 +448,7 @@ H5demo 参考地址:<https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbw
   });
   ```
 
-## 6. bcb.getTxhashInfo
+## 7. bcb.getTxhashInfo
 
 调用此方法可以查询指定 txhash 的交易详情
 
@@ -447,7 +480,7 @@ H5demo 参考地址:<https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbw
         });
   ```
 
-## 7. bcb.getTokenBalance
+## 8. bcb.getTokenBalance
 
 调用此方法可以获取指定钱包的具体资产的余额信息
 
@@ -479,7 +512,7 @@ H5demo 参考地址:<https://github.com/bcbwallet/bcbwallet-app/tree/master/bcbw
         });
   ```
 
-## 8. bcb.getAllBalance
+## 9. bcb.getAllBalance
 
 调用此方法可以获取指定钱包地址的所有资产信息
 

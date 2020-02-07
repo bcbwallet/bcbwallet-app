@@ -225,29 +225,57 @@ BCB
 
 -  callback
 
-.. code:: html
+.. code:: js
 
-   function(data) {
-      data //所有钱包地址信息
-   }
-   ****data****
-    {“walletsinfo”:[
-            {“name”:“钱包-nde”,“address”:“bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo”,“defaultWallet”:true},
-            {“name”:“jjj”,“address”:“bcbAaZpiE2U7AdH3PGJzhKy3TrpV8EgENJva”,“defaultWallet”:false},
-            {“name”:“Mywallet”,“address”:“bcbL8BzfVfcxtqh9umN3dUhxBYNyEnV7GiSa”,“defaultWallet”:false}
-        ]
+    function(data) {
+      　data //所有钱包地址信息
     }
-
+      ****data****
+    {"walletsinfo":[
+            {"name":"钱包-nde","address":"bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo","defaultWallet":true},
+            {"name":"jjj","address":"bcbAaZpiE2U7AdH3PGJzhKy3TrpV8EgENJva","defaultWallet":false},
+            {"name":"Mywallet","address":"bcbL8BzfVfcxtqh9umN3dUhxBYNyEnV7GiSa","defaultWallet":false}
+          ]
+    }
 
 -  代码示例
 
 ::
 
-   bcbwallet('bcb.getWalletsInfo', null, function (data) {
-       alert(JSON.stringify(data));
+   bcbwallet('native.getWalletsInfo', null, function (data) {
+       alert(data);
    });
 
-2.bcb.commonPayUrl
+2.bcb.getCurrentWallet
+~~~~~~~~~~~~~~~~~~~~~~
+
+调用此方法可以获取bcb wallet 钱包当前正在使用的钱包地址和名称信息
+
+-  调用方式
+
+.. code:: js
+
+    bcbwallet('bcb.getCurrentWallet', null, callback);
+
+-  callback
+
+.. code:: js
+
+    function(data) {
+      data //所有钱包地址信息
+    }
+    ****data****
+    {"name":"钱包-nde","address":"bcbFJk56Dt9mcwHo3r8tswzySxCcRSBrn7mo"}
+
+-  代码示例
+
+.. code:: js
+
+    bcbwallet('bcb.getCurrentWallet', null, function(data){
+                alert(data);
+            });
+
+3.bcb.commonPayUrl
 ~~~~~~~~~~~~~~~~~~~~
 
 调用此方法可以打开 bcb wallet
@@ -285,7 +313,7 @@ BCB
       alert(data);
        //{"txHash" : "3E105CCAD994B5F1E8415086A1EA65B7420EDCCF8331D2EB02BC0B626EEF8A41"}"
    });
-3.bcb.commonPayParams
+4.bcb.commonPayParams
 ~~~~~~~~~~~~~~~~~~~~
 
 调用此方法可以打开 bcb wallet
@@ -347,7 +375,7 @@ BCB
     :align: center
 
 
-4.bcb.signData
+5.bcb.signData
 ~~~~~~~~~~~~~~~~~~~~
 
 调用此方法利用 bcb wallet 钱包进行数据签名，并把签名的数据返回
@@ -395,7 +423,7 @@ BCB
     :scale: 30 %
     :alt: pay
     :align: center
-5.bcb.thirdAuth
+6.bcb.thirdAuth
 ~~~~~~~~~~~~~~~~~~~~
 
 调用此方法利用 bcb wallet 钱包进行授权，并把授权状态返回
@@ -438,7 +466,7 @@ BCB
          alert(JSON.stringify(data));
     });
 
-6. bcb.getTxhashInfo
+7. bcb.getTxhashInfo
 ~~~~~~~~~~~~~~~~~~~~
 
 调用此方法可以查询指定 txhash 的交易详情
@@ -471,7 +499,7 @@ BCB
         document.getElementById('content').innerText = JSON.stringify(data);
     });
 
-7. bcb.getTokenBalance
+8. bcb.getTokenBalance
 ~~~~~~~~~~~~~~~~~~~~
 
 调用此方法可以获取指定钱包的具体资产的余额信息
@@ -504,7 +532,7 @@ BCB
         document.getElementById('content').innerText = JSON.stringify(data);
     });
 
-8. bcb.getAllBalance
+9. bcb.getAllBalance
 ~~~~~~~~~~~~~~~~~~~~
 
 调用此方法可以获取指定钱包地址的所有资产信息

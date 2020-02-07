@@ -47,6 +47,7 @@
 
             <div>BCB</div>
             <tr><input type="button" class="btn" value="获取钱包信息" onclick="getWalletsInfo()"></tr>
+            <tr><input type="button" class="btn" value="获取当前钱包" onclick="getCurrentWallet()"></tr>
             <tr><input type="button" class="btn" value="转账" onclick="transfer()"></tr>
             <tr><input type="button" class="btn" value="url 支付" onclick="commonPayUrl()"></tr>
             <tr><input type="button" class="btn" value="Params支付" onclick="commonPayParams()"></tr>
@@ -68,14 +69,14 @@
 <script>
     function getVersionCode() {
         bcbwallet('native.getVersionCode', null, function (data) {
-            document.getElementById('content').innerText = data;
+            document.getElementById('content').innerText = data.versionCode;
             console.log('版本号:' + data);
         });
     }
 
     function getVersionName() {
         bcbwallet('native.getVersionName', null, function (data) {
-            document.getElementById('content').innerText = data;
+            document.getElementById('content').innerText = data.versionName;
             console.log('版本名称:' + data);
         });
     }
@@ -110,6 +111,16 @@
         })
     }
 
+    function getCurrentWallet() {
+        bcbwallet('bcb.getCurrentWallet', null, function(data){
+            document.getElementById('content').innerText = JSON.stringify(data);
+            console.log('钱包列表:' + data);
+        });
+    }
+
+    
+    
+
     function transfer() {
         bcbwallet('bcb.transfer', {
             "from": "",
@@ -124,7 +135,7 @@
     }
 
     function commonPayUrl() {
-        bcbwallet('bcb.commonPayUrl', { "payUrl": "http://172.18.20.130:8000/bcbpay/" }, function (data) {
+        bcbwallet('bcb.commonPayUrl', { "payUrl": "https://coldwallet.bcbchain.io/api/v1/fomo?file=bcb-jsapi-urlpay" }, function (data) {
             document.getElementById('content').innerText = data;
             console.log('支付结果:' + data);
             // "{  \"txHash\" : \"3E105CCAD994B5F1E8415086A1EA65B7420EDCCF8331D2EB02BC0B626EEF8A41\"}"
