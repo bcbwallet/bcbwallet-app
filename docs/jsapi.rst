@@ -242,7 +242,7 @@ BCB
 
 ::
 
-   bcbwallet('native.getWalletsInfo', null, function (data) {
+   bcbwallet('bcb.getWalletsInfo', null, function (data) {
        alert(data);
    });
 
