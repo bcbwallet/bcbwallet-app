@@ -1,2 +1,1 @@
-# bcbwallet-app
-wallet app for BCB
+There is no App here.
