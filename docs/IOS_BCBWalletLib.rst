@@ -77,9 +77,9 @@ API调用，返回的内容也是一个json串，里面会携带返回的状态
 **说明：设置SDK内部接口回调信息的语言类型**
 
 2.1 方法原型
-^^^^^^^^^^^^
+^^^^^^^^^^^^^
 
-**+ (void)setLanguage:(NSString \*)language;**
+**+(void)setLanguage:(NSString *)language;**
 
 **输入参数说明**
 
@@ -131,7 +131,7 @@ result))finish;**
 4.1 方法原型
 ^^^^^^^^^^^^
 
-**- (void)setWalletChain:(NSString \*)chainId;**
+**- (void)setWalletChain:(NSString *)chainId;**
 
 **输入参数说明**
 
@@ -475,7 +475,7 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 5.1 方法原型
 ^^^^^^^^^^^^
 
-**-(ICSDKResultModel \*)getWallets;**
+**-(ICSDKResultModel *)getWallets;**
 
 5.2 返回结果
 ^^^^^^^^^^^^
@@ -1552,7 +1552,7 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 1.1 方法原型
 ^^^^^^^^^^^^
 
-**-(BOOL)setCloudDomain:(NSString \*)domain;**
+**-(BOOL)setCloudDomain:(NSString *)domain;**
 
 **参数字段说明**
 
