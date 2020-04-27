@@ -12,7 +12,7 @@ Welcome to BCB钱包DAPP调用原生交互接口文档说明's documentation!
 
    jsapi.rst
    bcbwallet protocol.rst 
-   Android_bcbwalletSDK.rst
+   Android钱包SDK文档说明.rst
    IOS_BCBWalletLib.rst
 	
 Indices and tables
