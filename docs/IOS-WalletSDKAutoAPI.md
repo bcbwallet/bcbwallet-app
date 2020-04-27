@@ -1260,6 +1260,41 @@
 
 # 新增云钱包接口
 
+### sdk_setCloudDomain
+
+初始化域名设置
+
+#### 请求格式
+
+参数
+
+| name   | type   | required | description |
+| :----- | :----- | :------- | :---------- |
+| domain | string | yes      | 域名        |
+
+请求示例
+
+```json
+{
+	"method": "sdk_setCloudDomain",
+	"params": {
+		"domain": "https://api.iwallet.cloud/pkey_api"
+	}
+}
+```
+
+返回示例
+
+```json
+{
+    "code":0,
+    "msg":"ok",
+	"result": {}
+}
+```
+
+### 
+
 ### sdk_setCloudMerchantId
 
 初始化设置

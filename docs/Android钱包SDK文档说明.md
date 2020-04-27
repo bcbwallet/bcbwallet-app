@@ -8,6 +8,7 @@
 | v2.0    | bcbwalelt | 2019-06-25 | 2.0链接口               |
 | v3.0    | bcbwallet | 2019-11-14 | 增加2.13-2.15侧链的支持 |
 | v4.0    | bcbwallet | 2019-12-04 | 增加域名切换            |
+| v5.0    | bcbwallet | 2020-04-27 | 增加托管钱包模块        |
 
 ## 功能说明
 
@@ -62,7 +63,7 @@ void getChainInfo(final OnWalletCallback<List<String>> callback);
 
 | 字段名   | 类型                           | 必须 | 说明                                                         |
 | -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | OnWalletCallback<List<String>> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback),成功返回所有的链的名称 |
+| callback | OnWalletCallback<List<String>> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback),成功返回所有的链的名称 |
 
 返回结果：
 
@@ -97,7 +98,7 @@ void switchChain(String chainName,final OnWalletCallback<String> callback)；
 | 字段名    | 类型                     | 必须 | 说明                                                         |
 | --------- | ------------------------ | ---- | ------------------------------------------------------------ |
 | chainName | String                   | 是   | 切换到的链的名称，例如devtest,jiujiu                         |
-| callback  | OnWalletCallback<String> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback),成功透传chainName |
+| callback  | OnWalletCallback<String> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback),成功透传chainName |
 
 调用时机：
 
@@ -127,7 +128,7 @@ void getDomainList(final OnWalletCallback<List<String>> callback);
 
 | 字段名   | 类型                           | 必须 | 说明                                                         |
 | -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | OnWalletCallback<List<String>> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback),成功返回所有的链的名称 |
+| callback | OnWalletCallback<List<String>> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback),成功返回所有的链的名称 |
 
 返回结果：
 
@@ -162,7 +163,7 @@ void setWalletDomain(String domain,final OnWalletCallback<String> callback)；
 | 字段名   | 类型                     | 必须 | 说明                                                         |
 | -------- | ------------------------ | ---- | ------------------------------------------------------------ |
 | domain   | String                   | 是   | 域名地址，例如"https://wallet2.bcbchain.io"                  |
-| callback | OnWalletCallback<String> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback),成功透传chainName |
+| callback | OnWalletCallback<String> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback),成功透传chainName |
 
 调用时机：
 
@@ -183,7 +184,7 @@ void setWalletDomain(String domain,final OnWalletCallback<String> callback)；
 | name             | String                               | 是   | 钱包名称                                                     |
 | password         | String                               | 是   | 钱包密码                                                     |
 | recommend        | String                               | 否   | 推荐人的钱包地址                                             |
-| onWalletCallback | OnWalletCallback<CreateWalletEntity> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback),CreateWalletEntity见附录[6.3](#6.3 CreateWalletEntity) |
+| onWalletCallback | OnWalletCallback<CreateWalletEntity> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback),CreateWalletEntity见附录[7.3](#7.3 CreateWalletEntity) |
 
 返回结果:
 
@@ -199,7 +200,7 @@ void OnWalletListCallback<WalletEntity> getWallets();
 
 | 参数名   | 类型                               | 必须 | 说明                                             |
 | -------- | ---------------------------------- | ---- | ------------------------------------------------ |
-| callback | OnWalletListCallback<WalletEntity> | 是   | 回调接口，见附录[6.2](#6.2 OnWalletListCallback) |
+| callback | OnWalletListCallback<WalletEntity> | 是   | 回调接口，见附录[7.2](#7.2 OnWalletListCallback) |
 
 返回结果：
 
@@ -217,7 +218,7 @@ void OnWalletListCallback<WalletEntity> getWallets();
 | -------- | ------------------------ | ---- | -------------------------------------------- |
 | address  | String                   | 是   | 钱包地址                                     |
 | password | String                   | 是   | 钱包密码                                     |
-| callback | OnWalletCallback<String> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback) |
+| callback | OnWalletCallback<String> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback) |
 
 返回结果:
 
@@ -235,7 +236,7 @@ void OnWalletListCallback<WalletEntity> getWallets();
 | -------- | ------------------------ | ---- | -------------------------------------------- |
 | address  | String                   | 是   | 钱包地址                                     |
 | password | String                   | 是   | 钱包密码                                     |
-| callback | OnWalletCallback<String> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback) |
+| callback | OnWalletCallback<String> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback) |
 
 返回结果:
 
@@ -253,7 +254,7 @@ void OnWalletListCallback<WalletEntity> getWallets();
 | -------- | ------------------------ | ---- | -------------------------------------------- |
 | address  | String                   | 是   | 钱包地址                                     |
 | password | String                   | 是   | 钱包密码                                     |
-| callback | OnWalletCallback<String> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback) |
+| callback | OnWalletCallback<String> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback) |
 
 返回结果:
 
@@ -273,7 +274,7 @@ void OnWalletListCallback<WalletEntity> getWallets();
 | privatekey | String                         | 是   | 私钥                                                         |
 | password   | String                         | 是   | 钱包密码                                                     |
 | recommend  | String                         | 否   | 推荐人的钱包地址                                             |
-| callback   | OnWalletCallback<WalletEntity> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback)，WalletEntity参见[6.4](#6.4 WalletEntity) |
+| callback   | OnWalletCallback<WalletEntity> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback)，WalletEntity参见[7.4](#7.4 WalletEntity) |
 
 返回结果:
 
@@ -293,7 +294,7 @@ void OnWalletListCallback<WalletEntity> getWallets();
 | privatekey | String                         | 是   | 私钥                                                         |
 | password   | String                         | 是   | 钱包密码                                                     |
 | recommend  | String                         | 否   | 推荐人的钱包地址                                             |
-| callback   | OnWalletCallback<WalletEntity> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback)，WalletEntity参见[6.4](#6.4 WalletEntity) |
+| callback   | OnWalletCallback<WalletEntity> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback)，WalletEntity参见[7.4](#7.4 WalletEntity) |
 
 返回结果:
 
@@ -313,7 +314,7 @@ void OnWalletListCallback<WalletEntity> getWallets();
 | privatekey | String                         | 是   | 私钥                                                         |
 | password   | String                         | 是   | 钱包密码                                                     |
 | recommend  | String                         | 否   | 推荐人的钱包地址                                             |
-| callback   | OnWalletCallback<WalletEntity> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback)，WalletEntity参见[6.4](#6.4 WalletEntity) |
+| callback   | OnWalletCallback<WalletEntity> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback)，WalletEntity参见[7.4](#7.4 WalletEntity) |
 
 返回结果:
 
@@ -331,7 +332,7 @@ void OnWalletListCallback<WalletEntity> getWallets();
 | -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
 | address  | String                         | 是   | 钱包地址                                                     |
 | password | String                         | 是   | 钱包密码                                                     |
-| callback | OnWalletCallback<WalletEntity> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback)，WalletEntity参见[6.4](#6.4 WalletEntity) |
+| callback | OnWalletCallback<WalletEntity> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback)，WalletEntity参见[7.4](#7.4 WalletEntity) |
 
 返回结果:
 
@@ -350,7 +351,7 @@ void OnWalletListCallback<WalletEntity> getWallets();
 | address     | String                    | 是   | 钱包地址                                                     |
 | oldPassword | String                    | 是   | 钱包旧密码                                                   |
 | newPassword | String                    | 是   | 钱包新密码，必须是至少8位的字母数字组合                      |
-| callback    | OnWalletCallback<Boolean> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback),true 成功，false 失败 |
+| callback    | OnWalletCallback<Boolean> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback),true 成功，false 失败 |
 
 返回结果:
 
@@ -368,7 +369,7 @@ void changeWalletName(String address,String newName,OnWalletCallback<Boolean> ca
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | address  | String                    | 是   | 钱包地址                                                     |
 | newName  | String                    | 是   | 新钱包名称                                                   |
-| callback | OnWalletCallback<Boolean> | 是   | 回调接口，见附录[6.1](#6.1%20OnWalletCallback)，true 成功，false 失败 |
+| callback | OnWalletCallback<Boolean> | 是   | 回调接口，见附录[7.1](#7.1%20OnWalletCallback)，true 成功，false 失败 |
 
 返回结果:
 
@@ -386,7 +387,7 @@ void deleteWallet(String address,String password,OnWalletCallback<Boolean> callb
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | address  | String                    | 是   | 钱包地址                                                     |
 | password | String                    | 是   | 钱包密码                                                     |
-| callback | OnWalletCallback<Boolean> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback),true 成功，false 失败 |
+| callback | OnWalletCallback<Boolean> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback),true 成功，false 失败 |
 
 返回结果:
 
@@ -410,7 +411,7 @@ void deleteWallet(String address,String password,OnWalletCallback<Boolean> callb
 | toAddr   | String                   | 是   | 转账到的目标地址                                             |
 | value    | String                   | 是   | 转账的金额，例如"102.23"                                     |
 | note     | String                   | 否   | 转账的备注，对于BCB链，这个字段最终会写入到区块中            |
-| callback | OnWalletCallback<String> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback)，String为txHash |
+| callback | OnWalletCallback<String> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback)，String为txHash |
 
 返回结果:
 
@@ -430,7 +431,7 @@ void deleteWallet(String address,String password,OnWalletCallback<Boolean> callb
 | address    | String                   | 是   | 钱包地址                                                     |
 | password   | String                   | 是   | 钱包密码                                                     |
 | walletCall | String                   | 是   | json串，此字段根据不同的合约定义有不同的数据格式；具体请参见《BCB钱包通用支付接入规范》总描述 |
-| callback   | OnWalletCallback<String> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback)，String为txHash |
+| callback   | OnWalletCallback<String> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback)，String为txHash |
 
 返回结果:
 
@@ -504,7 +505,7 @@ void deleteWallet(String address,String password,OnWalletCallback<Boolean> callb
 | ----------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
 | address     | String                              | 是   | 钱包地址                                                     |
 | legalSymbol | String                              | 是   | 资产的法币计价单位，人民币为：CNY；美元为：USD               |
-| callback    | OnWalletListCallback<BalanceEntity> | 是   | 回调接口，见附录[6.2](#6.2 OnWalletListCallback)，BalanceEntity见[6.5](#6.5 BalanceEntity) |
+| callback    | OnWalletListCallback<BalanceEntity> | 是   | 回调接口，见附录[7.2](#7.2 OnWalletListCallback)，BalanceEntity见[7.5](#7.5 BalanceEntity) |
 
 返回结果:
 
@@ -521,7 +522,7 @@ void deleteWallet(String address,String password,OnWalletCallback<Boolean> callb
 | 字段名   | 类型                              | 必须 | 说明                                                         |
 | -------- | --------------------------------- | ---- | ------------------------------------------------------------ |
 | address  | String                            | 是   | 钱包地址                                                     |
-| callback | OnWalletListCallback<AssetEntity> | 是   | 回调接口，见附录[6.2](#6.2 OnWalletListCallback)，AssetEntity见[6.6](#6.6 AssetEntity) |
+| callback | OnWalletListCallback<AssetEntity> | 是   | 回调接口，见附录[7.2](#7.2 OnWalletListCallback)，AssetEntity见[7.6](#7.6 AssetEntity) |
 
 返回结果:
 
@@ -540,7 +541,7 @@ void deleteWallet(String address,String password,OnWalletCallback<Boolean> callb
 | address     | String                              | 是   | 钱包地址                                                     |
 | conAddr     | String                              | 是   | 币种合约地址                                                 |
 | legalSymbol | String                              | 是   | 币种资产的法币计价单位，人民币为：CNY；美元为：USD           |
-| callback    | OnWalletCallback<AssetDetailEntity> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback)，AssetDetailEntity见[6.7](#6.7 AssetDetailEntity) |
+| callback    | OnWalletCallback<AssetDetailEntity> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback)，AssetDetailEntity见[7.7](#7.7 AssetDetailEntity) |
 
 返回结果:
 
@@ -560,7 +561,7 @@ void deleteWallet(String address,String password,OnWalletCallback<Boolean> callb
 | conAddr    | string                                  | 是   | 币种合约地址                                                 |
 | page       | int                                     | 是   | 页码从0开始                                                  |
 | count      | int                                     | 是   | 条数                                                         |
-| callback   | OnWalletListCallback<TransactionRecord> | 是   | 回调接口，见附录[6.2](#6.2 OnWalletListCallback)，TransactionRecord见[6.8](#6.8 TransactionRecord) |
+| callback   | OnWalletListCallback<TransactionRecord> | 是   | 回调接口，见附录[7.2](#7.2 OnWalletListCallback)，TransactionRecord见[7.8](#7.8 TransactionRecord) |
 
 返回结果:
 
@@ -655,7 +656,7 @@ void encryptContent(String content,OnWalletCallback<String> callback);
 | 字段名   | 类型                     | 必须 | 说明                                                         |
 | -------- | ------------------------ | ---- | ------------------------------------------------------------ |
 | content  | String                   | 是   | 加密内容                                                     |
-| callback | OnWalletCallback<String> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback)，String为加密后内容 |
+| callback | OnWalletCallback<String> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback)，String为加密后内容 |
 
 ### 5.2 解密
 
@@ -668,7 +669,7 @@ void decryptContent(String encContent,OnWalletCallback<String> callback);
 | 字段名   | 类型                     | 必须 | 说明                                                         |
 | -------- | ------------------------ | ---- | ------------------------------------------------------------ |
 | content  | String                   | 是   | 解密内容                                                     |
-| callback | OnWalletCallback<String> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback)，String为解密后内容 |
+| callback | OnWalletCallback<String> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback)，String为解密后内容 |
 
 ### 5.3 生成密钥对
 
@@ -680,7 +681,7 @@ void genKeyPair(final OnWalletCallback<KeyPairEntity> callback);
 
 | 字段名   | 类型                            | 必须 | 说明                                                         |
 | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | OnWalletCallback<KeyPairEntity> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback)，回调接口，KeyPairEntity见[6.10](#6.10 KeyPairEntity) |
+| callback | OnWalletCallback<KeyPairEntity> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback)，回调接口，KeyPairEntity见[7.10](#7.10 KeyPairEntity) |
 
 ### 5.4 私钥签名
 
@@ -694,7 +695,7 @@ void genSign(String privateKey, String hexData, final OnWalletCallback<SignResul
 | ---------- | ---------------------------------- | ---- | ------------------------------------------------------------ |
 | privateKey | String                             | 是   | 私钥hex                                                      |
 | hexData    | String                             | 是   | 待签名内容hex                                                |
-| callback   | OnWalletCallback<SignResultEntity> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback)，SignResultEntity见[6.11](#6.11 SignResultEntity) |
+| callback   | OnWalletCallback<SignResultEntity> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback)，SignResultEntity见[7.11](#7.11 SignResultEntity) |
 
 ### 5.5 数据验签
 
@@ -709,7 +710,7 @@ void verifyClientData(String content, String pubKey, String signature, OnWalletC
 | content   | String                    | 是   | 待验签内容hex                                                |
 | pubKey    | String                    | 是   | 验签公钥hex                                                  |
 | signature | String                    | 是   | 签名hex                                                      |
-| callback  | OnWalletCallback<Boolean> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback)，true 成功，false 失败 |
+| callback  | OnWalletCallback<Boolean> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback)，true 成功，false 失败 |
 
 ### 5.6 根据助记词返回对应钱包地址
 
@@ -722,7 +723,7 @@ void getAddrFromMnenonicWords(final String mnenonicwords,OnWalletCallback<String
 | 字段名        | 类型                     | 必须 | 说明                                                         |
 | ------------- | ------------------------ | ---- | ------------------------------------------------------------ |
 | mnenonicwords | String                   | 是   | 助记词                                                       |
-| callback      | OnWalletCallback<String> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback)，String为钱包地址 |
+| callback      | OnWalletCallback<String> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback)，String为钱包地址 |
 
 ### 5.7 根据私钥返回对应钱包地址
 
@@ -735,7 +736,7 @@ void getAddrFromPrivateKey(final String privatekey,OnWalletCallback<String> call
 | 字段名     | 类型                     | 必须 | 说明                                                         |
 | ---------- | ------------------------ | ---- | ------------------------------------------------------------ |
 | privatekey | String                   | 是   | 私钥                                                         |
-| callback   | OnWalletCallback<String> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback)，String为钱包地址 |
+| callback   | OnWalletCallback<String> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback)，String为钱包地址 |
 
 ### 5.8 根据Keystore返回对应钱包地址
 
@@ -749,11 +750,96 @@ void getAddrFromKeyStore(final String keystore, final String password, OnWalletC
 | -------- | ------------------------ | ---- | ------------------------------------------------------------ |
 | keystore | String                   | 是   | keystore                                                     |
 | password | String                   | 是   | 密码                                                         |
-| callback | OnWalletCallback<String> | 是   | 回调接口，见附录[6.1](#6.1 OnWalletCallback)，String为钱包地址 |
+| callback | OnWalletCallback<String> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback)，String为钱包地址 |
 
-## 6 附录
+## 6.托管钱包模块
 
-### 6.1 OnWalletCallback
+### 6.1 设置域名
+
+方法原型：
+
+boolean setCloudDomain(String domain);
+
+参数说明：
+
+| 参数名 | 类型   | 必须 | 说明                                            |
+| ------ | ------ | ---- | ----------------------------------------------- |
+| domain | String | 是   | 域名（例：https://api.iwallet.cloud/pkey_api/） |
+
+返回结果:
+
+true：设置成功，false：设置失败
+
+### 6.2 设置商户信息
+
+方法原型：
+
+boolean setMerchantId(String merchantId, String remoteDHPubKey);
+
+参数说明：
+
+| 参数名         | 类型   | 必须 | 说明         |
+| -------------- | ------ | ---- | ------------ |
+| merchantId     | String | 是   | 商户ID       |
+| remoteDHPubKey | String | 是   | 商户对应公钥 |
+
+返回结果:
+
+true：设置成功，false：设置失败
+
+### 6.3 获取验证码
+
+方法原型：void getCode(String account, OnWalletCallback<Boolean> callback);
+
+参数说明：
+
+| 字段名   | 类型                      | 必须 | 说明                                                         |
+| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
+| account  | String                    | 是   | 手机号(加国际区号，例：+86139********)或邮箱（例：12345@qq.com） |
+| callback | OnWalletCallback<Boolean> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback)，true 成功，false 失败 |
+
+### 6.4 绑定账号
+
+方法原型：void bindAccount(String account, String code, OnWalletCallback<Boolean> callback);
+
+参数说明：
+
+| 字段名   | 类型                      | 必须 | 说明                                                         |
+| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
+| account  | String                    | 是   | 手机号(加国际区号，例：+86139********)或邮箱（例：12345@qq.com） |
+| code     | String                    | 是   | 验证码                                                       |
+| callback | OnWalletCallback<Boolean> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback)，true 成功，false 失败 |
+
+### 6.5 数据签名
+
+方法原型：
+
+void secretSign(String content, final OnWalletCallback<SignResultEntity> callback);
+
+参数说明：
+
+| 字段名   | 类型                               | 必须 | 说明                                                         |
+| -------- | ---------------------------------- | ---- | ------------------------------------------------------------ |
+| content  | String                             | 是   | 待签名内容hex                                                |
+| callback | OnWalletCallback<SignResultEntity> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback)，SignResultEntity见[7.11](#7.11 SignResultEntity) |
+
+### 6.6 数据验签
+
+方法原型：
+
+void verifySign(String content, String signature,OnWalletCallback<Boolean> callback);
+
+参数说明：
+
+| 字段名    | 类型                      | 必须 | 说明                                                         |
+| --------- | ------------------------- | ---- | ------------------------------------------------------------ |
+| content   | String                    | 是   | 待验签内容hex                                                |
+| signature | String                    | 是   | 签名hex                                                      |
+| callback  | OnWalletCallback<Boolean> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback)，true 成功，false 失败 |
+
+## 7 附录
+
+### 7.1 OnWalletCallback
 
 ```java
 interface OnWalletCallback<T> {
@@ -765,7 +851,7 @@ interface OnWalletCallback<T> {
 }
 ```
 
-### 6.2 OnWalletListCallback
+### 7.2 OnWalletListCallback
 
 ```java
 interface OnWalletListCallback<T> {
@@ -777,7 +863,7 @@ interface OnWalletListCallback<T> {
 }
 ```
 
-### 6.3 CreateWalletEntity
+### 7.3 CreateWalletEntity
 
 ```java
 class CreateWalletEntity {
@@ -787,7 +873,7 @@ class CreateWalletEntity {
 }
 ```
 
-### 6.4 WalletEntity
+### 7.4 WalletEntity
 
 ```java
 class WalletEntity {
@@ -796,7 +882,7 @@ class WalletEntity {
 }
 ```
 
-### 6.5 BalanceEntity
+### 7.5 BalanceEntity
 
 ```java
 class BalanceEntity {
@@ -812,7 +898,7 @@ class BalanceEntity {
 } 
 ```
 
-### 6.6 AssetEntity
+### 7.6 AssetEntity
 
 ```java
 class AssetEntity {
@@ -825,7 +911,7 @@ class AssetEntity {
 }
 ```
 
-### 6.7 AssetDetailEntity
+### 7.7 AssetDetailEntity
 
 ```java
 class AssetDetailEntity {
@@ -840,7 +926,7 @@ class AssetDetailEntity {
 }
 ```
 
-### 6.8 TransactionRecord
+### 7.8 TransactionRecord
 
 ```java
 class TransactionRecord {
@@ -860,7 +946,7 @@ class TransactionRecord {
 }
 ```
 
-### 6.9 OnExecCallback
+### 7.9 OnExecCallback
 
 ```java
 interface OnExecCallback {
@@ -869,7 +955,7 @@ interface OnExecCallback {
 }
 ```
 
-### 6.10 KeyPairEntity
+### 7.10 KeyPairEntity
 
 ```java
 class KeyPairEntity {
@@ -878,7 +964,7 @@ class KeyPairEntity {
 }
 ```
 
-### 6.11 SignResultEntity
+### 7.11 SignResultEntity
 
 ```java
 class SignResultEntity {
