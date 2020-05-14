@@ -1357,8 +1357,6 @@ return NO;
 
 
 
-### 
-
 ### 2.设置商户信息
 
 **说明：初始化设置**
@@ -1390,9 +1388,25 @@ return NO;
 
 
 
-### 3.获取验证码
+### 3.获取已绑定账户
 
 #### 3.1 方法原型
+
+##### **-(NSString *)hasBoundAccount;**
+
+#### 3.2 返回结果
+
+**示例：返回结果-空字符串即表示未绑定过账户**
+
+```java
+return @"+86139***";
+```
+
+
+
+### 4.获取验证码
+
+#### 4.1 方法原型
 
 ##### **-(void)getCode:(NSString *)account finish:(void(^)(ICSDKResultModel * result))finish;**
 
@@ -1401,44 +1415,6 @@ return NO;
 | 字段名  | 类型   | 必须 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
 | account | string | 是   | 手机号(加国际区号，例：+86139********)或邮箱（例：12345@qq.com） |
-
-#### 3.2 返回结果
-
-**示例：返回结果-正确时**
-
-```java
-{
-    "code":0,
-	"msg": "",
-	"result": {}
-}
-
-```
-
-**示例：返回结果-错误时**
-
-```java
-{
-    "code":-1001,
-	"msg": "发送失败",
-    "result":{}
-}
-```
-
-
-
-### 4.绑定账号
-
-#### 4.1 方法原型
-
-##### **-(void)bindAccount:(NSString *)account code:(NSString *)code finish:(void(^)(ICSDKResultModel * result))finish;**
-
-**参数字段说明**
-
-| 字段名  | 类型   | 必须 | 说明                                                         |
-| ------- | ------ | ---- | ------------------------------------------------------------ |
-| account | String | 是   | 手机号(加国际区号，例：+86139********)或邮箱（例：12345@qq.com） |
-| code    | String | 是   | 验证码                                                       |
 
 #### 4.2 返回结果
 
@@ -1465,9 +1441,86 @@ return NO;
 
 
 
-### 5.创建云钱包
+### 5.绑定账号
 
 #### 5.1 方法原型
+
+##### **-(void)bindAccount:(NSString *)account code:(NSString *)code password:(NSString *)password finish:(void(^)(ICSDKResultModel * result))finish;**
+
+**参数字段说明**
+
+| 字段名   | 类型   | 必须 | 说明                                                         |
+| -------- | ------ | ---- | ------------------------------------------------------------ |
+| account  | String | 是   | 手机号(加国际区号，例：+86139********)或邮箱（例：12345@qq.com） |
+| code     | String | 是   | 验证码                                                       |
+| password | String | 是   | 账号密码(可传空串)                                           |
+
+#### 5.2 返回结果
+
+**示例：返回结果-正确时**
+
+```java
+{
+    "code":0,
+	"msg": "",
+	"result": {}
+}
+
+```
+
+**示例：返回结果-错误时**
+
+```java
+{
+    "code":-1001,
+	"msg": "发送失败",
+    "result":{}
+}
+```
+
+
+
+### 6.绑定新的验证方式
+
+#### 6.1 方法原型
+
+##### **-(void)addVerify:(NSString *)account code:(NSString *)code  finish:(void(^)(ICSDKResultModel * result))finish**;
+
+**参数字段说明**
+
+| 字段名  | 类型   | 必须 | 说明                                                         |
+| ------- | ------ | ---- | ------------------------------------------------------------ |
+| account | String | 是   | 手机号(加国际区号，例：+86139********)或邮箱（例：12345@qq.com） |
+| code    | String | 是   | 验证码                                                       |
+
+#### 6.2 返回结果
+
+**示例：返回结果-正确时**
+
+```java
+{
+    "code":0,
+	"msg": "",
+	"result": {}
+}
+
+```
+
+**示例：返回结果-错误时**
+
+```java
+{
+    "code":-1,
+	"msg": "该账户已存在",
+    "result":{}
+}
+```
+
+
+
+### 7.创建云钱包
+
+#### 7.1 方法原型
 
 ##### **-(void)createCloudWallet:(NSString *)chainType finish:(void(^)(ICSDKResultModel * result))finish;**
 
@@ -1477,7 +1530,7 @@ return NO;
 | --------- | ------ | ---- | ---------------------------- |
 | chainType | String | 是   | 主链，例如BCB/ETH/BTC/EOS... |
 
-#### 5.2 返回结果
+#### 7.2 返回结果
 
 **示例：返回结果-正确时**
 
@@ -1504,9 +1557,9 @@ return NO;
 
 
 
-### 6.获取云钱包地址列表
+### 8.获取云钱包地址列表
 
-#### 6.1 方法原型
+#### 8.1 方法原型
 
 ##### **-(void)getCloudWalletList:(NSString *)chainType finish:(void(^)(ICSDKResultModel * result))finish;**
 
@@ -1516,7 +1569,7 @@ return NO;
 | --------- | ------ | ---- | ---------------------------- |
 | chainType | String | 是   | 主链，例如BCB/ETH/BTC/EOS... |
 
-#### 6.2 返回结果
+#### 8.2 返回结果
 
 **示例：返回结果-正确时**
 
@@ -1544,21 +1597,22 @@ return NO;
 
 
 
-### 7.云钱包通用支付
+### 9.云钱包通用支付
 
-#### 7.1 方法原型
+#### 9.1 方法原型
 
-##### **-(void)cloudWalletTransation:(NSString *)walletAddr chainType:(NSString *)chainType walletCall:(NSString *)walletCall finish:(void(^)(ICSDKResultModel * result))finish;**
+##### **-(void)cloudWalletTransation:(NSString *)walletAddr password:(NSString *)password chainType:(NSString *)chainType walletCall:(NSString *)walletCall finish:(void(^)(ICSDKResultModel * result))finish;**
 
 **参数字段说明**
 
 | 字段名     | 类型   | 必须 | 说明                                                         |
 | ---------- | ------ | ---- | ------------------------------------------------------------ |
 | walletAddr | String | 是   | 钱包地址                                                     |
+| password   | String | 是   | 账号密码(可传空串)                                           |
 | chainType  | String | 是   | 主链，例如BCB/ETH/BTC/EOS...                                 |
 | walletCall | String | 是   | json串，此字段根据不同的合约定义有不同的数据格式；具体请参见《BCB钱包通用支付接入规范》总描述 |
 
-#### 7.2 返回结果
+#### 9.2 返回结果
 
 **示例：返回结果-正确时**
 
@@ -1585,9 +1639,9 @@ return NO;
 
 
 
-### 8.查询指定地址资产
+### 10.查询指定地址资产
 
-#### 8.1 方法原型
+#### 10.1 方法原型
 
 ##### **-(void)getCloudAddrsBalance:(NSString *)walletAddr legalSymbol:(NSString *)legalSymbol finish:(void(^)(ICSDKResultModel * result))finish;**
 
@@ -1598,7 +1652,7 @@ return NO;
 | walletAddr  | string | 是   | 钱包地址                                       |
 | legalSymbol | string | 是   | 资产的法币计价单位，人民币为：CNY；美元为：USD |
 
-#### 8.2 返回结果
+#### 10.2 返回结果
 
 **返回结果-正确时**
 
@@ -1687,9 +1741,9 @@ return NO;
 
 
 
-### 9.查询指定地址、指定币种信息
+### 11.查询指定地址、指定币种信息
 
-#### 9.1 方法原型
+#### 11.1 方法原型
 
 ##### **-(void)getCloudCoinDeatil:(NSString *)walletAddr coinAddr:(NSString *)coinAddr legalSymbol:(NSString *)legalSymbol finish:(void(^)(ICSDKResultModel * result))finish;**
 
@@ -1701,7 +1755,7 @@ return NO;
 | conAddr     | string | 是   | 币种合约地址                                       |
 | legalSymbol | string | 是   | 币种资产的法币计价单位，人民币为：CNY；美元为：USD |
 
-#### 9.2 返回结果
+#### 11.2 返回结果
 
 **返回结果-正确时**
 
@@ -1767,9 +1821,9 @@ return NO;
 
 
 
-### 10.查询指定地址、指定币种交易记录
+### 12.查询指定地址、指定币种交易记录
 
-#### 10.1 方法原型
+#### 12.1 方法原型
 
 ##### **-(void)getCloudCoinTransactionDetail:(NSString *)walletAddr conAddr:(NSString *)coinAddr page:(NSInteger)page count:(NSInteger)count finish:(void(^)(ICSDKResultModel * result))finish;**
 
@@ -1782,7 +1836,7 @@ return NO;
 | page       | int    | 是   | 页码从0开始  |
 | count      | int    | 是   | 条数         |
 
-#### 10.2 返回结果
+#### 12.2 返回结果
 
 **返回结果-正确时**
 
@@ -1852,9 +1906,9 @@ return NO;
 }
 ```
 
-### 11.数据签名
+### 13.数据签名
 
-#### 11.1 方法原型
+#### 13.1 方法原型
 
 ##### **-(void)secretSign:(NSString *)content finish:(void(^)(ICSDKResultModel * result))finish;**
 
@@ -1864,7 +1918,7 @@ return NO;
 | ------- | ------ | ---- | ----------------------- |
 | content | string | 是   | 待签名数据（hexstring） |
 
-#### 4.2 返回结果
+#### 13.2 返回结果
 
 **返回结果-正确时**
 
@@ -1892,9 +1946,9 @@ return NO;
 
 
 
-### 12.数据验签
+### 14.数据验签
 
-#### 12.1 方法原型
+#### 14.1 方法原型
 
 ##### **-(void)verifySign:(NSString *)content signature:(NSString *)signature finish:(void(^)(ICSDKResultModel * result))finish;**
 
@@ -1905,7 +1959,7 @@ return NO;
 | content   | string | 是   | 待验签内容（hexstring） |
 | signature | string | 是   | 签名（hexstring）       |
 
-#### 12.2 返回结果
+#### 14.2 返回结果
 
 **返回结果-正确时**
 

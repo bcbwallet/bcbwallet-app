@@ -45,6 +45,7 @@ API调用，返回的内容也是一个json串，里面会携带返回的状态
 ^^^^^^^^^^^^
 
 **+ (BOOL)registerApp:(NSString *)appid pushID:(NSString *)pushid;**
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **输入参数说明**
 
@@ -77,9 +78,10 @@ API调用，返回的内容也是一个json串，里面会携带返回的状态
 **说明：设置SDK内部接口回调信息的语言类型**
 
 2.1 方法原型
-^^^^^^^^^^^^^
+^^^^^^^^^^^^
 
-**+(void)setLanguage:(NSString *)language;**
+**+(void)setLanguage:(NSString \* )language;**
+''''''''''''''''''''''''''''''''''''''''''''''
 
 **输入参数说明**
 
@@ -97,8 +99,8 @@ API调用，返回的内容也是一个json串，里面会携带返回的状态
 3.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)loadAllChainsFinish:(void(^)(ICSDKResultModel \*
-result))finish;**
+**-(void)loadAllChainsFinish:(void(^)(ICSDKResultModel \* result))finish;**
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 3.2 返回结果
 ^^^^^^^^^^^^
@@ -131,7 +133,8 @@ result))finish;**
 4.1 方法原型
 ^^^^^^^^^^^^
 
-**- (void)setWalletChain:(NSString *)chainId;**
+**- (void)setWalletChain:(NSString \* )chainId;**
+'''''''''''''''''''''''''''''''''''''''''''''''''
 
 **输入参数说明**
 
@@ -149,8 +152,8 @@ result))finish;**
 5.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)getDomainListFinish:(void(^)(ICSDKResultModel \*
-result))finish;**
+**-(void)getDomainListFinish:(void(^)(ICSDKResultModel \* result))finish;**
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 5.2 返回结果
 ^^^^^^^^^^^^
@@ -170,6 +173,7 @@ result))finish;**
     }
 
 **示例：返回结果-错误时**
+'''''''''''''''''''''''''
 
 .. code:: java
 
@@ -187,8 +191,8 @@ result))finish;**
 6.1 方法原型
 ^^^^^^^^^^^^
 
-**- (void)setWalletDomain:(NSString *)domain
-finish:(void(^)(ICSDKResultModel * result))finish;**
+**- (void)setWalletDomain:(NSString *)domain finish:(void(^)(ICSDKResultModel * result))finish;**
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **输入参数说明**
 
@@ -230,11 +234,11 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
 1.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)createWallet:(NSString *)name password:(NSString *)password
-recommend:(NSString *)recommend finish:(void(^)(ICSDKResultModel *
-result))finish;**
+**-(void)createWallet:(NSString *)name password:(NSString *)password recommend:(NSString *)recommend finish:(void(^)(ICSDKResultModel * result))finish;**
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **输入参数说明**
+''''''''''''''''
 
 +-------------+----------+--------+--------------------+
 | 参数名      | 类型     | 必须   | 说明               |
@@ -292,9 +296,8 @@ result))finish;**
 2.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)importPrivateKey:(NSString *)name key:(NSString *)key
-password:(NSString *)password recommend:(NSString *)recommend
-finish:(void(^)(ICSDKResultModel \* result))finish;**
+**-(void)importPrivateKey:(NSString *)name key:(NSString *)key password:(NSString *)password recommend:(NSString *)recommend finish:(void(^)(ICSDKResultModel \* result))finish;**
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -353,9 +356,8 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 3.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)importKeystore:(NSString *)name key:(NSString *)key
-password:(NSString *)password recommend:(NSString *)recommend
-finish:(void(^)(ICSDKResultModel \* result))finish;**
+**-(void)importKeystore:(NSString *)name key:(NSString *)key password:(NSString *)password recommend:(NSString *)recommend finish:(void(^)(ICSDKResultModel \* result))finish;**
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -414,9 +416,8 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 4.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)importMnemonicWords:(NSString *)name key:(NSString *)key
-password:(NSString *)password recommend:(NSString *)recommend
-finish:(void(^)(ICSDKResultModel \* result))finish;**
+**-(void)importMnemonicWords:(NSString *)name key:(NSString *)key password:(NSString *)password recommend:(NSString *)recommend finish:(void(^)(ICSDKResultModel \* result))finish;**
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -475,10 +476,11 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 5.1 方法原型
 ^^^^^^^^^^^^
 
-**-(ICSDKResultModel *)getWallets;**
+\*\*-(ICSDKResultModel \*)getWallets;\*\*
+'''''''''''''''''''''''''''''''''''''''''
 
 5.2 返回结果
-^^^^^^^^^^^^
+''''''''''''
 
 **示例：返回结果-正确时**
 
@@ -526,8 +528,8 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 6.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)getMnemonicWords:(NSString *)walletAddr password:(NSString
-*)password finish:(void(^)(ICSDKResultModel \* result))finish;**
+**-(void)getMnemonicWords:(NSString *)walletAddr password:(NSString *)password finish:(void(^)(ICSDKResultModel \* result))finish;**
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -579,8 +581,8 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 7.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)exportPrivateKey:(NSString *)walletAddr password:(NSString
-*)password finish:(void(^)(ICSDKResultModel \* result))finish;**
+**-(void)exportPrivateKey:(NSString *)walletAddr password:(NSString *)password finish:(void(^)(ICSDKResultModel \* result))finish;**
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -631,8 +633,8 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 8.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)exportKeystore:(NSString *)walletAddr password:(NSString
-*)password finish:(void(^)(ICSDKResultModel \* result))finish;**
+**-(void)exportKeystore:(NSString *)walletAddr password:(NSString *)password finish:(void(^)(ICSDKResultModel \* result))finish;**
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -683,8 +685,8 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 9.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)verifyPassword:(NSString *)walletAddr password:(NSString
-*)password finish:(void(^)(ICSDKResultModel \* result))finish;**
+**-(void)verifyPassword:(NSString *)walletAddr password:(NSString *)password finish:(void(^)(ICSDKResultModel \* result))finish;**
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -725,9 +727,8 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 10.1 方法原型
 ^^^^^^^^^^^^^
 
-**-(void)changePassword:(NSString *)walletAddr oldPassword:(NSString
-*)oldPassword newPassword:(NSString *)newPassword
-finish:(void(^)(ICSDKResultModel * result))finish;**
+**-(void)changePassword:(NSString *)walletAddr oldPassword:(NSString *)oldPassword newPassword:(NSString *)newPassword finish:(void(^)(ICSDKResultModel * result))finish;**
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -770,8 +771,8 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
 11.1 方法原型
 ^^^^^^^^^^^^^
 
-**-(void)changeWalletName:(NSString *)walletAddr newName:(NSString
-*)newName finish:(void(^)(ICSDKResultModel \* result))finish;**
+**-(void)changeWalletName:(NSString *)walletAddr newName:(NSString *)newName finish:(void(^)(ICSDKResultModel \* result))finish;**
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -825,8 +826,8 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
 12.1 方法原型
 ^^^^^^^^^^^^^
 
-**-(void)deleteWallet:(NSString *)walletAddr password:(NSString
-*)password finish:(void(^)(ICSDKResultModel \* result))finish;**
+**-(void)deleteWallet:(NSString *)walletAddr password:(NSString *)password finish:(void(^)(ICSDKResultModel \* result))finish;**
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -870,10 +871,8 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
 1.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)walletTransation:(NSString *)walletAddr password:(NSString
-*)password coinAddr:(NSString *)coinAddr toAddr:(NSString *)toAddr
-value:(NSString *)value note:(NSString *)note
-finish:(void(^)(ICSDKResultModel \* result))finish;**
+**-(void)walletTransation:(NSString *)walletAddr password:(NSString *)password coinAddr:(NSString *)coinAddr toAddr:(NSString *)toAddr value:(NSString *)value note:(NSString *)note finish:(void(^)(ICSDKResultModel \* result))finish;**
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -933,9 +932,8 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 2.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)walletCommonPay:(NSString *)walletAddr version:(int)version
-password:(NSString *)password walletCall:(NSString *)walletCall
-finish:(void(^)(ICSDKResultModel * result))finish;**
+**-(void)walletCommonPay:(NSString *)walletAddr version:(int)version password:(NSString *)password walletCall:(NSString *)walletCall finish:(void(^)(ICSDKResultModel * result))finish;**
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -1078,8 +1076,8 @@ walletCall字符串格式
 3.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)getAddrsBalance:(NSString *)walletAddr legalSymbol:(NSString
-*)legalSymbol finish:(void(^)(ICSDKResultModel \* result))finish;**
+**-(void)getAddrsBalance:(NSString *)walletAddr legalSymbol:(NSString *)legalSymbol finish:(void(^)(ICSDKResultModel \* result))finish;**
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -1198,8 +1196,8 @@ walletCall字符串格式
 4.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)getAssets:(NSString *)walletAddr
-finish:(void(^)(ICSDKResultModel * result))finish;**
+**-(void)getAssets:(NSString *)walletAddr finish:(void(^)(ICSDKResultModel * result))finish;**
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -1331,9 +1329,8 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
 5.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)getCoinDeatil:(NSString *)walletAddr coinAddr:(NSString
-*)coinAddr legalSymbol:(NSString *)legalSymbol
-finish:(void(^)(ICSDKResultModel * result))finish;**
+**-(void)getCoinDeatil:(NSString *)walletAddr coinAddr:(NSString *)coinAddr legalSymbol:(NSString *)legalSymbol finish:(void(^)(ICSDKResultModel * result))finish;**
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -1432,9 +1429,8 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
 6.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)getCoinTransactionDetail:(NSString *)walletAddr
-conAddr:(NSString *)coinAddr page:(NSInteger)page count:(NSInteger)count
-finish:(void(^)(ICSDKResultModel \* result))finish;**
+**-(void)getCoinTransactionDetail:(NSString *)walletAddr conAddr:(NSString *)coinAddr page:(NSInteger)page count:(NSInteger)count finish:(void(^)(ICSDKResultModel \* result))finish;**
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -1552,7 +1548,8 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 1.1 方法原型
 ^^^^^^^^^^^^
 
-**-(BOOL)setCloudDomain:(NSString *)domain;**
+\*\*-(BOOL)setCloudDomain:(NSString \*)domain;\*\*
+''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -1585,8 +1582,8 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 2.1 方法原型
 ^^^^^^^^^^^^
 
-**-(BOOL)setMerchantId:(NSString *)mechantId remoteDHPubKey:(NSString
-*)remoteDHPubKey;**
+**-(BOOL)setMerchantId:(NSString *)mechantId remoteDHPubKey:(NSString *)remoteDHPubKey;**
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -1613,14 +1610,32 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 
     return NO;
 
-3.获取验证码
-~~~~~~~~~~~~
+3.获取已绑定账户
+~~~~~~~~~~~~~~~~
 
 3.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)getCode:(NSString *)account finish:(void(^)(ICSDKResultModel *
-result))finish;**
+\*\*-(NSString \*)hasBoundAccount;\*\*
+''''''''''''''''''''''''''''''''''''''
+
+3.2 返回结果
+^^^^^^^^^^^^
+
+**示例：返回结果-空字符串即表示未绑定过账户**
+
+.. code:: java
+
+    return @"+86139***";
+
+4.获取验证码
+~~~~~~~~~~~~
+
+4.1 方法原型
+^^^^^^^^^^^^
+
+**-(void)getCode:(NSString *)account finish:(void(^)(ICSDKResultModel * result))finish;**
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -1628,48 +1643,6 @@ result))finish;**
 | 字段名    | 类型     | 必须   | 说明                                                                       |
 +===========+==========+========+============================================================================+
 | account   | string   | 是     | 手机号(加国际区号，例：+86139\*\*\*\*\*\*\*\*)或邮箱（例：12345@qq.com）   |
-+-----------+----------+--------+----------------------------------------------------------------------------+
-
-3.2 返回结果
-^^^^^^^^^^^^
-
-**示例：返回结果-正确时**
-
-.. code:: java
-
-    {
-        "code":0,
-        "msg": "",
-        "result": {}
-    }
-
-**示例：返回结果-错误时**
-
-.. code:: java
-
-    {
-        "code":-1001,
-        "msg": "发送失败",
-        "result":{}
-    }
-
-4.绑定账号
-~~~~~~~~~~
-
-4.1 方法原型
-^^^^^^^^^^^^
-
-**-(void)bindAccount:(NSString *)account code:(NSString *)code
-finish:(void(^)(ICSDKResultModel \* result))finish;**
-
-**参数字段说明**
-
-+-----------+----------+--------+----------------------------------------------------------------------------+
-| 字段名    | 类型     | 必须   | 说明                                                                       |
-+===========+==========+========+============================================================================+
-| account   | String   | 是     | 手机号(加国际区号，例：+86139\*\*\*\*\*\*\*\*)或邮箱（例：12345@qq.com）   |
-+-----------+----------+--------+----------------------------------------------------------------------------+
-| code      | String   | 是     | 验证码                                                                     |
 +-----------+----------+--------+----------------------------------------------------------------------------+
 
 4.2 返回结果
@@ -1695,14 +1668,100 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
         "result":{}
     }
 
-5.创建云钱包
-~~~~~~~~~~~~
+5.绑定账号
+~~~~~~~~~~
 
 5.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)createCloudWallet:(NSString *)chainType
-finish:(void(^)(ICSDKResultModel * result))finish;**
+**-(void)bindAccount:(NSString *)account code:(NSString *)code password:(NSString *)password finish:(void(^)(ICSDKResultModel * result))finish;**
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+**参数字段说明**
+
++------------+----------+--------+----------------------------------------------------------------------------+
+| 字段名     | 类型     | 必须   | 说明                                                                       |
++============+==========+========+============================================================================+
+| account    | String   | 是     | 手机号(加国际区号，例：+86139\*\*\*\*\*\*\*\*)或邮箱（例：12345@qq.com）   |
++------------+----------+--------+----------------------------------------------------------------------------+
+| code       | String   | 是     | 验证码                                                                     |
++------------+----------+--------+----------------------------------------------------------------------------+
+| password   | String   | 是     | 账号密码(可传空串)                                                         |
++------------+----------+--------+----------------------------------------------------------------------------+
+
+5.2 返回结果
+^^^^^^^^^^^^
+
+**示例：返回结果-正确时**
+
+.. code:: java
+
+    {
+        "code":0,
+        "msg": "",
+        "result": {}
+    }
+
+**示例：返回结果-错误时**
+
+.. code:: java
+
+    {
+        "code":-1001,
+        "msg": "发送失败",
+        "result":{}
+    }
+
+6.绑定新的验证方式
+~~~~~~~~~~~~~~~~~~
+
+6.1 方法原型
+^^^^^^^^^^^^
+
+**-(void)addVerify:(NSString *)account code:(NSString *)code finish:(void(^)(ICSDKResultModel \* result))finish**;
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+**参数字段说明**
+
++-----------+----------+--------+----------------------------------------------------------------------------+
+| 字段名    | 类型     | 必须   | 说明                                                                       |
++===========+==========+========+============================================================================+
+| account   | String   | 是     | 手机号(加国际区号，例：+86139\*\*\*\*\*\*\*\*)或邮箱（例：12345@qq.com）   |
++-----------+----------+--------+----------------------------------------------------------------------------+
+| code      | String   | 是     | 验证码                                                                     |
++-----------+----------+--------+----------------------------------------------------------------------------+
+
+6.2 返回结果
+^^^^^^^^^^^^
+
+**示例：返回结果-正确时**
+
+.. code:: java
+
+    {
+        "code":0,
+        "msg": "",
+        "result": {}
+    }
+
+**示例：返回结果-错误时**
+
+.. code:: java
+
+    {
+        "code":-1,
+        "msg": "该账户已存在",
+        "result":{}
+    }
+
+7.创建云钱包
+~~~~~~~~~~~~
+
+7.1 方法原型
+^^^^^^^^^^^^
+
+**-(void)createCloudWallet:(NSString *)chainType finish:(void(^)(ICSDKResultModel * result))finish;**
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -1712,7 +1771,7 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
 | chainType   | String   | 是     | 主链，例如BCB/ETH/BTC/EOS...   |
 +-------------+----------+--------+--------------------------------+
 
-5.2 返回结果
+7.2 返回结果
 ^^^^^^^^^^^^
 
 **示例：返回结果-正确时**
@@ -1737,14 +1796,14 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
         "result":{}
     }
 
-6.获取云钱包地址列表
+8.获取云钱包地址列表
 ~~~~~~~~~~~~~~~~~~~~
 
-6.1 方法原型
+8.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)getCloudWalletList:(NSString *)chainType
-finish:(void(^)(ICSDKResultModel * result))finish;**
+**-(void)getCloudWalletList:(NSString *)chainType finish:(void(^)(ICSDKResultModel * result))finish;**
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -1754,7 +1813,7 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
 | chainType   | String   | 是     | 主链，例如BCB/ETH/BTC/EOS...   |
 +-------------+----------+--------+--------------------------------+
 
-6.2 返回结果
+8.2 返回结果
 ^^^^^^^^^^^^
 
 **示例：返回结果-正确时**
@@ -1780,15 +1839,14 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
         "result":{}
     }
 
-7.云钱包通用支付
+9.云钱包通用支付
 ~~~~~~~~~~~~~~~~
 
-7.1 方法原型
+9.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)cloudWalletTransation:(NSString *)walletAddr
-chainType:(NSString *)chainType walletCall:(NSString *)walletCall
-finish:(void(^)(ICSDKResultModel * result))finish;**
+**-(void)cloudWalletTransation:(NSString *)walletAddr password:(NSString *)password chainType:(NSString *)chainType walletCall:(NSString *)walletCall finish:(void(^)(ICSDKResultModel \* result))finish;**
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -1797,12 +1855,14 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
 +==============+==========+========+=================================================================================================+
 | walletAddr   | String   | 是     | 钱包地址                                                                                        |
 +--------------+----------+--------+-------------------------------------------------------------------------------------------------+
+| password     | String   | 是     | 账号密码(可传空串)                                                                              |
++--------------+----------+--------+-------------------------------------------------------------------------------------------------+
 | chainType    | String   | 是     | 主链，例如BCB/ETH/BTC/EOS...                                                                    |
 +--------------+----------+--------+-------------------------------------------------------------------------------------------------+
 | walletCall   | String   | 是     | json串，此字段根据不同的合约定义有不同的数据格式；具体请参见《BCB钱包通用支付接入规范》总描述   |
 +--------------+----------+--------+-------------------------------------------------------------------------------------------------+
 
-7.2 返回结果
+9.2 返回结果
 ^^^^^^^^^^^^
 
 **示例：返回结果-正确时**
@@ -1827,15 +1887,14 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
         "result":{}
     }
 
-8.查询指定地址资产
-~~~~~~~~~~~~~~~~~~
+10.查询指定地址资产
+~~~~~~~~~~~~~~~~~~~
 
-8.1 方法原型
-^^^^^^^^^^^^
+10.1 方法原型
+^^^^^^^^^^^^^
 
-**-(void)getCloudAddrsBalance:(NSString *)walletAddr
-legalSymbol:(NSString *)legalSymbol finish:(void(^)(ICSDKResultModel \*
-result))finish;**
+**-(void)getCloudAddrsBalance:(NSString *)walletAddr legalSymbol:(NSString *)legalSymbol finish:(void(^)(ICSDKResultModel \* result))finish;**
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -1847,8 +1906,8 @@ result))finish;**
 | legalSymbol   | string   | 是     | 资产的法币计价单位，人民币为：CNY；美元为：USD   |
 +---------------+----------+--------+--------------------------------------------------+
 
-8.2 返回结果
-^^^^^^^^^^^^
+10.2 返回结果
+^^^^^^^^^^^^^
 
 **返回结果-正确时**
 
@@ -1948,15 +2007,14 @@ result))finish;**
         "result":{}
     }
 
-9.查询指定地址、指定币种信息
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+11.查询指定地址、指定币种信息
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-9.1 方法原型
-^^^^^^^^^^^^
+11.1 方法原型
+^^^^^^^^^^^^^
 
-**-(void)getCloudCoinDeatil:(NSString *)walletAddr coinAddr:(NSString
-*)coinAddr legalSymbol:(NSString *)legalSymbol
-finish:(void(^)(ICSDKResultModel * result))finish;**
+**-(void)getCloudCoinDeatil:(NSString *)walletAddr coinAddr:(NSString *)coinAddr legalSymbol:(NSString *)legalSymbol finish:(void(^)(ICSDKResultModel * result))finish;**
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -1970,8 +2028,8 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
 | legalSymbol   | string   | 是     | 币种资产的法币计价单位，人民币为：CNY；美元为：USD   |
 +---------------+----------+--------+------------------------------------------------------+
 
-9.2 返回结果
-^^^^^^^^^^^^
+11.2 返回结果
+^^^^^^^^^^^^^
 
 **返回结果-正确时**
 
@@ -2049,15 +2107,14 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
         "result":{}
     }
 
-10.查询指定地址、指定币种交易记录
+12.查询指定地址、指定币种交易记录
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-10.1 方法原型
+12.1 方法原型
 ^^^^^^^^^^^^^
 
-**-(void)getCloudCoinTransactionDetail:(NSString *)walletAddr
-conAddr:(NSString *)coinAddr page:(NSInteger)page count:(NSInteger)count
-finish:(void(^)(ICSDKResultModel \* result))finish;**
+**-(void)getCloudCoinTransactionDetail:(NSString *)walletAddr conAddr:(NSString *)coinAddr page:(NSInteger)page count:(NSInteger)count finish:(void(^)(ICSDKResultModel \* result))finish;**
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -2073,7 +2130,7 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 | count        | int      | 是     | 条数           |
 +--------------+----------+--------+----------------+
 
-10.2 返回结果
+12.2 返回结果
 ^^^^^^^^^^^^^
 
 **返回结果-正确时**
@@ -2164,14 +2221,14 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
         "result":{}
     }
 
-11.数据签名
+13.数据签名
 ~~~~~~~~~~~
 
-11.1 方法原型
+13.1 方法原型
 ^^^^^^^^^^^^^
 
-**-(void)secretSign:(NSString *)content finish:(void(^)(ICSDKResultModel
-* result))finish;**
+**-(void)secretSign:(NSString *)content finish:(void(^)(ICSDKResultModel * result))finish;**
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -2181,8 +2238,8 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 | content   | string   | 是     | 待签名数据（hexstring）   |
 +-----------+----------+--------+---------------------------+
 
-4.2 返回结果
-^^^^^^^^^^^^
+13.2 返回结果
+^^^^^^^^^^^^^
 
 **返回结果-正确时**
 
@@ -2207,14 +2264,14 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
         "result":""
     }
 
-12.数据验签
+14.数据验签
 ~~~~~~~~~~~
 
-12.1 方法原型
+14.1 方法原型
 ^^^^^^^^^^^^^
 
-**-(void)verifySign:(NSString *)content signature:(NSString *)signature
-finish:(void(^)(ICSDKResultModel \* result))finish;**
+**-(void)verifySign:(NSString *)content signature:(NSString *)signature finish:(void(^)(ICSDKResultModel \* result))finish;**
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -2226,7 +2283,7 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 | signature   | string   | 是     | 签名（hexstring）         |
 +-------------+----------+--------+---------------------------+
 
-12.2 返回结果
+14.2 返回结果
 ^^^^^^^^^^^^^
 
 **返回结果-正确时**
@@ -2261,6 +2318,7 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 ^^^^^^^^^^^^
 
 **-(void)setOtcTheme:(ICOTCThemeType)theme;**
+'''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -2279,6 +2337,7 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 ^^^^^^^^^^^^
 
 **-(void)setOtcBuyBindBankCard:(BOOL)bind;**
+''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -2295,6 +2354,7 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 ^^^^^^^^^^^^
 
 **[[OTCStart manager] OTCStart];**
+''''''''''''''''''''''''''''''''''
 
 4.闪兑入口
 ~~~~~~~~~~
@@ -2303,6 +2363,7 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 ^^^^^^^^^^^^
 
 **[[OTCStart manager] fastexStart];**
+'''''''''''''''''''''''''''''''''''''
 
 5.退出OTC/闪兑
 ~~~~~~~~~~~~~~
@@ -2318,8 +2379,8 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 1.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)encryptContent:(NSString *)content
-finish:(void(^)(ICSDKResultModel * result))finish;**
+**-(void)encryptContent:(NSString *)content finish:(void(^)(ICSDKResultModel * result))finish;**
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -2358,8 +2419,8 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
 2.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)decryptContent:(NSString *)content
-finish:(void(^)(ICSDKResultModel * result))finish;**
+**-(void)decryptContent:(NSString *)content finish:(void(^)(ICSDKResultModel * result))finish;**
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -2399,6 +2460,7 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
 ^^^^^^^^^^^^
 
 **-(void)genKeyPairFinish:(void(^)(ICSDKResultModel \* result))finish;**
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 3.2 返回结果
 ^^^^^^^^^^^^
@@ -2433,8 +2495,8 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
 4.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)genericSign:(NSString *)priKey data:(NSString *)data
-finish:(void(^)(ICSDKResultModel \* result))finish;**
+**-(void)genericSign:(NSString *)priKey data:(NSString *)data finish:(void(^)(ICSDKResultModel \* result))finish;**
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -2478,9 +2540,8 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 5.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)verifySign:(NSString *)type data:(NSString *)data
-pubKey:(NSString *)pubKey signature:(NSString *)signature
-finish:(void(^)(ICSDKResultModel \* result))finish;**
+**-(void)verifySign:(NSString *)type data:(NSString *)data pubKey:(NSString *)pubKey signature:(NSString *)signature finish:(void(^)(ICSDKResultModel \* result))finish;**
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -2525,8 +2586,8 @@ finish:(void(^)(ICSDKResultModel \* result))finish;**
 6.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)getAddrFromMnemonicWords:(NSString *)mnemonicWords
-finish:(void(^)(ICSDKResultModel * result))finish;**
+**-(void)getAddrFromMnemonicWords:(NSString *)mnemonicWords finish:(void(^)(ICSDKResultModel * result))finish;**
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -2567,8 +2628,8 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
 7.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)getAddrFromPrivateKey:(NSString *)privateKey
-finish:(void(^)(ICSDKResultModel * result))finish;**
+**-(void)getAddrFromPrivateKey:(NSString *)privateKey finish:(void(^)(ICSDKResultModel * result))finish;**
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
@@ -2609,8 +2670,8 @@ finish:(void(^)(ICSDKResultModel * result))finish;**
 8.1 方法原型
 ^^^^^^^^^^^^
 
-**-(void)getAddrFromKeystore:(NSString *)keystore password:(NSString
-*)password finish:(void(^)(ICSDKResultModel \* result))finish;**
+**-(void)getAddrFromKeystore:(NSString *)keystore password:(NSString *)password finish:(void(^)(ICSDKResultModel \* result))finish;**
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 **参数字段说明**
 
