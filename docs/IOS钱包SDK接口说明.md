@@ -38,7 +38,7 @@ API调用，返回的内容也是一个json串，里面会携带返回的状态 
 
 #### 1.1 方法原型
 
- ##### + (BOOL)registerApp:(NSString \*)appid pushID:(NSString \*)pushid;
+##### \+(BOOL)registerApp:(NSString \*)appid pushID:(NSString \*)pushid;
 
  **输入参数说明**
 
@@ -117,7 +117,7 @@ return NO;
 
 #### 4.1 方法原型
 
-##### - (BOOL)setWalletChain:(NSString * )chainId;
+##### \-(BOOL)setWalletChain:(NSString * )chainId;
 
 **输入参数说明**
 
@@ -169,7 +169,7 @@ return NO;
 
 #### 6.1 方法原型
 
-##### - (void)setWalletDomain:(NSString \*)domain finish:(void(^)(ICSDKResultModel * result))finish;
+##### -(void)setWalletDomain:(NSString \*)domain finish:(void(^)(ICSDKResultModel * result))finish;
 
 **输入参数说明**
 
@@ -411,7 +411,7 @@ return NO;
 
 #### 5.1 方法原型
 
-##### - (ICSDKResultModel \*)getWallets;
+##### \-(ICSDKResultModel \*)getWallets;
 
 ##### 5.2 返回结果
 
@@ -1392,7 +1392,7 @@ return NO;
 
 #### 3.1 方法原型
 
-##### **-(NSString *)hasBoundAccount;**
+##### -(NSString \*)hasBoundAccount;
 
 #### 3.2 返回结果
 
