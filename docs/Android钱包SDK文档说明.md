@@ -421,7 +421,7 @@ void deleteWallet(String address,String password,OnWalletCallback<Boolean> callb
 
 方法原型：
 
-**void walletCommonPay(String address,String password,String walletCall,OnWalletCallback<String> callback);**
+**void walletCommonPay(int version,String address,String password,String walletCall,OnWalletCallback<String> callback);**
 
 参数说明：
 
@@ -493,7 +493,83 @@ void deleteWallet(String address,String password,OnWalletCallback<Boolean> callb
 }
 ```
 
-### 3.3 查询指定地址资产
+### 3.3 交易签名-通用型合约签名
+
+方法原型：
+
+**void signTransaction(int version,String address,String password,String walletCall,OnWalletCallback<String> callback);**
+
+参数说明：
+
+| 字段名     | 类型                     | 必须 | 说明                                                         |
+| ---------- | ------------------------ | ---- | ------------------------------------------------------------ |
+| version    | int                      | 是   | 1：1.0支付    2：2.0支付    3：3.0支付                       |
+| address    | String                   | 是   | 钱包地址                                                     |
+| password   | String                   | 是   | 钱包密码                                                     |
+| walletCall | String                   | 是   | json串，此字段根据不同的合约定义有不同的数据格式；具体请参见《BCB钱包通用支付接入规范》总描述 |
+| callback   | OnWalletCallback<String> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback)，String为txData |
+
+返回结果:
+
+无
+
+**示例1.0链：展开后的格式**
+
+```java
+ {
+		"conAddr": "bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe",
+		"methodName": "Transfer",
+		"methodParam": [{
+				"name": "receiver",
+				"type": "smc.Address",
+				"value": "bcbLTwDzzZn3Jy8cJGvygWLgpTr9hEdVpWZ9"
+			},
+			{
+				"name": "_bcb",
+				"type": "big.Int-decimal",
+				"value": "0.01"
+			}
+		],
+		"methodRet": "smc.Error"
+	}
+```
+
+**示例2.0链：展开后的格式**
+
+```java
+{
+	"note": "ApplyToBanker",
+	"gasLimit": "3500000",
+	"contractCall": [{
+		"contractAddr": "bcbCsRXXMGkUJ8wRnrBUD7mQsMST4d53JRKJ",
+		"methodName": "Transfer",
+		"methodParams": [{
+			"type": "types.Address",
+			"value": "bcbJkX5Hcfdewinsc2DkGA5LPNRQix93iwDH"
+		}, {
+			"type": "bn.Number-decimal",
+			"value": "0.1"
+		}],
+		"methodRet": ""
+	}]
+}
+```
+
+**示例3.0链：展开后的格式**
+
+```java
+{
+	"note": "request-banker",
+	"gasLimit": "3500000",
+	"calls": [{
+		"contract": "bcbCsRXXMGkUJ8wRnrBUD7mQsMST4d53JRKJ",
+		"method": "Transfer(types.Address,bn.Number)",
+		"params": ["bcbJkX5Hcfdewinsc2DkGA5LPNRQix93iwDH", "10"]
+	}]
+}
+```
+
+### 3.4 查询指定地址资产
 
 方法原型：
 
@@ -511,7 +587,7 @@ void deleteWallet(String address,String password,OnWalletCallback<Boolean> callb
 
 无
 
-### 3.4 获取系统可添加资产列表
+### 3.5 获取系统可添加资产列表
 
 方法原型：
 
@@ -528,7 +604,7 @@ void deleteWallet(String address,String password,OnWalletCallback<Boolean> callb
 
 无
 
-### 3.5 查询指定地址、指定币种信息
+### 3.6 查询指定地址、指定币种信息
 
 方法原型：
 
@@ -547,7 +623,7 @@ void deleteWallet(String address,String password,OnWalletCallback<Boolean> callb
 
 无
 
-### 3.6 查询指定币种交易记录
+### 3.7 查询指定币种交易记录
 
 方法原型：
 
@@ -559,7 +635,7 @@ void deleteWallet(String address,String password,OnWalletCallback<Boolean> callb
 | ---------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | walletAddr | string                                  | 是   | 钱包地址                                                     |
 | conAddr    | string                                  | 是   | 币种合约地址                                                 |
-| page       | int                                     | 是   | 页码从0开始                                                  |
+| page       | int                                     | 是   | 页码从1开始                                                  |
 | count      | int                                     | 是   | 条数                                                         |
 | callback   | OnWalletListCallback<TransactionRecord> | 是   | 回调接口，见附录[7.2](#7.2 OnWalletListCallback)，TransactionRecord见[7.8](#7.8 TransactionRecord) |
 

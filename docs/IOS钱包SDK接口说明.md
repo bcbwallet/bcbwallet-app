@@ -117,7 +117,7 @@ return NO;
 
 #### 4.1 方法原型
 
-##### \-(BOOL)setWalletChain:(NSString * )chainId;
+##### \-(BOOL)setWalletChain:(NSString \*)chainId;
 
 **输入参数说明**
 
@@ -1621,6 +1621,48 @@ return @"+86139***";
     "code":0,
 	"msg": "",
     "result": {
+        "txHash": "0x0F8642968E48A16316CD499BF142E15EEFF03BE44816796AF87DDC2F1B72BBA4"
+    }
+}
+
+```
+
+**示例：返回结果-错误时**
+
+```java
+{
+    "code":-1001,
+	"msg": "fail",
+    "result":{}
+}
+```
+
+
+
+### 10.云钱包交易签名
+
+#### 10.1 方法原型
+
+##### -(void)signTransation:(NSString \*)walletAddr password:(NSString \*)password chainType:(NSString \*)chainType walletCall:(NSString \*)walletCall finish:(void(^)(ICSDKResultModel * result))finish;
+
+**参数字段说明**
+
+| 字段名     | 类型   | 必须 | 说明                                                         |
+| ---------- | ------ | ---- | ------------------------------------------------------------ |
+| walletAddr | String | 是   | 钱包地址                                                     |
+| password   | String | 是   | 账号密码(可传空串)                                           |
+| chainType  | String | 是   | 主链，例如BCB/ETH/BTC/EOS...                                 |
+| walletCall | String | 是   | json串，此字段根据不同的合约定义有不同的数据格式；具体请参见《BCB钱包通用支付接入规范》总描述 |
+
+#### 10.2 返回结果
+
+**示例：返回结果-正确时**
+
+```java
+{
+    "code":0,
+	"msg": "",
+    "result": {
         "txData": "<bcb>…."
     }
 }
@@ -1639,9 +1681,9 @@ return @"+86139***";
 
 
 
-### 10.查询指定地址资产
+### 11.查询指定地址资产
 
-#### 10.1 方法原型
+#### 11.1 方法原型
 
 ##### -(void)getCloudAddrsBalance:(NSString \*)walletAddr legalSymbol:(NSString \*)legalSymbol finish:(void(^)(ICSDKResultModel * result))finish;
 
@@ -1652,7 +1694,7 @@ return @"+86139***";
 | walletAddr  | string | 是   | 钱包地址                                       |
 | legalSymbol | string | 是   | 资产的法币计价单位，人民币为：CNY；美元为：USD |
 
-#### 10.2 返回结果
+#### 11.2 返回结果
 
 **返回结果-正确时**
 
@@ -1741,9 +1783,9 @@ return @"+86139***";
 
 
 
-### 11.查询指定地址、指定币种信息
+### 12.查询指定地址、指定币种信息
 
-#### 11.1 方法原型
+#### 12.1 方法原型
 
 ##### -(void)getCloudCoinDeatil:(NSString \*)walletAddr coinAddr:(NSString \*)coinAddr legalSymbol:(NSString \*)legalSymbol finish:(void(^)(ICSDKResultModel * result))finish;
 
@@ -1755,7 +1797,7 @@ return @"+86139***";
 | conAddr     | string | 是   | 币种合约地址                                       |
 | legalSymbol | string | 是   | 币种资产的法币计价单位，人民币为：CNY；美元为：USD |
 
-#### 11.2 返回结果
+#### 12.2 返回结果
 
 **返回结果-正确时**
 
@@ -1821,9 +1863,9 @@ return @"+86139***";
 
 
 
-### 12.查询指定地址、指定币种交易记录
+### 13.查询指定地址、指定币种交易记录
 
-#### 12.1 方法原型
+#### 13.1 方法原型
 
 ##### -(void)getCloudCoinTransactionDetail:(NSString \*)walletAddr conAddr:(NSString \*)coinAddr page:(NSInteger)page count:(NSInteger)count finish:(void(^)(ICSDKResultModel * result))finish;
 
@@ -1836,7 +1878,7 @@ return @"+86139***";
 | page       | int    | 是   | 页码从0开始  |
 | count      | int    | 是   | 条数         |
 
-#### 12.2 返回结果
+#### 13.2 返回结果
 
 **返回结果-正确时**
 
@@ -1906,9 +1948,9 @@ return @"+86139***";
 }
 ```
 
-### 13.数据签名
+### 14.数据签名
 
-#### 13.1 方法原型
+#### 14.1 方法原型
 
 ##### -(void)secretSign:(NSString \*)content finish:(void(^)(ICSDKResultModel * result))finish;
 
@@ -1918,7 +1960,7 @@ return @"+86139***";
 | ------- | ------ | ---- | ----------------------- |
 | content | string | 是   | 待签名数据（hexstring） |
 
-#### 13.2 返回结果
+#### 14.2 返回结果
 
 **返回结果-正确时**
 
@@ -1946,9 +1988,9 @@ return @"+86139***";
 
 
 
-### 14.数据验签
+### 15.数据验签
 
-#### 14.1 方法原型
+#### 15.1 方法原型
 
 ##### -(void)verifySign:(NSString \*)content signature:(NSString \*)signature finish:(void(^)(ICSDKResultModel * result))finish;
 
@@ -1959,7 +2001,7 @@ return @"+86139***";
 | content   | string | 是   | 待验签内容（hexstring） |
 | signature | string | 是   | 签名（hexstring）       |
 
-#### 14.2 返回结果
+#### 15.2 返回结果
 
 **返回结果-正确时**
 
