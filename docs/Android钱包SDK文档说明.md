@@ -9,6 +9,7 @@
 | v3.0    | bcbwallet | 2019-11-14 | 增加2.13-2.15侧链的支持 |
 | v4.0    | bcbwallet | 2019-12-04 | 增加域名切换            |
 | v5.0    | bcbwallet | 2020-04-27 | 增加托管钱包模块        |
+| V6.0    | bcbwallet | 2020-06-03 | 增加链上节点余额查询    |
 
 ## 功能说明
 
@@ -828,6 +829,35 @@ void getAddrFromKeyStore(final String keystore, final String password, OnWalletC
 | password | String                   | 是   | 密码                                                         |
 | callback | OnWalletCallback<String> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback)，String为钱包地址 |
 
+### 5.9 获取当前链节点域名列表
+
+方法原型：
+
+void getNodeList(final OnWalletCallback<List<String>> callback);
+
+参数说明：
+
+| 字段名   | 类型                           | 必须 | 说明                                                         |
+| -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | OnWalletCallback<List<String>> | 是   | 回调接口，见附录[7.1](#7.1 OnWalletCallback)，String为节点域名 |
+
+### 5.10 链上节点获取地址余额
+
+方法原型：
+
+void getChainBalance(final String chain, final String address,final String coinAddr,final OnWalletCallback<ChainBalanceEntity> callback);
+
+参数说明：
+
+| 字段名   | 类型                                 | 必须 | 说明                                           |
+| -------- | ------------------------------------ | ---- | ---------------------------------------------- |
+| chain    | String                               | 是   | 域名                                           |
+| address  | String                               | 是   | 钱包地址                                       |
+| coinAddr | String                               | 是   | 币种合约                                       |
+| callback | OnWalletCallback<ChainBalanceEntity> | 是   | 回调接口，见附录[7.12](#7.12 OnWalletCallback) |
+
+### 
+
 ## 6.托管钱包模块
 
 ### 6.1 设置域名
@@ -1046,6 +1076,15 @@ class KeyPairEntity {
 class SignResultEntity {
     private String pubKey; //公钥
     private String signature; //币种的名称，基本上和合约里面的一致
+}
+```
+
+### 7.12 ChainBalanceEntity
+
+```java
+class SignResultEntity {
+    private String address; //币种合约
+    private double balance; //币种个数
 }
 ```
 
