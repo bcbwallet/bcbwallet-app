@@ -267,31 +267,36 @@ result))finish;
     {
         "code":0,
         "msg": "ok",
-        "result":{
-            "records":[
-                {
-                    "id":12858549,
-                    "coinType":"0x1002",
-                    "from":"bcb2kerqmq8ZRPneB4mp2Qv4qSwDyhtLYwb8",
-                    "to":"bcbESMNFs8Cekc9H6xQcu3a2p4NvJDtNoy8S",
-                    "conAddr":"bcbCsRXXMGkUJ8wRnrBUD7mQsMST4d53JRKJ",
-                    "value":"175.756694",
-                    "valueName":"DC",
-                    "fee":"0.0015",
-                    "feeName":"BCB",
-                    "timeStamp":"1553238936",
-                    "blockN":"9603760",
-                    "source":null,
-                    "txHash":"D67097C9E342213B7F46C8D680C96099907A81096E975847D7C204CDA76CAD70",
-                    "memo":"BalancePo CoinTransfer:1553238925228RK7EwEBSC1KO",
-                    "status":"0x1",
-                    "balanceFromFlag":0,
-                    "balanceToFlag":0,
-                    "pushFromCnt":0,
-                    "modifyTime":"2019-03-22T15:15:37"
-                }
-            ]
-        } 
+        "result":[
+            {
+                blockN = 38227106;
+                conAddr = bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe;
+                fee = "0.00125";
+                feeName = BCB;
+                from = bcbNPVTUmsBFZ1zKYg24vQP26oHeZDy35gYe;
+                memo = "";
+                status = 0x1;
+                timeStamp = 1592374777;
+                to = bcbCHMRBvnsj6GisZFYG4ApAQaPKkBCUh37B;
+                txHash = 42F48D366D7837FBCCDC9AF963E45FB54E239E912E4F65081E7D14188C48E961;
+                value = "0.101";
+                valueName = BCB;
+            },
+            {
+                blockN = 38226125;
+                conAddr = bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe;
+                fee = "0.00125";
+                feeName = BCB;
+                from = bcbNPVTUmsBFZ1zKYg24vQP26oHeZDy35gYe;
+                memo = "";
+                status = 0x1;
+                timeStamp = 1592372954;
+                to = bcbDyzPQTrytPXSPhFUX7ToBzztzCQa4D2yP;
+                txHash = AFF56F4B7DCB117D89E063832F0859CE53055950C125CADFAD7471006C01C4E5;
+                value = "0.174";
+                valueName = BCB;
+            }
+        ]
     }
 
 **字段说明**
@@ -503,7 +508,7 @@ finish:(void(^)(ICSDKResultModel \* result))finish;
     {
         "code":0,
         "msg": "",
-        "result": [
+        "result": {
             "userName": "",
             "memo": "",
             "phone": "",
@@ -511,7 +516,7 @@ finish:(void(^)(ICSDKResultModel \* result))finish;
             "hasPWD": false,
             "createTime": "",
             "lastTime": ""
-        ]
+        }
     }
 
 **示例：返回结果-错误时**
