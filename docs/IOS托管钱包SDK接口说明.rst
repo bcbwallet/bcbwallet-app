@@ -269,32 +269,32 @@ result))finish;
         "msg": "ok",
         "result":[
             {
-                blockN = 38227106;
-                conAddr = bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe;
-                fee = "0.00125";
-                feeName = BCB;
-                from = bcbNPVTUmsBFZ1zKYg24vQP26oHeZDy35gYe;
-                memo = "";
-                status = 0x1;
-                timeStamp = 1592374777;
-                to = bcbCHMRBvnsj6GisZFYG4ApAQaPKkBCUh37B;
-                txHash = 42F48D366D7837FBCCDC9AF963E45FB54E239E912E4F65081E7D14188C48E961;
-                value = "0.101";
-                valueName = BCB;
+                "blockN": 38227106,
+                "conAddr": "bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe",
+                "fee": "0.00125",
+                "feeName": "BCB",
+                "from": "bcbNPVTUmsBFZ1zKYg24vQP26oHeZDy35gYe",
+                "memo": "",
+                "status": "0x1",
+                "timeStamp": "1592374777",
+                "to": "bcbCHMRBvnsj6GisZFYG4ApAQaPKkBCUh37B",
+                "txHash": "42F48D366D7837FBCCDC9AF963E45FB54E239E912E4F65081E7D14188C48E961",
+                "value": "0.101",
+                "valueName": "BCB"
             },
             {
-                blockN = 38226125;
-                conAddr = bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe;
-                fee = "0.00125";
-                feeName = BCB;
-                from = bcbNPVTUmsBFZ1zKYg24vQP26oHeZDy35gYe;
-                memo = "";
-                status = 0x1;
-                timeStamp = 1592372954;
-                to = bcbDyzPQTrytPXSPhFUX7ToBzztzCQa4D2yP;
-                txHash = AFF56F4B7DCB117D89E063832F0859CE53055950C125CADFAD7471006C01C4E5;
-                value = "0.174";
-                valueName = BCB;
+                "blockN": 38226125,
+                "conAddr": "bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe",
+                "fee": "0.00125",
+                "feeName": "BCB",
+                "from": "bcbNPVTUmsBFZ1zKYg24vQP26oHeZDy35gYe",
+                "memo": "",
+                "status": "0x1",
+                "timeStamp": "1592372954",
+                "to": "bcbCHMRBvnsj6GisZFYG4ApAQaPKkBCUh37B",
+                "txHash": "AFF56F4B7DCB117D89E063832F0859CE53055950C125CADFAD7471006C01C4E5",
+                "value": "0.174",
+                "valueName": "BCB"
             }
         ]
     }
