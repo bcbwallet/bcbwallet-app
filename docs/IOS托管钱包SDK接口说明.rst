@@ -25,6 +25,43 @@ IOS托管钱包SDK接口文档说明
 API调用，返回的内容也是一个json串，里面会携带返回的状态
 码以及一些返回的必要参数。
 
+统一状态码
+~~~~~~~~~~
+
++--------+-----------------------+
+| code   | 描述                  |
++========+=======================+
+| 0      | 成功                  |
++--------+-----------------------+
+| 1001   | 无效token             |
++--------+-----------------------+
+| 1002   | 无效时间戳            |
++--------+-----------------------+
+| 1003   | 无效链类型            |
++--------+-----------------------+
+| 1004   | 无效appId             |
++--------+-----------------------+
+| 1005   | 无效商户              |
++--------+-----------------------+
+| 1006   | appId和apiKey不匹配   |
++--------+-----------------------+
+| 1007   | 验证码不正确          |
++--------+-----------------------+
+| 1008   | 参数不能为空          |
++--------+-----------------------+
+| 1009   | 账户已被绑定          |
++--------+-----------------------+
+| 1010   | 格式不正确            |
++--------+-----------------------+
+| 1011   | 无效地址              |
++--------+-----------------------+
+| 1012   | 参数过长,不能超过     |
++--------+-----------------------+
+| 1013   | 免密支付已过期        |
++--------+-----------------------+
+| -1     | 其他错误。            |
++--------+-----------------------+
+
 1.初始化设置
 ~~~~~~~~~~~~
 
@@ -69,7 +106,7 @@ domain:(NSString \*)domain;
 2.设置链
 ^^^^^^^^
 
-1.1 方法原型
+2.1 方法原型
 ''''''''''''
 
 -(BOOL)setChainType:(NSString \*)chainType;
@@ -82,7 +119,7 @@ domain:(NSString \*)domain;
 | chainType   | string   | 是     | 链类型（例：BCB、BCBJF、BCBTJF......）   |
 +-------------+----------+--------+------------------------------------------+
 
-1.2 返回结果
+2.2 返回结果
 ''''''''''''
 
 **示例：返回结果-设置成功**
@@ -106,7 +143,7 @@ domain:(NSString \*)domain;
 1.1 方法原型
 ''''''''''''
 
--(void)getAssetsListFinish:(void(^)(ICSDKResultModel \* result))finish;
+-(void)getAssetsList:(void(^)(ICSDKResultModel \* result))finish;
 
 **参数字段说明**
 
@@ -157,9 +194,8 @@ domain:(NSString \*)domain;
 .. code:: java
 
     {
-        "code":-1001,
-        "msg": "获取资产列表失败",
-        "result":{}
+        "code":1011,
+        "msg": "无效地址"
     }
 
 2.查询指定币种余额
@@ -227,9 +263,8 @@ result))finish;
 .. code:: java
 
     {
-        "code":-1001,
-        "msg": "查询失败",
-        "result":{}
+        "code":1011,
+        "msg": "无效地址"
     }
 
 3.查询指定币种交易记录
@@ -334,9 +369,8 @@ result))finish;
 .. code:: java
 
     {
-        "code":-1001,
-        "msg": "查询失败",
-        "result":{}
+        "code":1011,
+        "msg": "无效地址"
     }
 
 3.托管云钱包管理
@@ -394,9 +428,8 @@ result))finish;
 .. code:: java
 
     {
-        "code":-1001,
-        "msg": "发送失败",
-        "result":{}
+        "code":1008,
+        "msg": "参数不能为空"
     }
 
 3.登录钱包
@@ -436,9 +469,8 @@ finish:(void(^)(ICSDKResultModel \* result))finish;
 .. code:: java
 
     {
-        "code":-1001,
-        "msg": "发送失败",
-        "result":{}
+        "code":1008,
+        "msg": "参数不能为空"
     }
 
 4.绑定新的验证方式
@@ -481,9 +513,8 @@ finish:(void(^)(ICSDKResultModel \* result))finish;
 .. code:: java
 
     {
-        "code":-1,
-        "msg": "该账户已存在",
-        "result":{}
+        "code":1008,
+        "msg": "参数不能为空"
     }
 
 5.获取登录用户信息
@@ -492,7 +523,7 @@ finish:(void(^)(ICSDKResultModel \* result))finish;
 5.1 方法原型
 ''''''''''''
 
--(void)getUserInfoFinish:(void(^)(ICSDKResultModel \* result))finish;
+-(void)getUserInfo:(void(^)(ICSDKResultModel \* result))finish;
 
 **参数字段说明**
 
@@ -524,9 +555,8 @@ finish:(void(^)(ICSDKResultModel \* result))finish;
 .. code:: java
 
     {
-        "code":-1001,
-        "msg": "fail",
-        "result":{}
+        "code":1001,
+        "msg": "无效token"
     }
 
 6.设置钱包支付密码
@@ -567,8 +597,8 @@ finish:(\ **void**\ (^)(ICSDKResultModel \* result))finish;
 .. code:: java
 
     {
-        "code":-1001,
-        "msg": "fail",
+        "code":1001,
+        "msg": "无效token",
     }
 
 7.修改钱包支付密码
@@ -607,8 +637,8 @@ finish:(\ **void**\ (^)(ICSDKResultModel \* result))finish;
 .. code:: java
 
     {
-        "code":-1001,
-        "msg": "fail",
+        "code":1008,
+        "msg": "参数不能为空"
     }
 
 8.创建云钱包
@@ -617,8 +647,7 @@ finish:(\ **void**\ (^)(ICSDKResultModel \* result))finish;
 8.1 方法原型
 ''''''''''''
 
--(void)createCloudWalletFinish:(void(^)(ICSDKResultModel \*
-result))finish;
+-(void)createCloudWallet:(void(^)(ICSDKResultModel \* result))finish;
 
 **参数字段说明**
 
@@ -644,9 +673,8 @@ result))finish;
 .. code:: java
 
     {
-        "code":-1001,
-        "msg": "fail",
-        "result":{}
+        "code":1008,
+        "msg": "参数不能为空"
     }
 
 9.获取云钱包地址列表
@@ -655,8 +683,7 @@ result))finish;
 9.1 方法原型
 ''''''''''''
 
--(void)getCloudWalletListFinish:(void(^)(ICSDKResultModel \*
-result))finish;
+-(void)getCloudWalletList:(void(^)(ICSDKResultModel \* result))finish;
 
 **参数字段说明**
 
@@ -683,9 +710,8 @@ result))finish;
 .. code:: java
 
     {
-        "code":-1001,
-        "msg": "fail",
-        "result":{}
+        "code":1001,
+        "msg": "无效token"
     }
 
 10.构造并签名交易
@@ -705,7 +731,7 @@ finish:(void(^)(ICSDKResultModel \* result))finish;
 +==============+==========+========+=================================================================================================+
 | walletAddr   | String   | 是     | 钱包地址                                                                                        |
 +--------------+----------+--------+-------------------------------------------------------------------------------------------------+
-| password     | String   | 是     | 支付密码                                                                                        |
+| password     | String   | 是     | 支付密码(开启免密支付时可传空串)                                                                |
 +--------------+----------+--------+-------------------------------------------------------------------------------------------------+
 | broadcast    | bool     | 是     | 是否发送交易（true为钱包后台发送交易）                                                          |
 +--------------+----------+--------+-------------------------------------------------------------------------------------------------+
@@ -743,9 +769,8 @@ finish:(void(^)(ICSDKResultModel \* result))finish;
 .. code:: java
 
     {
-        "code":-1001,
-        "msg": "fail",
-        "result":{}
+        "code":1008,
+        "msg": "参数不能为空"
     }
 
 11.数据签名
@@ -754,9 +779,9 @@ finish:(void(^)(ICSDKResultModel \* result))finish;
 11.1 方法原型
 '''''''''''''
 
--(void)signData:(NSString \*)walletAddr password:(NSString \*)password
-tbsData:(NSArray \*)tbsData finish:(void(^)(ICSDKResultModel \*
-result))finish;
+-(void)cloudWalletSignData:(NSString \*)walletAddr password:(NSString
+\*)password tbsData:(NSArray \*)tbsData finish:(void(^)(ICSDKResultModel
+\* result))finish;
 
 **参数字段说明**
 
@@ -765,7 +790,7 @@ result))finish;
 +==============+==========+========+===========================================================================================================+
 | walletAddr   | String   | 是     | 钱包地址                                                                                                  |
 +--------------+----------+--------+-----------------------------------------------------------------------------------------------------------+
-| password     | String   | 是     | 支付密码                                                                                                  |
+| password     | String   | 是     | 支付密码(开启免密支付时可传空串)                                                                          |
 +--------------+----------+--------+-----------------------------------------------------------------------------------------------------------+
 | tbsData      | Array    | 是     | 待签名数据列表，item为hexstring (例：["23D464F3BF...C3442247FE5E625A","C9D464F3BF...C3442247FE5E625A"])   |
 +--------------+----------+--------+-----------------------------------------------------------------------------------------------------------+
@@ -805,9 +830,8 @@ result))finish;
 .. code:: java
 
     {
-        "code":-1001,
-        "msg": "fail",
-        "result":{}
+        "code":1008,
+        "msg": "参数不能为空"
     }
 
 12.退出登录
@@ -816,7 +840,7 @@ result))finish;
 12.1 方法原型
 '''''''''''''
 
--(void)logoutFinish:(void(^)(ICSDKResultModel \* result))finish;
+-(void)logout:(void(^)(ICSDKResultModel \* result))finish;
 
 **参数字段说明**
 
@@ -839,7 +863,108 @@ result))finish;
 .. code:: java
 
     {
-        "code":-1001,
-        "msg": "fail",
+        "code":1001,
+        "msg": "无效token"
+    }
+
+13.获取当前免密支付状态
+^^^^^^^^^^^^^^^^^^^^^^^
+
+1.1 方法原型
+''''''''''''
+
+-(BOOL)getSecretFreePaymentStatus;
+
+**输入参数说明**
+
+无
+
+1.2 返回结果
+''''''''''''
+
+**示例：返回结果-已开启**
+
+.. code:: java
+
+    return YES;
+
+**示例：返回结果-未开启/已失效**
+
+.. code:: java
+
+    return NO;
+
+14.请求免密支付授权
+^^^^^^^^^^^^^^^^^^^
+
+14.1 方法原型
+'''''''''''''
+
+-(void)setSecretFreePayment:(NSString \*)password time:(NSInteger)time
+finish:(void(^)(ICSDKResultModel \* result))finish;
+
+**参数字段说明**
+
++------------+----------+-----------------------------------------------------------------------+
+| 字段名     | 类型     | 说明                                                                  |
++============+==========+=======================================================================+
+| password   | String   | 支付密码                                                              |
++------------+----------+-----------------------------------------------------------------------+
+| time       | int      | 请求免密支付的时长，单位是秒(最小：1800， 默认：3600，最大：86400‬)   |
++------------+----------+-----------------------------------------------------------------------+
+
+14.2 返回结果
+'''''''''''''
+
+**示例：返回结果-正确时**
+
+.. code:: java
+
+    {
+        "code":0,
+        "msg": "ok",
+    }
+
+**示例：返回结果-错误时**
+
+.. code:: java
+
+    {
+        "code":1001,
+        "msg": "无效token"
+    }
+
+15.取消免密支付授权
+^^^^^^^^^^^^^^^^^^^
+
+15.1 方法原型
+'''''''''''''
+
+-(void)cancelSecretFreePayment:(void(^)(ICSDKResultModel \*
+result))finish;
+
+**参数字段说明**
+
+无
+
+15.2 返回结果
+'''''''''''''
+
+**示例：返回结果-正确时**
+
+.. code:: java
+
+    {
+        "code":0,
+        "msg": "ok",
+    }
+
+**示例：返回结果-错误时**
+
+.. code:: java
+
+    {
+        "code":1001,
+        "msg": "无效token"
     }
 
