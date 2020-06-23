@@ -28,23 +28,23 @@ API调用，返回的内容也是一个json串，里面会携带返回的状态 
 
 ### 统一状态码
 
-| code | 描述                |
-| ---- | ------------------- |
-| 0    | 成功                |
-| 1001 | 无效token           |
-| 1002 | 无效时间戳          |
-| 1003 | 无效链类型          |
-| 1004 | 无效appId           |
-| 1005 | 无效商户            |
-| 1006 | appId和apiKey不匹配 |
-| 1007 | 验证码不正确        |
-| 1008 | 参数不能为空        |
-| 1009 | 账户已被绑定        |
-| 1010 | 格式不正确          |
-| 1011 | 无效地址            |
-| 1012 | 参数过长,不能超过   |
-| 1013 | 免密支付已过期      |
-| -1   | 其他错误。          |
+| code | 描述                                 |
+| ---- | ------------------------------------ |
+| 0    | 成功                                 |
+| 1001 | 无效token（需重新登录）              |
+| 1002 | 无效时间戳                           |
+| 1003 | 无效链类型                           |
+| 1004 | 无效appId                            |
+| 1005 | 无效商户                             |
+| 1006 | appId和apiKey不匹配                  |
+| 1007 | 验证码不正确                         |
+| 1008 | 参数不能为空                         |
+| 1009 | 账户已被绑定                         |
+| 1010 | 格式不正确                           |
+| 1011 | 无效地址                             |
+| 1012 | 参数过长,不能超过                    |
+| 1013 | 免密支付已过期（需重新开启免密授权） |
+| -1   | 其他错误。                           |
 
 
 
@@ -172,7 +172,7 @@ return NO;
 
 ##### 2.1 方法原型
 
- -(void)getCoinDeatil:(NSString \*)walletAddr coinAddr:(NSString \*)coinAddr onChain:(BOOL)onChain finish:(void(^)(ICSDKResultModel * result))finish;
+ -(void)getCoinDeatil:(NSString \*)walletAddr conAddr:(NSString \*)conAddr onChain:(BOOL)onChain finish:(void(^)(ICSDKResultModel * result))finish;
 
 **参数字段说明**
 
@@ -227,7 +227,7 @@ return NO;
 
 ##### 3.1 方法原型
 
- -(void)getCoinTransactionRecord:(NSString \*)walletAddr conAddr:(NSString \*)coinAddr page:(NSInteger)page count:(NSInteger)count finish:(void(^)(ICSDKResultModel * result))finish;
+ -(void)getCoinTransactionRecord:(NSString \*)walletAddr conAddr:(NSString \*)conAddr page:(NSInteger)page count:(NSInteger)count finish:(void(^)(ICSDKResultModel * result))finish;
 
 **参数字段说明**
 
