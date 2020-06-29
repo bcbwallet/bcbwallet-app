@@ -1154,6 +1154,8 @@ finish:(void(^)(ICSDKResultModel * result))finish;
             "fee": "",
             "status": 0, //创建(0),匹配中(10),交易中(20),已取消(40),已完成(100)
             "expired": 1589971203987,
+            "createTime":"2020-06-29 12:00:00",
+            "lastTime":"2020-06-29 13:00:00",
             "pay":{
                 "qr": "",
                 "account":"wxp://f2f0A552Rsvyz-HoycPWEfXqxNobtqx8-1Go",
@@ -1267,7 +1269,9 @@ result))finish;
                 "rate": 0,
                 "fee": "",
                 "status": 0, //创建(0),匹配中(10),交易中(20),已取消(40),已完成(100)
-                "expired": 1589971203987
+                "expired": 1589971203987,
+                "createTime":"2020-06-29 12:00:00",
+                "lastTime":"2020-06-29 13:00:00"
             }]
         }
     }
