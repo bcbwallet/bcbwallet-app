@@ -1038,16 +1038,15 @@ return NO;
 
 ##### 4.1 方法原型
 
- -(void)otcOrderRecords:(NSString *)orderId address:(NSString *)address page:(NSInteger)page count:(NSInteger)count finish:(void(^)(ICSDKResultModel * result))finish;
+ -(void)otcOrderRecords:(NSString *)address page:(NSInteger)page count:(NSInteger)count finish:(void(^)(ICSDKResultModel * result))finish;
 
 **参数字段说明**
 
-| 参数    | 类型   | 必传 | 描述        |
-| ------- | ------ | ---- | ----------- |
-| orderId | string | 是   | 订单Id      |
-| address | string | 是   | 钱包地址    |
-| page    | int    | 是   | 页码从1开始 |
-| count   | int    | 是   | 条数        |
+| 参数    | 类型   | 必传 | 描述                                   |
+| ------- | ------ | ---- | -------------------------------------- |
+| address | string | 是   | 钱包地址（传空即为当前账号下订单记录） |
+| page    | int    | 是   | 页码从1开始                            |
+| count   | int    | 是   | 条数                                   |
 
 ##### 4.2 返回结果
 
@@ -1070,6 +1069,7 @@ return NO;
 			"payAmount": 10.0,
 			"payWay": "AliPay", //（AliPay，WechatPay）
 			"recvAmount": 10.0,
+            "recvAddr": "",
             "rate": 0,
             "fee": "",
             "status": 0, //创建(0),匹配中(10),交易中(20),已取消(40),已完成(100)
