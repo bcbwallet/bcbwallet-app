@@ -1,5 +1,25 @@
 ## API
 
+### 统一状态码
+
+| code | 描述                                 |
+| ---- | ------------------------------------ |
+| 0    | 成功                                 |
+| 1001 | 无效token（需重新登录）              |
+| 1002 | 无效时间戳                           |
+| 1003 | 无效链类型                           |
+| 1004 | 无效appId                            |
+| 1005 | 无效商户                             |
+| 1006 | appId和apiKey不匹配                  |
+| 1007 | 验证码不正确                         |
+| 1008 | 参数不能为空                         |
+| 1009 | 账户已被绑定                         |
+| 1010 | 格式不正确                           |
+| 1011 | 无效地址                             |
+| 1012 | 参数过长,不能超过                    |
+| 1013 | 免密支付已过期（需重新开启免密授权） |
+| -1   | 其他错误。                           |
+
 ### sdk_regist
 
 初始化注册应用
@@ -37,22 +57,55 @@
 }
 ```
 
-###  sdk_setChainType
+### sdk_setChainType
 
 设置链类型
 
 #### 请求格式
+
 参数
-| name       | type       | required   | description      |
-| :--------- | :--------- | :--------- | :--------------- |
-| chainType | string     | yes        | 如：BCB、BCBT.... |
+
+| name      | type   | required | description       |
+| :-------- | :----- | :------- | :---------------- |
+| chainType | string | yes      | 如：BCB、BCBT.... |
 
 请求示例
+
 ```json
 {
 	"method": "sdk_setChainType",
 	"params": {
 		"chainType": "BCB",
+	}
+}
+```
+
+返回示例
+
+```json
+{
+    "code":0,
+    "msg":"ok",
+	"result": {}
+}
+```
+
+###  sdk_setTimeout
+
+设置网络超时时间
+
+#### 请求格式
+参数
+| name       | type       | required   | description      |
+| :--------- | :--------- | :--------- | :--------------- |
+| timeout | int     | yes        | 单位：秒 |
+
+请求示例
+```json
+{
+	"method": "sdk_setTimeout",
+	"params": {
+		"timeout": 30,
 	}
 }
 ```
@@ -650,3 +703,256 @@
 }
 ```
 
+### sdk_otcBuyCoinAdvance
+
+OTC预下单
+
+#### 请求格式
+
+参数
+
+| name       | type   | required | description                                                  |
+| :--------- | :----- | :------- | :----------------------------------------------------------- |
+| tokenType  | string | 是       | 需要购买的币种类型                                           |
+| payAmount  | string | 否       | 付款金额                                                     |
+| recvAmount | string | 否       | 获取币种数量(payAmount和recvAmount二选一,另一字段传nil或空串) |
+| recvAddr   | string | 是       | 收款地址                                                     |
+| payWay     | string | 是       | 支付方式（AliPay，WechatPay）                                |
+| orderId    | string | 是       | 订单Id                                                       |
+
+请求示例
+
+```json
+{
+    "method": "sdk_otcBuyCoinAdvance",
+    "params": {
+        "tokenType":"BCB",
+        "payAmount":"0.0125",
+        "recvAmount":"",
+        "recvAddr":"bcbCHMRBvnsj6GisZFYG4ApAQaPKkBCUh37B",
+        "payWay":"AliPay",
+        "orderId":"qweasd123"
+    }
+}
+```
+
+#### 返回格式
+
+返回示例
+
+```json
+{
+    "code":0,
+	"msg": "ok",
+    "result": {
+        "expireTime":1576814400,
+		"orderId":"qweasd123",
+		"recvAmount":50.0,
+		"payAmount":1000.0,
+		"rate":0.05
+    }
+}
+```
+
+### sdk_otcBuyCoinConfirm
+
+OTC确认下单
+
+#### 请求格式
+
+参数
+
+| name    | type   | required | description |
+| :------ | :----- | :------- | :---------- |
+| orderId | string | 是       | 订单Id      |
+
+请求示例
+
+```json
+{
+    "method": "sdk_otcBuyCoinConfirm",
+    "params": {
+        "orderId":"qweasd123"
+    }
+}
+```
+
+#### 返回格式
+
+返回示例
+
+```json
+{
+    "code":0,
+	"msg": "ok",
+    "result": {}
+}
+```
+
+### sdk_otcOrderDetails
+
+OTC买币订单详情
+
+#### 请求格式
+
+参数
+
+| name    | type   | required | description |
+| :------ | :----- | :------- | :---------- |
+| orderId | string | 是       | 订单Id      |
+
+请求示例
+
+```json
+{
+    "method": "sdk_otcOrderDetails",
+    "params": {
+        "orderId":"qweasd123"
+    }
+}
+```
+
+#### 返回格式
+
+返回示例
+
+```json
+{
+    "code":0,
+	"msg": "ok",
+    "result": {
+        "orderId": "TB01200204091426074b647c0aacaa04e40a363a11a679a8127",
+        "tokenType": "DC",
+        "payAmount": 10.0,
+        "payWay": "AliPay",
+        "recvAmount": 10.0,
+        "rate": 0,
+        "fee": "",
+        "status": 0, //创建(0),匹配中(10),交易中(20),已取消(40),已完成(100)
+        "expired": 1589971203987,
+        "pay":{
+            "account":"wxp://f2f0A552Rsvyz-HoycPWEfXqxNobtqx8-1Go",
+			"payWay":"WechatPay",
+			"holder":"无名氏",
+			"belongTo":"微信支付",
+			"status":3,
+			"expired":1589971203987
+        }
+    }
+}
+```
+
+### sdk_otcOrderRecords
+
+OTC买币交易记录
+
+#### 请求格式
+
+参数
+
+| name    | type   | required | description |
+| :------ | :----- | :------- | :---------- |
+| orderId | string | 是       | 订单Id      |
+| address | string | 是       | 钱包地址    |
+| page    | int    | 是       | 页码从1开始 |
+| count   | int    | 是       | 条数        |
+
+请求示例
+
+```json
+{
+    "method": "sdk_otcOrderRecords",
+    "params": {
+        "orderId":"qweasd123",
+        "address":"bcbCHMRBvnsj6GisZFYG4ApAQaPKkBCUh37B",
+        "page":1,
+        "count":10
+    }
+}
+```
+
+#### 返回格式
+
+返回示例
+
+```json
+{
+    "code":0,
+	"msg": "ok",
+    "result": {
+        "info": {
+			"page": 4,
+			"totalpage": 401,
+			"count": 50,
+			"total": 20034
+		},
+		"list": [{
+            "orderId": "TB01200204091426074b647c0aacaa04e40a363a11a679a8127",
+			"tokenType": "DC",
+			"payAmount": 10.0,
+			"payWay": "AliPay", //（AliPay，WechatPay）
+			"recvAmount": 10.0,
+            "rate": 0,
+            "fee": "",
+            "status": 0, //创建(0),匹配中(10),交易中(20),已取消(40),已完成(100)
+			"expired": 1589971203987
+		}]
+    }
+}
+```
+
+### sdk_otcBuyCoinRate
+
+查询买币汇率
+
+#### 请求格式
+
+参数
+
+| name      | type   | required | description        |
+| :-------- | :----- | :------- | :----------------- |
+| tokenType | string | 是       | 需要购买的币种类型 |
+
+请求示例
+
+```json
+{
+    "method": "sdk_otcBuyCoinRate",
+    "params": {
+        "tokenType":"BCB"
+    }
+}
+```
+
+#### 返回格式
+
+返回示例
+
+```json
+{
+    "code":0,
+	"msg": "ok",
+    "result": {
+        "rates":{
+            "BTC":{                    // gotCoin
+            	"AliPay":0.021,        // payWay : rate
+            	"WechatPay":0.022,     // 1 CNY = rate gotCoin
+            	"InternetBank":0.020,
+            	"accuracy":4,
+                "min":0.1,
+                "max":10000
+            },
+            "ETH":{
+            	"AliPay":0.00125,        
+            	"WechatPay":0.00126,     
+            	"InternetBank":0.00124,  
+            	"accuracy":4,
+                "min":0.1,
+                "max":10000
+            }
+		}
+    }
+}
+```
+
+### 
