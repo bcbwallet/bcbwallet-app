@@ -261,12 +261,12 @@ return NO;
 
 **参数字段说明**
 
-| 字段名     | 类型   | 必须 | 说明         |
-| ---------- | ------ | ---- | ------------ |
-| walletAddr | string | 是   | 钱包地址     |
-| conAddr    | string | 是   | 币种合约地址 |
-| page       | int    | 是   | 页码从1开始  |
-| count      | int    | 是   | 条数         |
+| 字段名     | 类型   | 必须 | 说明                                                 |
+| ---------- | ------ | ---- | ---------------------------------------------------- |
+| walletAddr | string | 是   | 钱包地址                                             |
+| conAddr    | string | 否   | 币种合约地址（传空即为查询当前地址所有币种交易记录） |
+| page       | int    | 是   | 页码从1开始                                          |
+| count      | int    | 是   | 条数                                                 |
 
 ##### 3.2 返回结果
 
@@ -1006,15 +1006,18 @@ return NO;
         "payAmount": 10.0,
         "payWay": "AliPay",
         "recvAmount": 10.0,
+        "recvAddr": "bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe",
         "rate": 0,
         "fee": "",
         "status": 0, //创建(0),匹配中(10),交易中(20),已取消(40),已完成(100)
         "expired": 1589971203987,
         "pay":{
+            "qr": "",
             "account":"wxp://f2f0A552Rsvyz-HoycPWEfXqxNobtqx8-1Go",
 			"payWay":"WechatPay",
 			"holder":"无名氏",
 			"belongTo":"微信支付",
+            "subBelongTo": "",
 			"status":3,
 			"expired":1589971203987
         }
@@ -1022,6 +1025,29 @@ return NO;
 }
 
 ```
+
+**字段说明**
+
+| 参数           | 类型    | 描述                                                         |
+| -------------- | ------- | ------------------------------------------------------------ |
+| orderId        | string  | 订单编号                                                     |
+| payAmount      | decimal | 支付数量                                                     |
+| payWay         | string  | 支付方式，AliPay，WechatPay                                  |
+| tokenType      | string  | 换得币种                                                     |
+| recvAmount     | decimal | 换得数量                                                     |
+| recvAddr       | string  | 接收币的地址                                                 |
+| rate           | decimal | 锁定汇率                                                     |
+| fee            | decimal | 用户总手续费，单位：CNY                                      |
+| status         | int     | 订单状态。<br>创建(0),匹配中(10),交易中(20),已取消(40),已完成(100) |
+| pay            | object  | 支付信息                                                     |
+| -- qr          | string  | 微信或支付宝的付款二维码                                     |
+| -- account     | string  | 收款账户                                                     |
+| -- payWay      | string  | 支付方式，AliPay，WechatPay                                  |
+| -- holder      | string  | 收款人实名                                                   |
+| -- belongTo    | string  | 支付机构                                                     |
+| -- subBelongTo | string  | 支付机构子机构                                               |
+| -- status      | int     | 金钻订单状态<br>1：已创建<br/>2：已接单<br/>3：已完成<br/>4：已取消<br/>5：批发商已付款 |
+| -- expired     | long    | 本阶段超时时间戳                                             |
 
 **示例：返回结果-错误时**
 
@@ -1044,7 +1070,7 @@ return NO;
 
 | 参数    | 类型   | 必传 | 描述                                   |
 | ------- | ------ | ---- | -------------------------------------- |
-| address | string | 是   | 钱包地址（传空即为当前账号下订单记录） |
+| address | string | 否   | 钱包地址（传空即为当前账号下订单记录） |
 | page    | int    | 是   | 页码从1开始                            |
 | count   | int    | 是   | 条数                                   |
 
@@ -1145,6 +1171,54 @@ return NO;
 | accuracy     | int     | 支持购买币种的精度                           |
 | min          | decimal | 币种最小购买数量                             |
 | max          | decimal | 币种最大购买数量                             |
+
+**示例：返回结果-错误时**
+
+```java
+{
+    "code":1001,
+	"msg": "无效token"
+}
+```
+
+
+
+#### 6.一步式直接买币下单
+
+##### 6.1 方法原型
+
+ -(void)otcBuyCoinImmediate:(NSString \*)tokenType payAmount:(NSString \*)payAmount recvAmount:(NSString \*)recvAmount recvAddr:(NSString \*)recvAddr payWay:(NSString \*)payWay finish:(void(^)(ICSDKResultModel * result))finish;
+
+**参数字段说明**
+
+| 参数       | 类型   | 必传 | 描述                                                         |
+| ---------- | ------ | ---- | ------------------------------------------------------------ |
+| tokenType  | string | 是   | 需要购买的币种类型（当前支持币种：BCB、DC）                  |
+| payAmount  | string | 否   | 付款金额                                                     |
+| recvAmount | string | 否   | 获取币种数量(payAmount和recvAmount二选一,另一字段传nil或空串) |
+| recvAddr   | string | 是   | 收款地址                                                     |
+| payWay     | string | 是   | 支付方式（AliPay，WechatPay）                                |
+
+##### 6.2 返回结果
+
+**示例：返回结果-正确时**
+
+```java
+{
+    "code":0,
+	"msg": "ok",
+    "result":{
+        "orderId":"IW20200629153028yw349j"
+    }
+}
+
+```
+
+**字段说明**
+
+| 字段名  | 类型   | 说明   |
+| ------- | ------ | ------ |
+| orderId | string | 订单Id |
 
 **示例：返回结果-错误时**
 
