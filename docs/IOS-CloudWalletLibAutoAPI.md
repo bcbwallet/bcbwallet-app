@@ -1,5 +1,13 @@
 ## API
 
+### 调用说明
+
+测试调用条件:PC与手机处于同一局域网内，手机APP启动并保持处于前台状态
+
+调用实例：手机域名地址+8080+CloudWalletLib?data=json字符串
+
+sdk_regist调用示例：<http://192.168.1.40:8080/CloudWalletLib?data={"method":"sdk_regist","params":{"appId":"d00a0ee91c82493587c1f8fcbece227b","apiKey":"4cff994515c0543ddc8cf6d4f59f2c8ee09414e51831f941322ddf50b4576b60","domain":"https://tcapi.ikey.cloud"}}>
+
 ### 统一状态码
 
 | code | 描述                                 |
@@ -711,14 +719,14 @@ OTC预下单
 
 参数
 
-| name       | type   | required | description                                                  |
-| :--------- | :----- | :------- | :----------------------------------------------------------- |
-| tokenType  | string | 是       | 需要购买的币种类型                                           |
-| payAmount  | string | 否       | 付款金额                                                     |
-| recvAmount | string | 否       | 获取币种数量(payAmount和recvAmount二选一,另一字段传nil或空串) |
-| recvAddr   | string | 是       | 收款地址                                                     |
-| payWay     | string | 是       | 支付方式（AliPay，WechatPay）                                |
-| orderId    | string | 是       | 订单Id                                                       |
+| name       | type   | required | description                                              |
+| :--------- | :----- | :------- | :------------------------------------------------------- |
+| tokenType  | string | 是       | 需要购买的币种类型                                       |
+| payAmount  | string | 否       | 付款金额                                                 |
+| recvAmount | string | 否       | 获取币种数量(payAmount和recvAmount二选一,另一字段传空串) |
+| recvAddr   | string | 是       | 收款地址                                                 |
+| payWay     | string | 是       | 支付方式（AliPay，WechatPay）                            |
+| orderId    | string | 是       | 订单Id                                                   |
 
 请求示例
 
@@ -852,7 +860,6 @@ OTC买币交易记录
 
 | name    | type   | required | description |
 | :------ | :----- | :------- | :---------- |
-| orderId | string | 是       | 订单Id      |
 | address | string | 是       | 钱包地址    |
 | page    | int    | 是       | 页码从1开始 |
 | count   | int    | 是       | 条数        |
@@ -955,4 +962,49 @@ OTC买币交易记录
 }
 ```
 
-### 
+### sdk_otcBuyCoinImmediate
+
+OTC一步式下单
+
+#### 请求格式
+
+参数
+
+| name       | type   | required | description                                              |
+| :--------- | :----- | :------- | :------------------------------------------------------- |
+| tokenType  | string | 是       | 需要购买的币种类型                                       |
+| payAmount  | string | 否       | 付款金额                                                 |
+| recvAmount | string | 否       | 获取币种数量(payAmount和recvAmount二选一,另一字段传空串) |
+| recvAddr   | string | 是       | 收款地址                                                 |
+| payWay     | string | 是       | 支付方式（AliPay，WechatPay）                            |
+
+请求示例
+
+```json
+{
+    "method": "sdk_otcBuyCoinImmediate",
+    "params": {
+        "tokenType":"BCB",
+        "payAmount":"0.0125",
+        "recvAmount":"",
+        "recvAddr":"bcbCHMRBvnsj6GisZFYG4ApAQaPKkBCUh37B",
+        "payWay":"AliPay"
+    }
+}
+```
+
+#### 返回格式
+
+返回示例
+
+```json
+{
+    "code":0,
+	"msg": "ok",
+    "result": {
+		"orderId":"qweasd123"
+    }
+}
+```
+
+###  
