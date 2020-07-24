@@ -1514,15 +1514,15 @@ return NO;
 
 **参数字段说明**
 
-| 参数           | 类型   | 必传 | 描述                                                         |
-| -------------- | ------ | ---- | ------------------------------------------------------------ |
-| tokenType      | string | 是   | 需要卖出的币种类型                                           |
-| payAmount      | string | 否   | 付款金额                                                     |
-| recvAmount     | string | 否   | 付款币种数量(payAmount和recvAmount二选一,另一字段传nil或空串) |
-| receiptAccount | string | 是   | 收款账号                                                     |
-| refundAddr     | string | 是   | 卖币失败的时候币种的退款地址                                 |
-| payWay         | string | 是   | 支付方式（AliPay，WechatPay，InternetBank，AlipayBankcard）  |
-| orderId        | string | 是   | 卖币订单Id                                                   |
+| 参数           | 类型   | 必传 | 描述                                                        |
+| -------------- | ------ | ---- | ----------------------------------------------------------- |
+| tokenType      | string | 是   | 需要卖出的币种类型                                          |
+| payAmount      | string | 否   | 付款币种数量                                                |
+| recvAmount     | string | 否   | 获取法币数量(payAmount和recvAmount二选一,另一字段传空串)    |
+| receiptAccount | string | 是   | 收款账号                                                    |
+| refundAddr     | string | 是   | 卖币失败的时候币种的退款地址                                |
+| payWay         | string | 是   | 支付方式（AliPay，WechatPay，InternetBank，AlipayBankcard） |
+| orderId        | string | 是   | 卖币订单Id                                                  |
 
 ##### 1.2 返回结果
 
