@@ -15,6 +15,7 @@ Welcome to BCB钱包DAPP调用原生交互接口文档说明's documentation!
    Android钱包SDK文档说明.rst
    IOS_BCBWalletLib.rst
    IOS托管钱包SDK接口说明.rst
+   Android托管钱包SDK接口文档说明.rst
 	
 Indices and tables
 ==================
