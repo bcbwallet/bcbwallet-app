@@ -30,26 +30,72 @@ API调用，返回的内容也是一个json串，里面会携带返回的状态 
 
 ### 统一状态码
 
-| code | 描述                               |
-| ---- | ---------------------------------- |
-| 0    | 成功                               |
-| 1001 | 无效token（需重新登录）            |
-| 1002 | 无效时间戳                         |
-| 1003 | 无效链类型                         |
-| 1004 | 无效appId                          |
-| 1005 | 无效商户                           |
-| 1006 | appId和apiKey不匹配                |
-| 1007 | 验证码不正确                       |
-| 1008 | 参数不能为空                       |
-| 1009 | 账户已被绑定                       |
-| 1010 | 格式不正确                         |
-| 1011 | 无效地址                           |
-| 1012 | 参数过长,不能超过                  |
-| 1013 | 免密支付已过期需重新开启免密授权） |
-| 1014 | 无效支付方式                       |
-| -1   | 其他错误。                         |
-
-
+| code | 描述                                    |
+| ---- | --------------------------------------- |
+| 0    | 成功                                    |
+| 1001 | 无效token（需重新登录）                 |
+| 1002 | 无效时间戳                              |
+| 1003 | 无效链类型                              |
+| 1004 | 无效appId                               |
+| 1005 | 无效商户                                |
+| 1006 | appId和apiKey不匹配                     |
+| 1007 | 验证码不正确                            |
+| 1008 | 参数不能为空                            |
+| 1009 | 账户已被绑定                            |
+| 1010 | 格式不正确                              |
+| 1011 | 无效地址                                |
+| 1012 | 参数过长,不能超过                       |
+| 1013 | 免密支付已过期（需重新开启免密授权）    |
+| 2000 | 系统异常                                |
+| 2001 | 不支持的支付方式                        |
+| 2100 | 不支持的银行卡                          |
+| 2101 | 银行卡号已被绑定                        |
+| 2102 | 未找到绑定的银行卡                      |
+| 2103 | 银行卡号无效                            |
+| 3000 | 系统异常                                |
+| 3001 | 账号或密码不正确                        |
+| 3002 | 无效的手机号码                          |
+| 3003 | 无效的邮箱                              |
+| 3004 | 换绑邮箱需要先绑定手机                  |
+| 3005 | 换绑手机需要先绑定邮箱                  |
+| 3006 | 免密支付时长必须在(30分钟~1天)          |
+| 3007 | 邮箱已被绑定                            |
+| 3008 | 手机号已被绑定                          |
+| 3100 | 发送验证码失败                          |
+| 3101 | 验证码不正确                            |
+| 3102 | 新账号的验证码不正确                    |
+| 3103 | 原账号的验证码不正确,或者账户信息已过期 |
+| 3200 | 密码不合法                              |
+| 3201 | 密码不正确                              |
+| 3202 | 原密码不正确                            |
+| 3203 | 原密码和新密码不能一致                  |
+| 3204 | 请先设置支付密码                        |
+| 3205 | 请先设置登录密码                        |
+| 4000 | 系统异常                                |
+| 4001 | 付款金额和购买币种数量不能同时为空      |
+| 4002 | 支付金额无效                            |
+| 4003 | 币种数量无效                            |
+| 4004 | 获得金额无效                            |
+| 4011 | 获取汇率异常                            |
+| 4012 | 每页数量太大                            |
+| 4013 | 待签名数据不能为空                      |
+| 4014 | 地址已被冻结,暂时无法转账               |
+| 4015 | 不能给自己转账                          |
+| 4016 | 地址余额不足                            |
+| 4017 | 手续费不足                              |
+| 4018 | 转账异常                                |
+| 4101 | 下单失败                                |
+| 4102 | 订单Id不能重复                          |
+| 4103 | 订单已失效                              |
+| 5000 | 系统异常                                |
+| 5001 | 不支持的链类型                          |
+| 5002 | 不支持的币种类型                        |
+| 5003 | 无效的合约方法                          |
+| 5004 | 地址不合法                              |
+| 5005 | 合约地址无效                            |
+| 9000 | 系统内部错误                            |
+| 9001 | 系统异常，请联系客服处理                |
+| 9002 | 无法识别的错误码，请联系客服处理        |
 
 ### 1.初始化设置
 
@@ -895,7 +941,7 @@ return NO;
 
 ##### 16.1 方法原型
 
- -(void)updatetUserInfo:(NSString \*)userName memo:(NSString \*)memo defaultAccount:(NSString \*)defaultAccount finish:(void(^)(ICSDKResultModel \* result))finish;
+ -(void)updateUserInfo:(NSString \*)userName memo:(NSString \*)memo defaultAccount:(NSString \*)defaultAccount finish:(void(^)(ICSDKResultModel \* result))finish;
 
 **参数字段说明**
 
@@ -1105,7 +1151,7 @@ return NO;
 
 ##### 1.1 方法原型
 
- -(void)otcBuyCoinAdvance:(NSString \*)tokenType payAmount:(NSString \*)payAmount recvAmount:(NSString \*)recvAmount recvAddr:(NSString \*)recvAddr payWay:(NSString \*)payWay orderId:(NSString \*)orderId finish:(void(^)(ICSDKResultModel * result))finish;
+ -(void)otcBuyCoinAdvance:(NSString \*)tokenType payAmount:(NSString \*)payAmount recvAmount:(NSString \*)recvAmount recvAddr:(NSString \*)recvAddr payWay:(NSString \*)payWay userName:(NSString \*)userName orderId:(NSString \*)orderId finish:(void(^)(ICSDKResultModel * result))finish;
 
 **参数字段说明**
 
@@ -1115,7 +1161,8 @@ return NO;
 | payAmount  | string | 否   | 付款金额                                                     |
 | recvAmount | string | 否   | 获取币种数量(payAmount和recvAmount二选一,另一字段传nil或空串) |
 | recvAddr   | string | 是   | 收款地址                                                     |
-| payWay     | string | 是   | 支付方式（AliPay，WechatPay）                                |
+| payWay     | string | 是   | 支付（AliPay，WechatPay）                                    |
+| userName   | string | 否   | 当payWay是InternetBank的时候为必填项目                       |
 | orderId    | string | 是   | 订单Id                                                       |
 
 ##### 1.2 返回结果
@@ -1222,7 +1269,7 @@ return NO;
         "recvAddr": "bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe",
         "rate": 0,
         "fee": "",
-        "status": 0, //创建(0),匹配中(10),交易中(20),已取消(40),已完成(100)
+        "status": 0, //创建(0),匹配中(10),交易中(20),已付款(25),已收款(30),已取消(40),已完成(100)
         "expired": 1589971203987,
         "createTime":"2020-06-29 12:00:00",
         "lastTime":"2020-06-29 13:00:00",
@@ -1315,7 +1362,7 @@ return NO;
             "rate": 0,
             "fee": "",
             "txHash": "",
-            "status": 0, //创建(0),匹配中(10),交易中(20),已取消(40),已完成(100)
+            "status": 0, //创建(0),匹配中(10),交易中(20),已付款(25), 已收款(30),已取消(40),已完成(100)
 			"expired": 1589971203987,
             "createTime":"2020-06-29 12:00:00",
         	"lastTime":"2020-06-29 13:00:00"
@@ -1413,7 +1460,7 @@ return NO;
 
 ##### 6.1 方法原型
 
- -(void)otcBuyCoinImmediate:(NSString \*)tokenType payAmount:(NSString \*)payAmount recvAmount:(NSString \*)recvAmount recvAddr:(NSString \*)recvAddr payWay:(NSString \*)payWay finish:(void(^)(ICSDKResultModel * result))finish;
+ -(void)otcBuyCoinImmediate:(NSString \*)tokenType payAmount:(NSString \*)payAmount recvAmount:(NSString \*)recvAmount recvAddr:(NSString \*)recvAddr payWay:(NSString \*)payWay userName:(NSString *)userName finish:(void(^)(ICSDKResultModel * result))finish;
 
 **参数字段说明**
 
@@ -1424,6 +1471,7 @@ return NO;
 | recvAmount | string | 否   | 获取币种数量(payAmount和recvAmount二选一,另一字段传nil或空串) |
 | recvAddr   | string | 是   | 收款地址                                                     |
 | payWay     | string | 是   | 支付方式（AliPay，WechatPay）                                |
+| userName   | string | 否   | 当payWay是InternetBank的时候为必填项目                       |
 
 ##### 6.2 返回结果
 
@@ -1489,6 +1537,77 @@ return NO;
             "coinIcon":"http://test.6x.com/coin_icons/usdx.icon"
         }
     ]
+}
+
+```
+
+**示例：返回结果-错误时**
+
+```java
+{
+    "code":1001,
+	"msg": "无效token"
+}
+```
+
+
+
+#### 8.买币我已付款
+
+##### 8.1 方法原型
+
+ -(void)otcBuyCoinOrderPaid:(NSString \*)orderId finish:(void(^)(ICSDKResultModel \* result))finish;
+
+**参数字段说明**
+
+| 参数    | 类型   | 必传 | 描述   |
+| ------- | ------ | ---- | ------ |
+| orderId | string | 是   | 订单Id |
+
+##### 8.2 返回结果
+
+**示例：返回结果-正确时**
+
+```java
+{
+    "code":0,
+	"msg": "ok"
+}
+
+```
+
+**示例：返回结果-错误时**
+
+```java
+{
+    "code":1001,
+	"msg": "无效token"
+}
+```
+
+
+
+#### 9.取消买币下单
+
+##### 9.1 方法原型
+
+ -(void)otcBuyCoinOrderCancel:(NSString \*)orderId reason:(NSString \*)reason finish:(void(^)(ICSDKResultModel \* result))finish;
+
+**参数字段说明**
+
+| 参数    | 类型   | 必传 | 描述     |
+| ------- | ------ | ---- | -------- |
+| orderId | string | 是   | 订单Id   |
+| reason  | string | 否   | 取消原因 |
+
+##### 9.2 返回结果
+
+**示例：返回结果-正确时**
+
+```java
+{
+    "code":0,
+	"msg": "ok"
 }
 
 ```
@@ -2226,6 +2345,49 @@ memo格式协议：
 | 字段名    | 类型 | 说明                 |
 | --------- | ---- | -------------------- |
 | timeStamp | long | 服务器时间戳（毫秒） |
+
+**返回结果-错误时**
+
+```java
+{
+    "code":-1,
+	"msg": "其他错误"
+}
+```
+
+
+
+#### 2.获取支持的链类型
+
+##### 2.1 方法原型
+
+ -(void)getSupportChains:(void(^)(ICSDKResultModel * result))finish;
+
+**参数字段说明**
+
+无
+
+##### 1.2 返回结果
+
+**返回结果-正确时**
+
+```java
+{
+    "code":0,
+	"msg": "ok",
+    "result":[
+        {
+            "chainType": "BCB",
+            "ChainName": "BCB链"
+        },
+        {
+            "chainType": "BCBJF",
+            "ChainName": "久发链"
+        }
+    ]
+}
+
+```
 
 **返回结果-错误时**
 
