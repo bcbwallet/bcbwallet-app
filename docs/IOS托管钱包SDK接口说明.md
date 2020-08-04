@@ -2318,7 +2318,7 @@ memo格式协议：
 
 ##### 6.1 方法原型
 
- -(void)usdtTransaction:(NSString \*)fromAddress password:(NSString \*)password broadcast:(BOOL)broadcast toAddress:(NSString \*)toAddress toValue:(NSString \*)toValue tokenType:(NSString \*)tokenType contract:(NSString \*)contract note:(NSString \*)note finish:(void(^)(ICSDKResultModel * result))finish;
+-(void)usdtTransaction:(NSString \*)fromAddress password:(NSString \*)password broadcast:(BOOL)broadcast toAddress:(NSString \*)toAddress toValue:(NSString \*)toValue tokenType:(NSString \*)tokenType contract:(NSString \*)contract note:(NSString \*)note finish:(void(^)(ICSDKResultModel * result))finish;
 
 **参数字段说明**
 
