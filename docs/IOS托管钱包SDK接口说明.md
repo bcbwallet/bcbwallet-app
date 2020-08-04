@@ -2318,7 +2318,7 @@ memo格式协议：
 
 ##### 6.1 方法原型
 
--(void)usdtTransaction:(NSString \*)fromAddress password:(NSString \*)password broadcast:(BOOL)broadcast toAddress:(NSString \*)toAddress toValue:(NSString \*)toValue tokenType:(NSString \*)tokenType contract:(NSString \*)contract note:(NSString \*)note finish:(void(^)(ICSDKResultModel * result))finish;
+-(void)usdtTransaction:(NSString \*)fromAddress password:(NSString \*)password broadcast:(BOOL)broadcast toAddress:(NSString \*)toAddress toValue:(NSString \*)toValue tokenType:(NSString \*)tokenType note:(NSString \*)note finish:(void(^)(ICSDKResultModel * result))finish;
 
 **参数字段说明**
 
@@ -2330,7 +2330,6 @@ memo格式协议：
 | toAddress   | String | 是   | 代付款币种钱包地址                     |
 | toValue     | String | 是   | 代付款币种数量                         |
 | tokenType   | String | 是   | 代付款币种类型                         |
-| contract    | String | 是   | 代付款币种合约地址                     |
 | note        | String | 是   | 备注                                   |
 
 ##### 6.2 返回结果
