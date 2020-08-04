@@ -1,6 +1,6 @@
 ## IOS托管钱包SDK接口文档说明
 
-
+****
 
 ### 版本&更新记录
 
@@ -9,6 +9,7 @@
 | v.1.0.0 | cloudwallet | 2020-06-16 | 初始版本                      |
 | v.1.0.1 | cloudwallet | 2020-06-29 | 新增OTC模块                   |
 | v.1.0.2 | cloudwallet | 2020-07-23 | 新增OTC卖币及USDT代收付款功能 |
+| v.1.0.3 | cloudwallet | 2020-08-04 | 新增USDT代付转账接口[6.6]()   |
 
 ------
 
@@ -709,7 +710,7 @@ return @"+86139***";
 
 ##### 10.1 方法原型
 
- -(void)cloudWalletTransation:(NSString \*)walletAddr password:(NSString \*)password broadcast:(BOOL)broadcast contract:(NSString *)contract walletCall:(NSString \*)walletCall finish:(void(^)(ICSDKResultModel * result))finish;
+ -(void)cloudWalletTransaction:(NSString \*)walletAddr password:(NSString \*)password broadcast:(BOOL)broadcast contract:(NSString *)contract walletCall:(NSString \*)walletCall finish:(void(^)(ICSDKResultModel * result))finish;
 
 **参数字段说明**
 
@@ -721,7 +722,7 @@ return @"+86139***";
 | contract   | String | 否   | 查询余额的代币合约地址（可传空串）                           |
 | walletCall | String | 是   | json串，此字段根据不同的合约定义有不同的数据格式；具体请参见《BCB钱包通用支付接入规范》总描述 |
 
-##### 8.2 返回结果
+##### 10.2 返回结果
 
 **示例：返回结果-正确时**
 
@@ -844,7 +845,7 @@ return @"+86139***";
 
 #### 13.获取当前免密支付状态
 
-##### 1.1 方法原型
+##### 13.1 方法原型
 
 \-(BOOL)getSecretFreePaymentStatus;
 
@@ -852,7 +853,7 @@ return @"+86139***";
 
 无
 
-##### 1.2 返回结果
+##### 13.2 返回结果
 
 **示例：返回结果-已开启**
 
@@ -1161,7 +1162,7 @@ return NO;
 | payAmount  | string | 否   | 付款金额                                                     |
 | recvAmount | string | 否   | 获取币种数量(payAmount和recvAmount二选一,另一字段传nil或空串) |
 | recvAddr   | string | 是   | 收款地址                                                     |
-| payWay     | string | 是   | 支付（AliPay，WechatPay）                                    |
+| payWay     | string | 是   | 支付（AliPay，WechatPay，InternetBank，AliPayBankcard）      |
 | userName   | string | 否   | 当payWay是InternetBank的时候为必填项目                       |
 | orderId    | string | 是   | 订单Id                                                       |
 
@@ -1294,7 +1295,7 @@ return NO;
 | -------------- | ------- | ------------------------------------------------------------ |
 | orderId        | string  | 订单编号                                                     |
 | payAmount      | decimal | 支付数量                                                     |
-| payWay         | string  | 支付方式，AliPay，WechatPay                                  |
+| payWay         | string  | 支付方式，AliPay，WechatPay，InternetBank，AliPayBankcard    |
 | tokenType      | string  | 换得币种                                                     |
 | recvAmount     | decimal | 换得数量                                                     |
 | recvAddr       | string  | 接收币的地址                                                 |
@@ -1304,7 +1305,7 @@ return NO;
 | pay            | object  | 支付信息                                                     |
 | -- qr          | string  | 微信或支付宝的付款二维码                                     |
 | -- account     | string  | 收款账户                                                     |
-| -- payWay      | string  | 支付方式，AliPay，WechatPay                                  |
+| -- payWay      | string  | 支付方式，AliPay，WechatPay，InternetBank，AliPayBankcard    |
 | -- holder      | string  | 收款人实名                                                   |
 | -- belongTo    | string  | 支付机构                                                     |
 | -- subBelongTo | string  | 支付机构子机构                                               |
@@ -1356,7 +1357,7 @@ return NO;
 			"tokenType": "DC",
             "chainType": "BCB",
 			"payAmount": 10.0,
-			"payWay": "AliPay", //（AliPay，WechatPay）
+			"payWay": "AliPay", //（AliPay，WechatPay，InternetBank，AliPayBankcard）
 			"recvAmount": 10.0,
             "recvAddr": "",
             "rate": 0,
@@ -1423,7 +1424,7 @@ return NO;
                         "max":18000,
                         "rate":0.022
                     },
-                    "AlipayBankcard":{
+                    "AliPayBankcard":{
                         "min":0.02,
                         "max":20000,
                         "rate":0.022
@@ -1470,7 +1471,7 @@ return NO;
 | payAmount  | string | 否   | 付款金额                                                     |
 | recvAmount | string | 否   | 获取币种数量(payAmount和recvAmount二选一,另一字段传nil或空串) |
 | recvAddr   | string | 是   | 收款地址                                                     |
-| payWay     | string | 是   | 支付方式（AliPay，WechatPay）                                |
+| payWay     | string | 是   | 支付方式（AliPay，WechatPay，InternetBank，AliPayBankcard）  |
 | userName   | string | 否   | 当payWay是InternetBank的时候为必填项目                       |
 
 ##### 6.2 返回结果
@@ -1640,7 +1641,7 @@ return NO;
 | recvAmount     | string | 否   | 获取法币数量(payAmount和recvAmount二选一,另一字段传空串)    |
 | receiptAccount | string | 是   | 收款账号                                                    |
 | refundAddr     | string | 是   | 卖币失败的时候币种的退款地址                                |
-| payWay         | string | 是   | 支付方式（AliPay，WechatPay，InternetBank，AlipayBankcard） |
+| payWay         | string | 是   | 支付方式（AliPay，WechatPay，InternetBank，AliPayBankcard） |
 | orderId        | string | 是   | 卖币订单Id                                                  |
 
 ##### 1.2 返回结果
@@ -1778,7 +1779,7 @@ return NO;
 | -------------- | ------- | --------------------------------------------------------- |
 | orderId        | string  | 订单编号                                                  |
 | payAmount      | decimal | 卖出币种的数量                                            |
-| payWay         | string  | 支付方式，AliPay，WechatPay，InternetBank，AlipayBankcard |
+| payWay         | string  | 支付方式，AliPay，WechatPay，InternetBank，AliPayBankcard |
 | tokenType      | string  | 卖出的币种                                                |
 | recvAmount     | decimal | 换得法币的数量                                            |
 | refundAddr     | string  | 卖币失败接收退币的地址                                    |
@@ -1957,7 +1958,7 @@ return NO;
 | recvAmount     | string | 否   | 获取币种数量(payAmount和recvAmount二选一,另一字段传nil或空串) |
 | receiptAccount | string | 是   | 收款地址                                                     |
 | refundAddr     | string | 是   | 卖币失败的时候币种的退款地址                                 |
-| payWay         | string | 是   | 支付方式（AliPay，WechatPay）                                |
+| payWay         | string | 是   | 支付方式（AliPay，WechatPay，InternetBank，AliPayBankcard）  |
 
 ##### 6.2 返回结果
 
@@ -2285,7 +2286,7 @@ return NO;
 
 | 参数      | 类型   | 描述                                   |
 | --------- | ------ | -------------------------------------- |
-| tokenType | string | 待付款币种                             |
+| tokenType | string | 代付款币种                             |
 | addr      | string | USDTBRC对应的回收地址                  |
 | memo      | string | 地址标签（格式如下，需转成jsonString） |
 
@@ -2308,6 +2309,61 @@ memo格式协议：
 {
 	"a": "0x0615c02f3cdab714f57687ef8a0028daf983ae4c",//收款人地址
 	"m":"aaa"  // 地址标签
+}
+```
+
+
+
+#### 6.USDT代付转账
+
+##### 6.1 方法原型
+
+ -(void)usdtTransaction:(NSString \*)fromAddress password:(NSString \*)password broadcast:(BOOL)broadcast toAddress:(NSString \*)toAddress toValue:(NSString \*)toValue tokenType:(NSString \*)tokenType contract:(NSString \*)contract note:(NSString \*)note finish:(void(^)(ICSDKResultModel * result))finish;
+
+**参数字段说明**
+
+| 字段名      | 类型   | 必须 | 说明                                   |
+| ----------- | ------ | ---- | -------------------------------------- |
+| fromAddress | String | 是   | 钱包地址                               |
+| password    | String | 是   | 支付密码(开启免密支付时可传空串)       |
+| broadcast   | bool   | 是   | 是否发送交易（true为钱包后台发送交易） |
+| toAddress   | String | 是   | 代付款币种钱包地址                     |
+| toValue     | String | 是   | 代付款币种数量                         |
+| tokenType   | String | 是   | 代付款币种类型                         |
+| contract    | String | 是   | 代付款币种合约地址                     |
+| note        | String | 是   | 备注                                   |
+
+##### 6.2 返回结果
+
+**示例：返回结果-正确时**
+
+```java
+{
+    "code":0,
+	"msg": "",
+    "result": {
+        "tx":"4629F91DD3D6...473BCEF3EE91E750D",
+		"hash": "4629F91DD3D6...473BCEF3EE91E750D",
+        "balance": ""
+    }
+}
+
+```
+
+**字段说明**
+
+| 字段名  | 类型   | 说明                         |
+| ------- | ------ | ---------------------------- |
+| tx      | String | 已签名的交易数据             |
+| hash    | String | 交易hash                     |
+| balance | String | 构造交易前对应contract的余额 |
+
+**示例：返回结果-错误时**
+
+```java
+{
+    "code":1008,
+	"msg": "参数不能为空"
 }
 ```
 
