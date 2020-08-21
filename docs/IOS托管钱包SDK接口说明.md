@@ -4,13 +4,14 @@
 
 ### 版本&更新记录
 
-| 版本号  | 作者        | 日期       | 更新内容                      |
-| ------- | ----------- | ---------- | ----------------------------- |
-| v.1.0.0 | cloudwallet | 2020-06-16 | 初始版本                      |
-| v.1.0.1 | cloudwallet | 2020-06-29 | 新增OTC模块                   |
-| v.1.0.2 | cloudwallet | 2020-07-23 | 新增OTC卖币及USDT代收付款功能 |
-| v.1.0.3 | cloudwallet | 2020-08-04 | 新增USDT代付转账接口[6.6]()   |
-| v.1.0.4 | cloudwallet | 2020-08-05 | 新增设置语言接口[1.4]()       |
+| 版本号  | 作者        | 日期       | 更新内容                                                  |
+| ------- | ----------- | ---------- | --------------------------------------------------------- |
+| v.1.0.0 | cloudwallet | 2020-06-16 | 初始版本                                                  |
+| v.1.0.1 | cloudwallet | 2020-06-29 | 新增OTC模块                                               |
+| v.1.0.2 | cloudwallet | 2020-07-23 | 新增OTC卖币及USDT代收付款功能                             |
+| v.1.0.3 | cloudwallet | 2020-08-04 | 新增USDT代付转账接口[6.6]()                               |
+| v.1.0.4 | cloudwallet | 2020-08-05 | 新增设置语言接口[1.4]()                                   |
+| v.1.0.5 | cloudwallet | 2020-08-20 | 1.新增闪兑功能<br />2.新增USDT代收付款交易记录接口[6.7]() |
 
 ------
 
@@ -2397,7 +2398,470 @@ memo格式协议：
 
 
 
-### 7.其他接口
+#### 7.USDT代收付款交易记录
+
+##### 7.1 方法原型
+
+-(void)usdtTransactionRecords:(NSString \*)address tokenType:(NSString \*)tokenType page:(NSInteger)page count:(NSInteger)count finish:(void(^)(ICSDKResultModel * result))finish;
+
+**参数字段说明**
+
+| 字段名    | 类型   | 必须 | 说明         |
+| --------- | ------ | ---- | ------------ |
+| address   | String | 是   | 钱包地址     |
+| tokenType | String | 否   | 代收付款币种 |
+| page      | int    | 是   | 页码从1开始  |
+| count     | int    | 是   | 条数         |
+
+##### 7.2 返回结果
+
+**示例：返回结果-正确时**
+
+```java
+{
+    "code":0,
+	"msg": "",
+    "result": {
+        "info": {
+			"page": 4,
+			"totalpage": 401,
+			"count": 50,
+			"total": 20034
+		},
+		"list": [{
+            "tokenType":"USDTERC",
+            "tradeType": "pay", //pay,recv
+            "addr": "bcbH8EnQ12jEeTXzPWKByVidjmaGXSTbHn3T",
+            "from":"0xcade0735ff0adce2783f688d5183c41b72c1f03a",
+            "to":"0xcade0735ff0adce2783f688d5183c41b72c1f03a",
+            "memo":null, 
+            "hash":"A87CECECDB59E7EC8...0513F68E2FF91592C",     
+            "blockHeight": 123,
+            "amount":"12.3",
+            "fee":"0.3",
+            "status":20, //交易中(20),已失败(40),已完成(100)
+            "error":"资金校验失败，用户获得：0.145 DCT，交易限额：10 DCT",
+            "createTime": "2020-06-29 12:00:00",
+            "lastTime": "2020-06-29 12:00:00"
+		}]
+    }
+}
+
+```
+
+**字段说明**
+
+| 字段        | 类型    | 说明                                                         |
+| ----------- | ------- | ------------------------------------------------------------ |
+| tokenType   | string  | 代收付款币种类型                                             |
+| tradeType   | string  | 类型，pay：代付款，recv：代收款                              |
+| addr        | string  | 用户地址                                                     |
+| from        | string  | 转账地址，如果是代收款，则是用户的打款地址<br/>如果是代付款，则是用户付款的BCB地址 |
+| to          | string  | 收款地址，如果是代收款，则是用户的BCB地址<br/>如果是代付款则是用户填的目标地址 |
+| memo        | string  | 交易备注                                                     |
+| hash        | string  | 交易hash，如果是代收款，则取bcb链上的hash<br />如果是代付款，取目标链的hash |
+| blockHeight | int     | hash对应的区块高度                                           |
+| amount      | decimal | 订单金额                                                     |
+| fee         | decimal | 订单手续费                                                   |
+| status      | int     | 订单状态//交易中(20),已失败(40),已完成(100)                  |
+| error       | string  | 订单失败错误信息                                             |
+
+**示例：返回结果-错误时**
+
+```java
+{
+    "code":1008,
+	"msg": "参数不能为空"
+}
+```
+
+
+
+### 7.闪兑功能
+
+#### 1.闪兑预下单
+
+##### 1.1 方法原型
+
+ -(void)exchangeAdvance:(NSString \*)tokenType payAmount:(NSString \*)payAmount recvTokenType:(NSString \*)recvTokenType recvAddr:(NSString \*)recvAddr recvMemo:(NSString \*)recvMemo refundAddr:(NSString \*)refundAddr refundMemo:(NSString \*)refundMemo orderId:(NSString \*)orderId finish:(void(^)(ICSDKResultModel \* result))finish;
+
+**参数字段说明**
+
+| 参数          | 类型   | 必传 | 描述                         |
+| ------------- | ------ | ---- | ---------------------------- |
+| tokenType     | string | 是   | 支付币种类型                 |
+| payAmount     | string | 是   | 付款币种数量                 |
+| recvTokenType | string | 是   | 接收的币种类型               |
+| recvAddr      | string | 是   | 接收的币种地址               |
+| recvMemo      | string | 否   | 接收地址标签                 |
+| refundAddr    | string | 是   | 闪兑失败的时候币种的退款地址 |
+| refundMemo    | string | 否   | 退款标签                     |
+| orderId       | string | 是   | 订单Id                       |
+
+##### 1.2 返回结果
+
+**示例：返回结果-正确时**
+
+```java
+{
+    "code":0,
+	"msg": "ok",
+    "result":{
+        "expireTime":1576814400,
+		"orderId":"oewifjfj8342093r",
+		"recvAmount":50.0,
+		"payAmount":1000.0,
+		"rate":0.05
+    }
+}
+
+```
+
+**字段说明**
+
+| 字段名     | 类型    | 说明                   |
+| ---------- | ------- | ---------------------- |
+| expireTime | long    | 过期时间               |
+| orderId    | string  | 订单Id                 |
+| recvAmount | decimal | 获取数量               |
+| payAmount  | decimal | 闪兑需要支付的币种数量 |
+| rate       | decimal | 汇率                   |
+
+**示例：返回结果-错误时**
+
+```java
+{
+    "code":1001,
+	"msg": "无效token"
+}
+```
+
+
+
+#### 2.闪兑确认下单
+
+##### 2.1 方法原型
+
+ -(void)exchangeConfirm:(NSString *)orderId finish:(void(^)(ICSDKResultModel * result))finish;
+
+**参数字段说明**
+
+| 参数    | 类型   | 必传 | 描述   |
+| ------- | ------ | ---- | ------ |
+| orderId | string | 是   | 订单Id |
+
+##### 2.2 返回结果
+
+**示例：返回结果-正确时**
+
+```java
+{
+    "code":0,
+	"msg": "ok",
+    "result":{
+        "expired":1576814400,
+		"payAddress":"0x74C1b1E54E27Dd2FB5A11DB01177c94356CacB45",
+		"payMemo": ""
+    }
+}
+
+```
+
+**示例：返回结果-错误时**
+
+```java
+{
+    "code":1001,
+	"msg": "无效token"
+}
+```
+
+
+
+#### 3.查询闪兑订单详情
+
+##### 3.1 方法原型
+
+ -(void)exchangeOrderDetails:(NSString *)orderId finish:(void(^)(ICSDKResultModel * result))finish;
+
+**参数字段说明**
+
+| 参数    | 类型   | 必传 | 描述   |
+| ------- | ------ | ---- | ------ |
+| orderId | string | 是   | 订单Id |
+
+##### 3.2 返回结果
+
+**示例：返回结果-正确时**
+
+```java
+{
+    "code":0,
+	"msg": "ok",
+    "result":{
+        "orderId": "IW01200204091426074b647c0aa",
+        "tokenType": "DC",
+        "payAmount": 10.0,
+        "payAddr": "bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe",
+        "payMemo": "",
+        "recvTokenType": "BCB",
+        "recvAmount": 10.0,
+        "recvAddr": "",
+        "recvMemo": "",
+        "refundAddr": "bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe",
+        "refundMemo": "",
+        "rate": 0,
+        "fee": "",
+        "status": 0, //创建(0),交易中(20),已取消(40),已完成(100)
+        "expired": 1589971203987,
+        "remark": "",        
+        "createTime": "2020-06-29 12:00:00",
+        "lastTime": "2020-06-29 12:00:00"        
+    }
+}
+
+```
+
+**字段说明**
+
+| 参数          | 类型    | 描述                                                    |
+| ------------- | ------- | ------------------------------------------------------- |
+| orderId       | string  | 订单编号                                                |
+| tokenType     | string  | 支付币种                                                |
+| payAmount     | decimal | 支付币种的数量                                          |
+| payAddr       | string  | 支付目标地址                                            |
+| payMemo       | string  | 支付地址标签                                            |
+| recvTokenType | string  | 闪兑获得币种                                            |
+| recvAmount    | decimal | 换的数量                                                |
+| recvAddr      | string  | 收款地址                                                |
+| recvMemo      | string  | 收款地址标签                                            |
+| refundAddr    | string  | 退币的地址                                              |
+| refundMemo    | string  | 退款地址标签                                            |
+| rate          | decimal | 锁定汇率                                                |
+| fee           | decimal | 用户总手续费                                            |
+| status        | int     | 订单状态。<br>创建(0),交易中(20),已取消(40),已完成(100) |
+| expired       | long    | 过期时间                                                |
+| remark        | string  | 订单失败原因                                            |
+
+**示例：返回结果-错误时**
+
+```java
+{
+    "code":1001,
+	"msg": "无效token"
+}
+```
+
+
+
+#### 4.查询闪兑订单记录
+
+##### 4.1 方法原型
+
+ -(void)exchangeOrderRecords:(NSInteger)page count:(NSInteger)count finish:(void(^)(ICSDKResultModel * result))finish;
+
+**参数字段说明**
+
+| 参数  | 类型 | 必传 | 描述        |
+| ----- | ---- | ---- | ----------- |
+| page  | int  | 是   | 页码从1开始 |
+| count | int  | 是   | 条数        |
+
+##### 4.2 返回结果
+
+**示例：返回结果-正确时**
+
+```java
+{
+    "code":0,
+	"msg": "ok",
+    "result":{
+        "info": {
+			"page": 4,
+			"totalpage": 401,
+			"count": 50,
+			"total": 20034
+		},
+		"list": [{
+            "orderId": "IW01200204091426074b647c0aa",
+            "tokenType": "DC",
+            "payAmount": 10.0,
+            "payAddr": "bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe",
+            "payMemo": "",
+            "recvTokenType": "BCB",
+            "recvAmount": 10.0,
+            "recvAddr": "",
+            "recvMemo": "",
+            "refundAddr": "bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe",
+            "refundMemo": "",
+            "rate": 0,
+            "fee": "",
+            "status": 0, //创建(0),交易中(20),已取消(40),已完成(100)
+            "remark": "",        
+            "createTime": "2020-06-29 12:00:00",
+            "lastTime": "2020-06-29 12:00:00"
+		}]
+    }
+}
+
+```
+
+##### 字段说明
+
+| 字段          | 类型    | 描述                                                    |
+| ------------- | ------- | ------------------------------------------------------- |
+| orderId       | string  | 订单编号                                                |
+| tokenType     | string  | 支付币种                                                |
+| payAmount     | decimal | 支付币种的数量                                          |
+| payAddr       | string  | 支付目标地址                                            |
+| payMemo       | string  | 支付地址标签                                            |
+| recvTokenType | string  | 闪兑获得币种                                            |
+| recvAmount    | decimal | 换的数量                                                |
+| recvAddr      | string  | 收款地址                                                |
+| recvMemo      | string  | 收款地址标签                                            |
+| refundAddr    | string  | 退币的地址                                              |
+| refundMemo    | string  | 退款地址标签                                            |
+| rate          | decimal | 锁定汇率                                                |
+| fee           | decimal | 用户总手续费                                            |
+| status        | int     | 订单状态。<br>创建(0),交易中(20),已取消(40),已完成(100) |
+| remark        | string  | 订单失败原因                                            |
+
+**示例：返回结果-错误时**
+
+```java
+{
+    "code":1001,
+	"msg": "无效token"
+}
+```
+
+
+
+#### 5.查询闪兑汇率
+
+##### 5.1 方法原型
+
+ -(void)queryExchangeRate:(void(^)(ICSDKResultModel \* result))finish;
+
+**参数字段说明**
+
+无
+
+##### 5.2 返回结果
+
+**示例：返回结果-正确时**
+
+```java
+{
+    "code":0,
+	"msg": "ok",
+    "result":{
+        "rates":{
+            "BTC":{                    // payCoin
+            	"accuracy":4,
+                "channel":{            // 闪兑通道
+                	"ETH":{         // 通道类型gotCoin
+                        "accuracy":4,
+                        "min":0.1,    // 最小下单量，以此payCoin为单位
+                        "max":11000,    // 最大下单量，以此payCoin为单位
+                        "rate": 0.021  // 1 payCoin = rate gotCoin
+                    },
+                    "BCB":{
+                        "accuracy":4,
+                        "min":0.09,
+                        "max":19000,
+                        "rate": 0.021
+                    },
+                    "DC":{
+                        "accuracy":4,
+                        "min":0.08,
+                        "max":18000,
+                        "rate": 0.021
+                    },
+                    "USDT":{
+                        "accuracy":4,
+                        "min":0.02,
+                        "max":20000,
+                        "rate": 0.021
+                    }
+                }
+            }            
+		}
+    }
+}
+
+```
+
+**字段说明**
+
+| 参数     | 类型    | 描述                   |
+| -------- | ------- | ---------------------- |
+| accuracy | int     | 支持闪兑支付币种的精度 |
+| channel  | map     | 每个闪兑通道的限额     |
+| accuracy | int     | 获得币种的精度         |
+| min      | decimal | 最小闪兑数量           |
+| max      | decimal | 最大闪兑数量           |
+| rate     | decimal | 汇率                   |
+
+**示例：返回结果-错误时**
+
+```java
+{
+    "code":1001,
+	"msg": "无效token"
+}
+```
+
+
+
+#### 6.一步式闪兑下单
+
+##### 6.1 方法原型
+
+ -(void)exchangeImmediate:(NSString \*)tokenType payAmount:(NSString \*)payAmount recvTokenType:(NSString \*)recvTokenType recvAddr:(NSString \*)recvAddr recvMemo:(NSString \*)recvMemo refundAddr:(NSString \*)refundAddr refundMemo:(NSString \*)refundMemo finish:(void(^)(ICSDKResultModel * result))finish;
+
+**参数字段说明**
+
+| 参数          | 类型   | 必传 | 描述                         |
+| ------------- | ------ | ---- | ---------------------------- |
+| tokenType     | string | 是   | 支付币种类型                 |
+| payAmount     | string | 是   | 付款币种数量                 |
+| recvTokenType | string | 是   | 接收的币种类型               |
+| recvAddr      | string | 是   | 接收的币种地址               |
+| recvMemo      | string | 否   | 接收地址标签                 |
+| refundAddr    | string | 是   | 闪兑失败的时候币种的退款地址 |
+| refundMemo    | string | 否   | 退款标签                     |
+
+##### 6.2 返回结果
+
+**示例：返回结果-正确时**
+
+```java
+{
+    "code":0,
+	"msg": "ok",
+    "result":{
+        "orderId":"IW20200629153028yw349j",
+        "expired":1576814400,
+		"payAddress":"0x74C1b1E54E27Dd2FB5A11DB01177c94356CacB45",
+		"payMemo": ""
+    }
+}
+
+```
+
+**示例：返回结果-错误时**
+
+```java
+{
+    "code":1001,
+	"msg": "无效token"
+}
+```
+
+
+
+### 8.其他接口
 
 #### 1.获取服务器时间
 
