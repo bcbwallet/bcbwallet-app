@@ -21,6 +21,7 @@
 | 1.6.2-SNAPSHOT | jjm  | 2020-08-5  | 添加1.4 设置语言                                             |
 | 1.7.1-SNAPSHOT | jjm  | 2020-08-20 | 添加闪兑功能                                                 |
 | 1.7.6-SNAPSHOT | jjm  | 2020-09-15 | 接口2.1返回值新增depositEnabled，withdrawEnabled，displayName          新增8.7闪兑反查询汇率 |
+| 1.7.8-SNAPSHOT | jjm  | 2020-10-20 | 接口2.1,6.7返回值新增tokenName，agentEnabled,agentContract,agentFee,agentFeeToken,agentMethod字段，新增接口3.19 |
 
 ------
 
@@ -173,6 +174,7 @@ void getAssetsList(OnWalletListCallback callback);
 	"msg": "ok",
 	"result":[
         {
+            "tokenName": "token-basic",
             "depositEnabled": true,
             "withdrawEnabled": true,
             "displayName": "BCB",
@@ -180,8 +182,10 @@ void getAssetsList(OnWalletListCallback callback);
             "conAddr":"bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe",
             "decimals":"9",
             "coinIcon":"http://test.6x.com/coin_icons/bcb.icon",
+            "agentEnabled": false,
         },
         {
+            "tokenName": "token-basic",
             "depositEnabled": true,
             "withdrawEnabled": true,
             "displayName": "BCB",
@@ -189,6 +193,12 @@ void getAssetsList(OnWalletListCallback callback);
             "conAddr":"bcbMLpC7HFd8JCm6RXQiu1t7aX4GaiW5c4Cm",
             "decimals":"9",            
             "coinIcon":"http://test.6x.com/coin_icons/usdx.icon"
+            "agentEnabled": true,
+            "agent":{
+                "agentContract": "bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe",
+            	"agentFee": "0.01",
+                "agentFeeToken": "USDX",
+                "agentMethod": "Transfer(string,types.Address,bn.Number)",
         }
     ]
 }
@@ -197,12 +207,21 @@ void getAssetsList(OnWalletListCallback callback);
 
 **字段说明**
 
-| 字段名   | 类型   | 说明     |
-| -------- | ------ | -------- |
-| symbol   | string | 符号     |
-| conAddr  | string | 合约地址 |
-| decimals | string | 精度     |
-| coinIcon | string | 币种图标 |
+| 字段名          | 类型   | 说明                               |
+| --------------- | ------ | ---------------------------------- |
+| depositEnabled  | bool   | 充值开关                           |
+| withdrawEnabled | bool   | 体现开关                           |
+| displayName     | string | 展示名称                           |
+| symbol          | string | 符号                               |
+| conAddr         | string | 合约地址                           |
+| decimals        | string | 精度                               |
+| coinIcon        | string | 币种图标                           |
+| tokenName       | string | 币种链上名称                       |
+| agentEnabled    | bool   | 是否应该使用代付手续费合约进行转账 |
+| agentContract   | string | 代付手续费合约地址                 |
+| agentFee        | string | 消耗手续费                         |
+| agentFeeToken   | string | 手续费币种                         |
+| agentMethod     | string | 代转账方法                         |
 
 **返回结果-错误时**
 
@@ -1072,6 +1091,52 @@ void querySupportBanks(OnWalletListCallback  callback)
 }
 
 ```
+
+**示例：返回结果-错误时**
+
+```java
+{
+    "code":1001,
+	"msg": "无效token"
+}
+```
+
+#### 19.获取转账手续费
+
+##### 1.1 方法原型
+
+void getTransferFee(String tokenType,String to,String value,OnWalletCallback  callback)
+
+**参数字段说明**
+
+| 参数      | 类型   | 必传 | 描述     |
+| --------- | ------ | ---- | -------- |
+| tokenType | String | 是   | 币种类型 |
+| address   | String | 是   | 地址     |
+| value     | String | 否   | 转账金额 |
+
+##### 18.2 返回结果
+
+**示例：返回结果-正确时**
+
+```java
+ {
+     "code": 0,
+     "message": "ok",
+     "data":{
+         "fee": "0.00125",
+         "feeToken": "BCB"
+     }
+ }
+
+```
+
+**参数字段说明**
+
+| 参数     | 类型   | 必传 | 描述           |
+| -------- | ------ | ---- | -------------- |
+| fee      | String | 是   | 手续费         |
+| feeToken | String | 是   | 手续费币种类型 |
 
 **示例：返回结果-错误时**
 
@@ -1995,12 +2060,22 @@ void otcSellCoinImmediate(String tokenType,String payAmount,String recvAmount,St
             "conAddr":"bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe",
             "decimals":"9",
             "coinIcon":"http://test.6x.com/coin_icons/bcb.icon",
+            "tokenName": "USDX",
+            "agentEnabled": false,
         },
         {
             "symbol":"USDX",
             "conAddr":"bcbMLpC7HFd8JCm6RXQiu1t7aX4GaiW5c4Cm",
             "decimals":"9",            
             "coinIcon":"http://test.6x.com/coin_icons/usdx.icon"
+            "tokenName": "USDX",
+            "agentEnabled": true,
+            "agent":{
+                "agentContract": "bcbLVgb3odTfKC9Y9GeFnNWL9wmR4pwWiqwe",
+            	"agentFee": "0.01",
+                "agentFeeToken": "USDX",
+                "agentMethod": "Transfer(string,types.Address,bn.Number)",
+            }    
         }
     ]
 }
