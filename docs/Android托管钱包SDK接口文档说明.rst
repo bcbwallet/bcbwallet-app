@@ -1261,7 +1261,7 @@ void querySupportBanks(OnWalletListCallback callback)
 1.1 方法原型
 ''''''''''''
 
-void getTransferFee(String tokenType,String to,String
+void getTransferFee(String tokenType,String from,String address,String
 value,OnWalletCallback callback)
 
 **参数字段说明**
@@ -1271,7 +1271,9 @@ value,OnWalletCallback callback)
 +=============+==========+========+============+
 | tokenType   | String   | 是     | 币种类型   |
 +-------------+----------+--------+------------+
-| address     | String   | 是     | 地址       |
+| from        | string   | 是     | 出钱地址   |
++-------------+----------+--------+------------+
+| address     | String   | 是     | 到账地址   |
 +-------------+----------+--------+------------+
 | value       | String   | 否     | 转账金额   |
 +-------------+----------+--------+------------+
